@@ -1,6 +1,6 @@
 package Solution;
 
-import.java.lang.String;
+import java.lang.String;
 
 public class TestCreature{
     private static int CREATURE_COUNT = 6;

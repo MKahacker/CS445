@@ -17,7 +17,8 @@ public abstract class Creature extends Thing{
     }
     
     public void whatDidYouEat(){
-        System.out.println()
+        System.out.println(stomache);
+        
     }
 
 }

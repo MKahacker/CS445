@@ -1,6 +1,6 @@
 package Solution;
 
-import java.lang.String
+import java.lang.String;
 
 public class Thing{
     private String name;
@@ -18,7 +18,7 @@ public class Thing{
     }
 
     public String toString(){
-        System.out.println("name: " + name);
+        return "name: " + name;
     }
 }
 
