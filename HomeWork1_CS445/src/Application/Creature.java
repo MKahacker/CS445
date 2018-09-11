@@ -1,7 +1,5 @@
 package Application;
 
-import java.lang.String;
-
 public abstract class Creature extends Thing{
     private String stomache;
 

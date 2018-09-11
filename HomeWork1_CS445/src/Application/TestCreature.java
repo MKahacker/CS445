@@ -1,7 +1,5 @@
 package Application;
 
-import java.lang.String;
-
 public class TestCreature{
     private static int CREATURE_COUNT = 6;
     private static int THING_COUNT = 10;
