@@ -18,7 +18,7 @@ public class Thing{
     }
 
     public String toString(){
-        return "The Name of this thing is " + name;
+        return name;
     }
 }
 
