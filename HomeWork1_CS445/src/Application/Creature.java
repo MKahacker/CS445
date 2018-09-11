@@ -1,4 +1,4 @@
-package Solution;
+package Application;
 
 import java.lang.String;
 
@@ -12,8 +12,8 @@ public abstract class Creature extends Thing{
     public abstract void move();
 
     public void eat(Thing aThing){
-        stomache = aThing.name;
-        System.out.println(super.name + "has just eaten a" + aThing.name);
+        stomache = aThing.getName();
+        System.out.println(super.getName() + " has just eaten a " + aThing.getName());
     }
     
     public void whatDidYouEat(){

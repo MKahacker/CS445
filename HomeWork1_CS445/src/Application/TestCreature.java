@@ -1,4 +1,4 @@
-package Solution;
+package Application;
 
 import java.lang.String;
 
@@ -10,11 +10,11 @@ public class TestCreature{
         Thing[] things;
         things = new Thing[THING_COUNT];
         for(int i=0; i < THING_COUNT; i++){
-            things[i] = new Thing("rem");
+            things[i] = new Thing("Shihaga");
         }
 
         for(int j = 0; j < THING_COUNT; j++){
-            things[j].toString();
+            System.out.println(things[j].toString());
         }
     }
 }
