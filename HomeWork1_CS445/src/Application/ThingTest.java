@@ -11,4 +11,10 @@ class ThingTest {
         assertEquals("Test", aThing.getName());
     }
 
+    @Test
+    public void testingThatToStringReturnsName(){
+        Thing aThing = new Thing ("Test2");
+        assertEquals("Test2", aThing.toString());
+    }
+
 }
