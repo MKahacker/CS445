@@ -1,7 +1,7 @@
 package Application;
 
 public abstract class Creature extends Thing{
-    private String stomache;
+    private String stomache = null;
 
     public Creature(String name){
         super(name);
@@ -15,8 +15,11 @@ public abstract class Creature extends Thing{
     }
     
     public void whatDidYouEat(){
-        System.out.println(stomache);
-        
+        if(stomache != null) {
+            System.out.println(stomache);
+        }else{
+            System.out.println(super.getName() + "" + getClass().getSimpleName() + " has had nothing to eat!");
+        }
     }
 
 }

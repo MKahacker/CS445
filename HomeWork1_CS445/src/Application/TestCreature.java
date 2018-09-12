@@ -18,7 +18,7 @@ public class TestCreature{
         anArrayOfCreatures[3] = new Bat ("Rouge");
         anArrayOfCreatures[4] = new Fly ("Minnow");
         anArrayOfCreatures[5] = new Tiger ("Tigger");
-
+        System.out.println(anArrayOfCreatures[5].getClass().getSuperclass().getSimpleName());
         for(int j = 0; j < CREATURE_COUNT; j++){
             anArrayOfThings[j] = anArrayOfCreatures[j];
         }
