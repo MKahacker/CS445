@@ -16,9 +16,9 @@ public abstract class Creature extends Thing{
     
     public void whatDidYouEat(){
         if(stomache != null) {
-            System.out.println(stomache);
+            System.out.println(super.getName() + " " + this.getClass().getSimpleName() + " has eaten a " + stomache);
         }else{
-            System.out.println(super.getName() + "" + getClass().getSimpleName() + " has had nothing to eat!");
+            System.out.println(super.getName() + " " + this.getClass().getSimpleName() + " has had nothing to eat!");
         }
     }
 

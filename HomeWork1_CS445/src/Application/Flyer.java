@@ -1,5 +1,5 @@
 package Application;
 
-interface Flyer {
-    public void fly();
+public interface Flyer {
+    void fly();
 }
