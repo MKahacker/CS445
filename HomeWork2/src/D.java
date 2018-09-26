@@ -1,5 +1,5 @@
 public class D{
   private B classB;
-  private F classF[5];
+  private F classF[] = new F[5];
 
 }
