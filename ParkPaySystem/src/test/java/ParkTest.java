@@ -1,5 +1,6 @@
-package ParkPaySystem;
+package test.java;
 
+import ParkPaySystem.Park;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -41,6 +42,17 @@ class ParkTest {
         Park firstPark = new Park("Yosemite", 12.0, comments, "123 Something Ln");
 
         assertEquals("Name = Yosemite,\nFee = $12.00,\nComments = \n\tLovely,\nLocation = 123 Something Ln", firstPark.viewInformation());
+    }
+
+    @Test
+    public void testViewInformationWithMultipleComments(){
+        String[] comments = new String[3];
+        comments[0] = "Lovely";
+        comments[1] = "Beautiful!";
+        comments[2] = "Was amazing";
+        Park firstPark = new Park("Yosemite", 12.0, comments, "123 Something Ln");
+
+        assertEquals("Name = Yosemite,\nFee = $12.00,\nComments = \n\tLovely,\n\tBeautiful!,\n\tWas amazing,\nLocation = 123 Something Ln", firstPark.viewInformation());
     }
 
 }

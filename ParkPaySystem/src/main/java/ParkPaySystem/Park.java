@@ -23,7 +23,6 @@ public class Park {
         this.location = location;
     }
 
-
     public Boolean equals(Park otherPark){
         return (this.name.equals(otherPark.name) && this.fee == otherPark.fee && this.comments.equals(otherPark.comments) && this.location.equals(otherPark.location));
     }

@@ -23,45 +23,46 @@
         <counts>
           <entry key="iml" value="1" />
           <entry key="java" value="2" />
+          <entry key="xml" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="IDEA_MODULE" value="1" />
           <entry key="JAVA" value="2" />
+          <entry key="XML" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="1698" />
+          <entry key="java" value="1803" />
+          <entry key="xml" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1698" />
+          <entry key="JAVA" value="1803" />
+          <entry key="XML" value="14" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ParkPaySystem/Park.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ParkPaySystem/Park.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="157">
-              <caret line="32" column="62" selection-start-line="32" selection-start-column="62" selection-end-line="32" selection-end-column="62" />
+            <state relative-caret-position="-51">
+              <caret line="23" column="5" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ParkPaySystem/ParkTest.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/ParkTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="42" column="70" selection-start-line="42" selection-start-column="70" selection-end-line="42" selection-end-column="70" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="-459">
+              <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -77,6 +78,8 @@
         <option value="$PROJECT_DIR$/src/Park.java" />
         <option value="$PROJECT_DIR$/src/ParkPaySystem/ParkTest.java" />
         <option value="$PROJECT_DIR$/src/ParkPaySystem/Park.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/test/java/ParkTest.java" />
       </list>
     </option>
   </component>
@@ -110,6 +113,13 @@
               <item name="ParkPaySystem" type="b2602c69:ProjectViewProjectNode" />
               <item name="ParkPaySystem" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ParkPaySystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ParkPaySystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="ParkPaySystem" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -143,33 +153,17 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ParkTest.testViewInformationGivesTheRightInformation">
+  <component name="RunManager" selected="JUnit.ParkTest">
     <configuration name="ParkTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ParkPaySystem" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ParkPaySystem.*" />
+          <option name="PATTERN" value="test.java.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="ParkPaySystem" />
-      <option name="MAIN_CLASS_NAME" value="ParkPaySystem.ParkTest" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ParkTest.testEqual" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ParkPaySystem" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ParkPaySystem.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ParkPaySystem" />
-      <option name="MAIN_CLASS_NAME" value="ParkPaySystem.ParkTest" />
-      <option name="METHOD_NAME" value="testEqual" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="test.java" />
+      <option name="MAIN_CLASS_NAME" value="test.java.ParkTest" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -178,12 +172,12 @@
       <module name="ParkPaySystem" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ParkPaySystem.*" />
+          <option name="PATTERN" value="test.java.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="ParkPaySystem" />
-      <option name="MAIN_CLASS_NAME" value="ParkPaySystem.ParkTest" />
+      <option name="PACKAGE_NAME" value="test.java" />
+      <option name="MAIN_CLASS_NAME" value="test.java.ParkTest" />
       <option name="METHOD_NAME" value="testEqualsFalse" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -194,12 +188,12 @@
       <module name="ParkPaySystem" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ParkPaySystem.*" />
+          <option name="PATTERN" value="test.java.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="ParkPaySystem" />
-      <option name="MAIN_CLASS_NAME" value="ParkPaySystem.ParkTest" />
+      <option name="PACKAGE_NAME" value="test.java" />
+      <option name="MAIN_CLASS_NAME" value="test.java.ParkTest" />
       <option name="METHOD_NAME" value="testViewInformationGivesTheRightInforamtion" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -210,13 +204,29 @@
       <module name="ParkPaySystem" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ParkPaySystem.*" />
+          <option name="PATTERN" value="test.java.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="ParkPaySystem" />
-      <option name="MAIN_CLASS_NAME" value="ParkPaySystem.ParkTest" />
+      <option name="PACKAGE_NAME" value="test.java" />
+      <option name="MAIN_CLASS_NAME" value="test.java.ParkTest" />
       <option name="METHOD_NAME" value="testViewInformationGivesTheRightInformation" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ParkTest.testViewInformationWithMultipleComments" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ParkPaySystem" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.java.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test.java" />
+      <option name="MAIN_CLASS_NAME" value="test.java.ParkTest" />
+      <option name="METHOD_NAME" value="testViewInformationWithMultipleComments" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -224,18 +234,18 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.ParkTest" />
-      <item itemvalue="JUnit.ParkTest.testEqual" />
       <item itemvalue="JUnit.ParkTest.testEqualsFalse" />
       <item itemvalue="JUnit.ParkTest.testViewInformationGivesTheRightInforamtion" />
       <item itemvalue="JUnit.ParkTest.testViewInformationGivesTheRightInformation" />
+      <item itemvalue="JUnit.ParkTest.testViewInformationWithMultipleComments" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ParkTest" />
+        <item itemvalue="JUnit.ParkTest.testViewInformationWithMultipleComments" />
         <item itemvalue="JUnit.ParkTest.testViewInformationGivesTheRightInformation" />
         <item itemvalue="JUnit.ParkTest.testViewInformationGivesTheRightInforamtion" />
-        <item itemvalue="JUnit.ParkTest" />
         <item itemvalue="JUnit.ParkTest.testEqualsFalse" />
-        <item itemvalue="JUnit.ParkTest.testEqual" />
       </list>
     </recent_temporary>
   </component>
@@ -250,12 +260,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ParkTest_testEqual - 2018.10.02 at 14h 46m 29s.xml">
-      <configuration name="ParkTest.testEqual" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ParkTest_testEqualsFalse - 2018.10.02 at 17h 41m 25s.xml">
-      <configuration name="ParkTest.testEqualsFalse" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="ParkTest - 2018.10.02 at 17h 41m 49s.xml">
       <configuration name="ParkTest" configurationId="JUnit" />
     </history-entry>
@@ -280,19 +284,25 @@
     <history-entry file="ParkTest_testViewInformationGivesTheRightInformation - 2018.10.02 at 18h 07m 22s.xml">
       <configuration name="ParkTest.testViewInformationGivesTheRightInformation" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="ParkTest_testViewInformationWithMultipleComments - 2018.10.02 at 18h 11m 40s.xml">
+      <configuration name="ParkTest.testViewInformationWithMultipleComments" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ParkTest_testViewInformationWithMultipleComments - 2018.10.02 at 18h 12m 53s.xml">
+      <configuration name="ParkTest.testViewInformationWithMultipleComments" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25340393" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25340393" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Messages" weight="0.3295082" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3295082" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3295082" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -314,20 +324,24 @@
     <entry file="file://$PROJECT_DIR$/ParkPaySystem.iml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ParkPaySystem/ParkTest.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="42" column="70" selection-start-line="42" selection-start-column="70" selection-end-line="42" selection-end-column="70" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="102">
+          <caret line="6" column="15" lean-forward="true" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ParkPaySystem/Park.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ParkPaySystem/Park.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="32" column="62" selection-start-line="32" selection-start-column="62" selection-end-line="32" selection-end-column="62" />
+        <state relative-caret-position="-51">
+          <caret line="23" column="5" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ParkTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-459">
+          <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
         </state>
       </provider>
     </entry>
