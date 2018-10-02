@@ -7,12 +7,12 @@ public class Park {
     private double fee;;
     private String[] comments;
     private String location;
-    private String state;
 
     public Park(){
         this.name = "default";
         this.fee = 0.00;
         this.comments = new String[1];
+        this.comments[0] = "default";
         this.location = "default";
     }
 
@@ -23,17 +23,21 @@ public class Park {
         this.location = location;
     }
 
-    public String[] intializeComments(String [] comments){
-        for(int i = 0; i < 1; i++){
-            comments[i] = "default";
-        }
-        return comments;
-    }
 
     public Boolean equals(Park otherPark){
         return (this.name.equals(otherPark.name) && this.fee == otherPark.fee && this.comments.equals(otherPark.comments) && this.location.equals(otherPark.location));
     }
 
+    public String viewInformation(){
+        String stringfiedName = "Name = " + this.name + ",\n";
+        String stringfiedFee = "Fee = $" + String.format("%.2f",this.fee) + ",\n";
+        String stringfiedComments = "Comments = \n";
+        for(int i = 0; i < comments.length; i++) {
+             stringfiedComments = stringfiedComments + "\t" + this.comments[i] + ",\n";
+        }
+        String stringfiedLocation = "Location = " + this.location;
+        return stringfiedName + stringfiedFee + stringfiedComments + stringfiedLocation;
+    }
 
 
 
