@@ -7,6 +7,7 @@ public class Park {
     private double fee;;
     private String[] comments;
     private String location;
+    private String state;
 
     public Park(){
         this.name = "default";
@@ -21,6 +22,18 @@ public class Park {
         this.comments = comments;
         this.location = location;
     }
+
+    public String[] intializeComments(String [] comments){
+        for(int i = 0; i < 1; i++){
+            comments[i] = "default";
+        }
+        return comments;
+    }
+
+    public Boolean equals(Park otherPark){
+        return (this.name.equals(otherPark.name) && this.fee == otherPark.fee && this.comments.equals(otherPark.comments) && this.location.equals(otherPark.location));
+    }
+
 
 
 
