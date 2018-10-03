@@ -1,22 +1,16 @@
-package ParkPaySystem;
+package main.java.ParkPaySystem;
 
 import java.lang.String;
 
 public class Park {
+    private int id;
     private String name;
     private double fee;;
     private String[] comments;
     private String location;
 
-    public Park(){
-        this.name = "default";
-        this.fee = 0.00;
-        this.comments = new String[1];
-        this.comments[0] = "default";
-        this.location = "default";
-    }
-
-    public Park (String name, double fee, String[] comments, String location){
+    public Park (int id, String name, double fee, String[] comments, String location){
+        this.id = id;
         this.name = name;
         this.fee = fee;
         this.comments = comments;
@@ -24,10 +18,11 @@ public class Park {
     }
 
     public Boolean equals(Park otherPark){
-        return (this.name.equals(otherPark.name) && this.fee == otherPark.fee && this.comments.equals(otherPark.comments) && this.location.equals(otherPark.location));
+        return (this.id == otherPark.id && this.name.equals(otherPark.name) && this.fee == otherPark.fee && this.comments.equals(otherPark.comments) && this.location.equals(otherPark.location));
     }
 
     public String viewInformation(){
+        String stringfiedId = "Id = " + Integer.toString(this.id) + ",\n";
         String stringfiedName = "Name = " + this.name + ",\n";
         String stringfiedFee = "Fee = $" + String.format("%.2f",this.fee) + ",\n";
         String stringfiedComments = "Comments = \n";
@@ -35,7 +30,7 @@ public class Park {
              stringfiedComments = stringfiedComments + "\t" + this.comments[i] + ",\n";
         }
         String stringfiedLocation = "Location = " + this.location;
-        return stringfiedName + stringfiedFee + stringfiedComments + stringfiedLocation;
+        return stringfiedId + stringfiedName + stringfiedFee + stringfiedComments + stringfiedLocation;
     }
 
 
