@@ -1,8 +1,9 @@
 package Lamp;
 
-public class TableLamp {
-    Lightbulb myLightbulb;
+import Button.Button;
+
+
+public abstract class TableLamp {
     Button myButton;
 
-    public TableLamp()
 }
