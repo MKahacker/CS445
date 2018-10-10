@@ -1,13 +1,20 @@
 package Main;
 
-import Button.Button;
+import Button.*;
+import Lamp.TableLamp;
+import Lightbulb.*;
 
 public class main {
     public static void main(String[] args){
-        Button myButton = new Button();
+        Lightbulb myLightbulb = new Lightbulb();
+        PushDownButton myButton = new PushDownButton(myLightbulb);
+        TableLamp myTableLamp = new TableLamp(myButton);
 
-        myButton.switchOn();
-        myButton.switchOff();
+        myButton.PushButton();
+        myButton.PushButton();
+
+        myTableLamp.switchOn();
+        myTableLamp.switchOff();
 
     }
 }

@@ -1,11 +1,7 @@
 package Button;
 
-import Lightbulb.Lightbulb;
+import Lightbulb.*;
 
 public abstract class AbstractButton {
-    Lightbulb myLightBulb;
-
-    public abstract void switchOn();
-
-    public abstract void switchOff();
+    InterfaceLightBulb myLightBulb;
 }
