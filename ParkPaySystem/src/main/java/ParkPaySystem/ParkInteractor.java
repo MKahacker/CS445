@@ -1,4 +1,4 @@
-package main.java.ParkPaySystem;
+package ParkPaySystem;
 
 import java.util.List;
 

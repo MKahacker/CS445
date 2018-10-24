@@ -1,4 +1,4 @@
-package main.java.ParkPaySystem;
+package ParkPaySystem;
 
 public abstract class AbstractVistor {
     private String name;

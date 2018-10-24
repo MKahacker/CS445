@@ -1,9 +1,7 @@
-package main.java.ParkPaySystem;
-
-import main.java.ParkPaySystem.Park;
+package ParkPaySystem;
 
 public class Admin {
-    Park[] listOfParks;
+    /*Park[] listOfParks;
 
     public Admin(Park[] parks){
         listOfParks = parks;
@@ -29,5 +27,5 @@ public class Admin {
             temp[i] = this.listOfParks[i];
         }
         return temp;
-    }
+    }*/
 }

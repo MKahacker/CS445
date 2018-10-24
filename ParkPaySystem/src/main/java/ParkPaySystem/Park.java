@@ -1,59 +1,71 @@
-package main.java.ParkPaySystem;
+package ParkPaySystem;
+
 
 import java.lang.String;
+import org.json.JSONObject;
 
-public class Park implements InterfacePark{
+
+public class Park implements InterfacePark {
     private int id;
     private String name;
-    private double fee;
-    private Comment[] comments;
-    private String location;
+    private String region;
+    private String phone;
+    private String web;
+    private String address;
+    private Geolocation geo;
+    private Payment[] fee;
 
-    public Park (int id, String name, double fee, Comment[] comments, String location){
+    public Park (int id, String name, String region, String address,
+                 String phone, String web, Geolocation geo, Payment[] fee){
         this.id = id;
         this.name = name;
+        this.region = region;
+        this.phone = phone;
+        this.web = web;
+        this.address = address;
+        this.geo = geo;
         this.fee = fee;
-        this.comments = (comments == null)? new Comment[0] : comments;
-        this.location = location;
     }
 
-    public Boolean equals(Park otherPark){
-        Boolean commentEqual = this.comments.length == otherPark.comments.length;
-        if(commentEqual == Boolean.TRUE){
-            commentEqual = commentEqual && checkComments(this.comments, otherPark.comments);
-        }
-        return (this.id == otherPark.id && this.name.equals(otherPark.name) && this.fee == otherPark.fee && commentEqual && this.location.equals(otherPark.location));
+    public Park (int id, String name, String address, String web, Geolocation geo, Payment[] fee){
+        this.id = id;
+        this.name = name;
+        this.web = web;
+        this.geo = geo;
+        this.address = address;
+        this.fee = fee;
+        this.region = "";
+        this.phone = "";
     }
 
-    public boolean checkComments(Comment[] firstComment, Comment[] secondComment){
-        boolean commentSame = false;
-        for(int i = 0; i < 2; i++){
-            if(firstComment[i] == null && secondComment[i] == null){
-                commentSame = true;
-            }else if(firstComment[i] == null || secondComment[i]== null){
-                commentSame = false;
-            }else{
-                commentSame = true;
-                commentSame = commentSame && firstComment[i].equals(secondComment[i]);
-            }
-        }
-        return commentSame;
+    public Geolocation getGeo(){
+        return this.geo;
     }
+
+    public int getParkId(){
+        return this.id;
+    }
+
+    public String getName(){
+        return this.name;
+    }
+
 
     public String viewInformation(){
-        String stringfiedId = "Id = " + Integer.toString(this.id) + ",\n";
-        String stringfiedName = "Name = " + this.name + ",\n";
+        JSONObject string = new JSONObject();
+        JSONObject locationInfo = new JSONObject();
+        string.put("pid", this.id);
+        string.put("name", this.name);
+        string.put("region", this.region);
+       /* String stringfiedName = "Name = " + this.name + ",\n";
         String stringfiedFee = "Fee = $" + String.format("%.2f",this.fee) + ",\n";
         String stringfiedComments = "Comments = \n";
         for(int i = 0; i < comments.length; i++) {
              stringfiedComments = stringfiedComments + "\t" + this.comments[i].viewCommentBody() + ",\n";
         }
         String stringfiedLocation = "Location = " + this.location + "\n";
-        return stringfiedId + stringfiedName + stringfiedFee + stringfiedComments + stringfiedLocation;
-    }
-
-    public int getParkId(){
-        return this.id;
+        return stringfiedId + stringfiedName + stringfiedFee + stringfiedComments + stringfiedLocation;*/
+        return "";
     }
 
 
