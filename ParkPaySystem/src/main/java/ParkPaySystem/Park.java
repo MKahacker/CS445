@@ -2,7 +2,7 @@ package main.java.ParkPaySystem;
 
 import java.lang.String;
 
-public class Park {
+public class Park implements InterfacePark{
     private int id;
     private String name;
     private double fee;
@@ -13,7 +13,7 @@ public class Park {
         this.id = id;
         this.name = name;
         this.fee = fee;
-        this.comments = comments;
+        this.comments = (comments == null)? new Comment[0] : comments;
         this.location = location;
     }
 
@@ -48,10 +48,13 @@ public class Park {
         for(int i = 0; i < comments.length; i++) {
              stringfiedComments = stringfiedComments + "\t" + this.comments[i].viewCommentBody() + ",\n";
         }
-        String stringfiedLocation = "Location = " + this.location;
+        String stringfiedLocation = "Location = " + this.location + "\n";
         return stringfiedId + stringfiedName + stringfiedFee + stringfiedComments + stringfiedLocation;
     }
 
+    public int getParkId(){
+        return this.id;
+    }
 
 
 }

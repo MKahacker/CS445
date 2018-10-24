@@ -45,7 +45,7 @@ class ParkTest {
         comments[0] = oneComment;
         Park firstPark = new Park(101, "Yosemite", 12.0, comments, "123 Something Ln");
 
-        assertEquals("Id = 101,\nName = Yosemite,\nFee = $12.00,\nComments = \n\tLovely,\nLocation = 123 Something Ln", firstPark.viewInformation());
+        assertEquals("Id = 101,\nName = Yosemite,\nFee = $12.00,\nComments = \n\tLovely,\nLocation = 123 Something Ln\n", firstPark.viewInformation());
     }
 
     @Test
@@ -57,7 +57,7 @@ class ParkTest {
         }
         Park firstPark = new Park(101, "Yosemite", 12.0, comments, "123 Something Ln");
 
-        assertEquals("Id = 101,\nName = Yosemite,\nFee = $12.00,\nComments = \n\tLovely0,\n\tLovely1,\n\tLovely2,\nLocation = 123 Something Ln", firstPark.viewInformation());
+        assertEquals("Id = 101,\nName = Yosemite,\nFee = $12.00,\nComments = \n\tLovely0,\n\tLovely1,\n\tLovely2,\nLocation = 123 Something Ln\n", firstPark.viewInformation());
     }
 
     @Test
@@ -65,7 +65,7 @@ class ParkTest {
         Comment[] comments = new Comment[0];
         Park firstPark = new Park(101, "Yosemite", 12.0, comments, "123 Something Ln");
 
-        assertEquals("Id = 101,\nName = Yosemite,\nFee = $12.00,\nComments = \nLocation = 123 Something Ln", firstPark.viewInformation());
+        assertEquals("Id = 101,\nName = Yosemite,\nFee = $12.00,\nComments = \nLocation = 123 Something Ln\n", firstPark.viewInformation());
     }
 
     @Test
