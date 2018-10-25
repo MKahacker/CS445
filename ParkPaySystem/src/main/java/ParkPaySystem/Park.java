@@ -54,9 +54,10 @@ public class Park implements InterfacePark {
     public String viewInformation(){
         JSONObject string = new JSONObject();
         JSONObject locationInfo = new JSONObject();
+        JSONObject geoInfo = new JSONObject();
         string.put("pid", this.id);
-        string.put("name", this.name);
-        string.put("region", this.region);
+
+
        /* String stringfiedName = "Name = " + this.name + ",\n";
         String stringfiedFee = "Fee = $" + String.format("%.2f",this.fee) + ",\n";
         String stringfiedComments = "Comments = \n";
@@ -66,6 +67,22 @@ public class Park implements InterfacePark {
         String stringfiedLocation = "Location = " + this.location + "\n";
         return stringfiedId + stringfiedName + stringfiedFee + stringfiedComments + stringfiedLocation;*/
         return "";
+    }
+    public JSONObject parseLocationInfo(){
+        JSONObject locationInfo = new JSONObject();
+        locationInfo.put("name", this.name);
+        locationInfo.put("region", this.region);
+        locationInfo.put("phone", this.phone);
+        locationInfo.put("web", this.web);
+
+        return locationInfo;
+    }
+
+    public JSONObject parseGeoInfo(){
+        JSONObject geoInfo  = new JSONObject();
+        geoInfo.put("lat", Double.toString(this.geo.getLat()));
+        geoInfo.put("lng", Double.toString(this.geo.getLng()));
+        return geoInfo;
     }
 
 

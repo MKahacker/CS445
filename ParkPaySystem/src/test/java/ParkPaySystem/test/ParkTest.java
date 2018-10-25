@@ -3,7 +3,6 @@ package ParkPaySystem.test;
 import ParkPaySystem.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -29,9 +28,25 @@ class ParkTest {
     public void testViewInformationGivesTheRightInformation(){
         String expected = "{ \"location_info\": { \"name\": \"Yosemite\", \"region\": \"Northwestern\"," +
                 " \"address\": \"123 Park Lane, Park City, IL 610101\", \"phone\": 708-909-1454, \"web\": "+
-                "\"wwww.yosemite.com\", \"geo\": { \"lat\": 49.0, \"lng\": 56.0 }";
+                "\"wwww.yosemite.com\", \"geo\": { \"lat\": 49.0, \"lng\": 56.0 }}";
 
         assertEquals(expected, testPark.viewInformation());
+    }
+
+    @Test
+    public void testParseLocationInfo(){
+        String expected = "{ \"name\": \"Yosemite\", \"region\": \"Northwestern\"," +
+                " \"address\": \"123 Park Lane, Park City, IL 610101\", \"phone\": 708-909-1454, \"web\": "+
+                "\"wwww.yosemite.com\", \"geo\": { \"lat\": 49.0, \"lng\": 56.0 }}";
+
+        assertEquals(expected, testPark.parseLocationInfo());
+    }
+
+    @Test
+    public void testParseGeoInfo(){
+        String expected = "{\"lat\": 49.0,\"lng\": 56.0}";
+
+        assertEquals(expected, testPark.parseGeoInfo());
     }
 
     /*
