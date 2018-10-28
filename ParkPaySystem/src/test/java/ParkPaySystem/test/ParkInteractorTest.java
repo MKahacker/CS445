@@ -108,13 +108,21 @@ class ParkInteractorTest {
     public void testIfParkUpdated(){
         ParkInteractor myParks = new ParkInteractor(list);
 
-        Park newPark = new Park(size+1, "Yosemite", "Nothwest", "www.park.com", geo, parkPayment);
+        Park newPark = new Park(size+1, "Yosemite", "Northwest", "www.park.com", geo, parkPayment);
         Park updatePark = new Park(size+1, "Yosemite", "Southwest", "www.park2.com", geo, parkPayment);
 
         int pid = myParks.createPark(newPark);
         myParks.updatePark(updatePark, pid);
 
         assertEquals(updatePark.viewInformation().toString(), myParks.getSpecificParkInfo(pid).toString());
+    }
+
+    @Test
+    public void testIfDeleteWorks(){
+        ParkInteractor myParks = new ParkInteractor(list);
+        myParks.deletePark(size-1);
+
+        assertEquals(null, myParks.getSpecificPark(size-1));
     }
 
 }

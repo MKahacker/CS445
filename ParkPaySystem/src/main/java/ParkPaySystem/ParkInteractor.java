@@ -24,10 +24,12 @@ public class ParkInteractor {
         int i = getIndexOfPark(id);
         updatedPark.setParkId(id);
         this.parks.set(i, updatedPark);
+
     }
 
     public void deletePark(int id){
-
+        int indexToDelete = getIndexOfPark(id);
+        this.parks.remove(indexToDelete);
     }
 
     public int getIndexOfPark(int id){
