@@ -38,6 +38,10 @@ public class Park implements InterfacePark {
         this.phone = "";
     }
 
+    public void setParkId(int parkId){
+        this.id = parkId;
+    }
+
     public Geolocation getGeo(){
         return this.geo;
     }
@@ -51,22 +55,13 @@ public class Park implements InterfacePark {
     }
 
 
-    public String viewInformation(){
+    public JSONObject viewInformation(){
         JSONObject string = new JSONObject();
-        JSONObject locationInfo = new JSONObject();
-        JSONObject geoInfo = new JSONObject();
+
         string.put("pid", this.id);
+        string.put("location_info", parseLocationInfo());
 
-
-       /* String stringfiedName = "Name = " + this.name + ",\n";
-        String stringfiedFee = "Fee = $" + String.format("%.2f",this.fee) + ",\n";
-        String stringfiedComments = "Comments = \n";
-        for(int i = 0; i < comments.length; i++) {
-             stringfiedComments = stringfiedComments + "\t" + this.comments[i].viewCommentBody() + ",\n";
-        }
-        String stringfiedLocation = "Location = " + this.location + "\n";
-        return stringfiedId + stringfiedName + stringfiedFee + stringfiedComments + stringfiedLocation;*/
-        return "";
+        return string;
     }
     public JSONObject parseLocationInfo(){
         JSONObject locationInfo = new JSONObject();
@@ -74,15 +69,31 @@ public class Park implements InterfacePark {
         locationInfo.put("region", this.region);
         locationInfo.put("phone", this.phone);
         locationInfo.put("web", this.web);
+        locationInfo.put("address", this.address);
+        locationInfo.put("geo", parseGeoInfo());
 
         return locationInfo;
     }
 
     public JSONObject parseGeoInfo(){
         JSONObject geoInfo  = new JSONObject();
-        geoInfo.put("lat", Double.toString(this.geo.getLat()));
-        geoInfo.put("lng", Double.toString(this.geo.getLng()));
+        geoInfo.put("lat", this.geo.getLat());
+        geoInfo.put("lng", this.geo.getLng());
         return geoInfo;
+    }
+
+    public double inStateFee(int type){
+       if(type >= 0 && type < 3) {
+          return fee[type].getInStateFee();
+       }
+       return -1;
+    }
+
+    public double outStateFee(int type){
+        if(type >= 0 && type <3){
+           return fee[type].getOutStateFee();
+        }
+        return -1;
     }
 
 

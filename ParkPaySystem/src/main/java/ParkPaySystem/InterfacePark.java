@@ -1,7 +1,9 @@
 package ParkPaySystem;
 
+import org.json.JSONObject;
+
 public interface InterfacePark {
-    String viewInformation();
+    JSONObject viewInformation();
     int getParkId();
 
 }
