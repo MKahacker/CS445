@@ -20,7 +20,7 @@ class CommentManagerTest {
     public List<Comment> createCommentList(){
         List<Comment> comments = new ArrayList<Comment>();
         Comment comment;
-        String title = "Like"
+        String title = "Like";
         String body = "I Like very much";
         for(int i = 0; i < 5; i++){
             comment = new Comment(i+100, i+200, i+300, new Date(),title+" "+Integer.toString(i),body);
