@@ -16,6 +16,7 @@ public class CommentManager {
         int commentId = commentList.size()+100;
         Comment newComment = new Comment(commentId, parkId, vistorId, timeStamp,title, body);
 
+        this.commentList.add(newComment);
         return commentId;
     }
 

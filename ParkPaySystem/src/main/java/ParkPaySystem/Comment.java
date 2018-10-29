@@ -27,6 +27,10 @@ public class Comment {
         return this.id;
     }
 
+    public void setId(int id){
+        this.id = id;
+    }
+
     public int getParkId(){
         return this.parkId;
     }
