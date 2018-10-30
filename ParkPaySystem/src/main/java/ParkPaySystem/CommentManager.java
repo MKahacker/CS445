@@ -1,9 +1,12 @@
 package ParkPaySystem;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class CommentManager {
     List<Comment> commentList;
@@ -18,6 +21,16 @@ public class CommentManager {
 
         this.commentList.add(newComment);
         return commentId;
+    }
+
+    public JSONArray viewCommentsForPark(int parkId){
+        JSONArray parkComments = new JSONArray();
+        for(int i= 0; i < commentList.size(); i++){
+            if(commentList.get(i).getParkId() == parkId){
+                parkComments.put(commentList.get(i).limitedCommentInfo());
+            }
+        }
+        return parkComments;
     }
 
     public JSONObject viewSpecificComment(int id){
@@ -40,5 +53,13 @@ public class CommentManager {
         }
         return idx;
     }
+
+    public JSONArray viewAllComments(){
+        JSONArray comments = new JSONArray();
+        Set<Integer> parkIdSet = new HashSet<Integer>();
+
+        return comments;
+    }
+
 
 }

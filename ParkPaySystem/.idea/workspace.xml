@@ -14,7 +14,7 @@
     <session id="-1560215767">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="10" />
+          <entry key="project.closed" value="11" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.12" value="1" />
@@ -23,16 +23,17 @@
           <entry key="project.open.time.42" value="2" />
           <entry key="project.open.time.43" value="1" />
           <entry key="project.open.time.48" value="1" />
+          <entry key="project.open.time.51" value="1" />
           <entry key="project.open.time.53" value="1" />
           <entry key="project.open.time.59" value="1" />
-          <entry key="project.opened" value="11" />
+          <entry key="project.opened" value="12" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="2" />
           <entry key="iml" value="1" />
-          <entry key="java" value="86" />
+          <entry key="java" value="92" />
           <entry key="xml" value="8" />
         </counts>
       </usages-collector>
@@ -40,19 +41,19 @@
         <counts>
           <entry key="CLASS" value="2" />
           <entry key="IDEA_MODULE" value="1" />
-          <entry key="JAVA" value="86" />
+          <entry key="JAVA" value="92" />
           <entry key="XML" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="24613" />
+          <entry key="java" value="26364" />
           <entry key="xml" value="47" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="24613" />
+          <entry key="JAVA" value="26364" />
           <entry key="XML" value="47" />
         </counts>
       </usages-collector>
@@ -63,26 +64,40 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/ParkPaySystem/CommentManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+            <state relative-caret-position="272">
+              <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#137#138#0" expanded="true" />
-                <element signature="e#178#179#0" expanded="true" />
+                <element signature="e#1726#1735#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/ParkPaySystem/CommentManagerTest.java">
+        <entry file="file://$PROJECT_DIR$/src/test/java/ParkPaySystem/test/CommentManagerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="38" column="110" selection-start-line="38" selection-start-column="110" selection-end-line="38" selection-end-column="110" />
+            <state relative-caret-position="1394">
+              <caret line="82" column="73" selection-start-line="82" selection-start-column="73" selection-end-line="82" selection-end-column="73" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1343#1344#0" expanded="true" />
-                <element signature="e#1372#1373#0" expanded="true" />
+                <element signature="e#1699#1700#0" expanded="true" />
+                <element signature="e#1781#1782#0" expanded="true" />
+                <element signature="e#2318#2327#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ParkPaySystem/Park.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" column="28" lean-forward="true" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1040#1041#0" expanded="true" />
+                <element signature="e#1072#1073#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -91,16 +106,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ParkPaySystem/Comment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="282">
-              <caret line="30" column="21" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
+            <state relative-caret-position="310">
+              <caret line="48" selection-start-line="48" selection-end-line="48" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#569#570#0" expanded="true" />
-                <element signature="e#590#591#0" expanded="true" />
-                <element signature="e#635#636#0" expanded="true" />
-                <element signature="e#663#664#0" expanded="true" />
-                <element signature="e#679#680#0" expanded="true" />
-                <element signature="e#713#714#0" expanded="true" />
+                <element signature="e#599#600#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -141,7 +152,6 @@
         <option value="$PROJECT_DIR$/src/main/java/ParkPaySystem/Admin.java" />
         <option value="$PROJECT_DIR$/src/test/java/ParkPaySystem/test/AdminTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/ParkPaySystem/InterfacePark.java" />
-        <option value="$PROJECT_DIR$/src/test/java/ParkPaySystem/test/CommentTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/ParkPaySystem/Payment.java" />
         <option value="$PROJECT_DIR$/src/test/java/ParkPaySystem/test/ParkTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/ParkPaySystem/Vistor.java" />
@@ -149,11 +159,24 @@
         <option value="$PROJECT_DIR$/src/main/java/ParkPaySystem/Park.java" />
         <option value="$PROJECT_DIR$/src/test/java/ParkPaySystem/test/ParkInteractorTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/ParkPaySystem/ParkInteractor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ParkPaySystem/Comment.java" />
         <option value="$PROJECT_DIR$/src/test/java/ParkPaySystem/CommentManagerTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ParkPaySystem/test/CommentTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ParkPaySystem/Comment.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ParkPaySystem/test/CommentManagerTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/ParkPaySystem/CommentManager.java" />
       </list>
     </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="ParkPaySystem" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
@@ -215,14 +238,22 @@
             </path>
             <path>
               <item name="ParkPaySystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ParkPaySystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ParkPaySystem" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -270,43 +301,59 @@
       <module name="ParkPaySystem" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ParkPaySystem.*" />
+          <option name="PATTERN" value="ParkPaySystem.test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="ParkPaySystem" />
-      <option name="MAIN_CLASS_NAME" value="ParkPaySystem.CommentManagerTest" />
+      <option name="PACKAGE_NAME" value="ParkPaySystem.test" />
+      <option name="MAIN_CLASS_NAME" value="ParkPaySystem.test.CommentManagerTest" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CommentManagerTest.testCreateNewComment" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CommentManagerTest.testViewAllCommentsAssociatedWithOnePark" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ParkPaySystem" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ParkPaySystem.*" />
+          <option name="PATTERN" value="ParkPaySystem.test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="ParkPaySystem" />
-      <option name="MAIN_CLASS_NAME" value="ParkPaySystem.CommentManagerTest" />
-      <option name="METHOD_NAME" value="testCreateNewComment" />
+      <option name="PACKAGE_NAME" value="ParkPaySystem.test" />
+      <option name="MAIN_CLASS_NAME" value="ParkPaySystem.test.CommentManagerTest" />
+      <option name="METHOD_NAME" value="testViewAllCommentsAssociatedWithOnePark" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CommentManagerTest.testFindSpecificComment" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CommentManagerTest.testViewAllCommentsAssociatedWithParkWithNoComments" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ParkPaySystem" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ParkPaySystem.*" />
+          <option name="PATTERN" value="ParkPaySystem.test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="ParkPaySystem" />
-      <option name="MAIN_CLASS_NAME" value="ParkPaySystem.CommentManagerTest" />
-      <option name="METHOD_NAME" value="testFindSpecificComment" />
+      <option name="PACKAGE_NAME" value="ParkPaySystem.test" />
+      <option name="MAIN_CLASS_NAME" value="ParkPaySystem.test.CommentManagerTest" />
+      <option name="METHOD_NAME" value="testViewAllCommentsAssociatedWithParkWithNoComments" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CommentManagerTest.testViewAllCommentsAssociatedWithaPark" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ParkPaySystem" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ParkPaySystem.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ParkPaySystem.test" />
+      <option name="MAIN_CLASS_NAME" value="ParkPaySystem.test.CommentManagerTest" />
+      <option name="METHOD_NAME" value="testViewAllCommentsAssociatedWithaPark" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -326,34 +373,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ParkInteractorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ParkPaySystem" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ParkPaySystem.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ParkPaySystem.test" />
-      <option name="MAIN_CLASS_NAME" value="ParkPaySystem.test.ParkInteractorTest" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
-      <item itemvalue="JUnit.ParkInteractorTest" />
       <item itemvalue="JUnit.CommentTest" />
-      <item itemvalue="JUnit.CommentManagerTest.testFindSpecificComment" />
-      <item itemvalue="JUnit.CommentManagerTest.testCreateNewComment" />
       <item itemvalue="JUnit.CommentManagerTest" />
+      <item itemvalue="JUnit.CommentManagerTest.testViewAllCommentsAssociatedWithaPark" />
+      <item itemvalue="JUnit.CommentManagerTest.testViewAllCommentsAssociatedWithOnePark" />
+      <item itemvalue="JUnit.CommentManagerTest.testViewAllCommentsAssociatedWithParkWithNoComments" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.CommentManagerTest" />
-        <item itemvalue="JUnit.CommentManagerTest.testCreateNewComment" />
-        <item itemvalue="JUnit.CommentManagerTest.testFindSpecificComment" />
+        <item itemvalue="JUnit.CommentManagerTest.testViewAllCommentsAssociatedWithParkWithNoComments" />
+        <item itemvalue="JUnit.CommentManagerTest.testViewAllCommentsAssociatedWithOnePark" />
+        <item itemvalue="JUnit.CommentManagerTest.testViewAllCommentsAssociatedWithaPark" />
         <item itemvalue="JUnit.CommentTest" />
-        <item itemvalue="JUnit.ParkInteractorTest" />
       </list>
     </recent_temporary>
   </component>
@@ -368,42 +401,42 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ParkInteractorTest - 2018.10.28 at 17h 53m 58s.xml">
-      <configuration name="ParkInteractorTest" configurationId="JUnit" />
+    <history-entry file="CommentManagerTest - 2018.10.30 at 15h 50m 08s.xml">
+      <configuration name="CommentManagerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ParkInteractorTest_testIfDeleteWorks - 2018.10.28 at 17h 56m 37s.xml">
-      <configuration name="ParkInteractorTest.testIfDeleteWorks" configurationId="JUnit" />
+    <history-entry file="CommentManagerTest - 2018.10.30 at 15h 53m 49s.xml">
+      <configuration name="CommentManagerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ParkInteractorTest - 2018.10.28 at 17h 56m 48s.xml">
-      <configuration name="ParkInteractorTest" configurationId="JUnit" />
+    <history-entry file="CommentManagerTest_testViewAllCommentsAssociatedWithaPark - 2018.10.30 at 15h 57m 29s.xml">
+      <configuration name="CommentManagerTest.testViewAllCommentsAssociatedWithaPark" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CommentTest - 2018.10.28 at 18h 08m 58s.xml">
-      <configuration name="CommentTest" configurationId="JUnit" />
+    <history-entry file="CommentManagerTest - 2018.10.30 at 15h 58m 12s.xml">
+      <configuration name="CommentManagerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CommentManagerTest_testFindSpecificComment - 2018.10.28 at 20h 51m 51s.xml">
-      <configuration name="CommentManagerTest.testFindSpecificComment" configurationId="JUnit" />
+    <history-entry file="CommentManagerTest_testViewAllCommentsAssociatedWithOnePark - 2018.10.30 at 16h 05m 00s.xml">
+      <configuration name="CommentManagerTest.testViewAllCommentsAssociatedWithOnePark" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CommentManagerTest_testFindSpecificComment - 2018.10.28 at 20h 52m 31s.xml">
-      <configuration name="CommentManagerTest.testFindSpecificComment" configurationId="JUnit" />
+    <history-entry file="CommentManagerTest_testViewAllCommentsAssociatedWithOnePark - 2018.10.30 at 16h 05m 24s.xml">
+      <configuration name="CommentManagerTest.testViewAllCommentsAssociatedWithOnePark" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CommentManagerTest_testFindSpecificComment - 2018.10.28 at 21h 06m 06s.xml">
-      <configuration name="CommentManagerTest.testFindSpecificComment" configurationId="JUnit" />
+    <history-entry file="CommentManagerTest_testViewAllCommentsAssociatedWithOnePark - 2018.10.30 at 16h 06m 07s.xml">
+      <configuration name="CommentManagerTest.testViewAllCommentsAssociatedWithOnePark" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CommentManagerTest_testCreateNewComment - 2018.10.28 at 21h 16m 45s.xml">
-      <configuration name="CommentManagerTest.testCreateNewComment" configurationId="JUnit" />
+    <history-entry file="CommentManagerTest - 2018.10.30 at 16h 07m 14s.xml">
+      <configuration name="CommentManagerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CommentManagerTest_testCreateNewComment - 2018.10.28 at 21h 18m 04s.xml">
-      <configuration name="CommentManagerTest.testCreateNewComment" configurationId="JUnit" />
+    <history-entry file="CommentManagerTest_testViewAllCommentsAssociatedWithParkWithNoComments - 2018.10.30 at 16h 12m 54s.xml">
+      <configuration name="CommentManagerTest.testViewAllCommentsAssociatedWithParkWithNoComments" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CommentManagerTest - 2018.10.28 at 21h 18m 29s.xml">
+    <history-entry file="CommentManagerTest - 2018.10.30 at 16h 14m 28s.xml">
       <configuration name="CommentManagerTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28971255" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.29425114" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -422,8 +455,30 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
-      <window_info anchor="right" id="Maven Projects" order="4" />
+      <window_info anchor="right" id="Maven Projects" order="4" weight="0.32980332" />
     </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29425114" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3295082" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.3295082" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info anchor="right" id="Maven Projects" order="4" />
+    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -460,16 +515,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ParkPaySystem/test/AdminTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="850">
-          <caret line="50" column="2" selection-start-line="50" selection-start-column="2" selection-end-line="50" selection-end-column="2" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ParkPaySystem/test/AdminTest.java" />
     <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/util/ArrayList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="867">
@@ -505,27 +551,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ParkPaySystem/Admin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ParkPaySystem/ParkRanger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ParkPaySystem/ParkManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ParkPaySystem/Admin.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/ParkPaySystem/ParkRanger.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/ParkPaySystem/ParkManager.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/ParkPaySystem/Vistor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -537,30 +565,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="31" lean-forward="true" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ParkPaySystem/test/ParkTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-469">
-          <caret line="25" column="94" selection-start-line="25" selection-start-column="94" selection-end-line="25" selection-end-column="94" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2461#2462#0" expanded="true" />
-            <element signature="e#2544#2545#0" expanded="true" />
-            <element signature="e#3025#3026#0" expanded="true" />
-            <element signature="e#3110#3111#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ParkPaySystem/test/CommentTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -585,55 +589,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ParkPaySystem/Park.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-612">
-          <caret line="41" column="25" selection-start-line="41" selection-start-column="25" selection-end-line="41" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1040#1041#0" expanded="true" />
-            <element signature="e#1072#1073#0" expanded="true" />
-            <element signature="e#1034#1035#0" expanded="true" />
-            <element signature="e#1065#1066#0" expanded="true" />
-            <element signature="e#1094#1095#0" expanded="true" />
-            <element signature="e#1124#1125#0" expanded="true" />
-            <element signature="e#1154#1155#0" expanded="true" />
-            <element signature="e#1186#1187#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ParkPaySystem/Comment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="30" column="21" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#569#570#0" expanded="true" />
-            <element signature="e#590#591#0" expanded="true" />
-            <element signature="e#635#636#0" expanded="true" />
-            <element signature="e#663#664#0" expanded="true" />
-            <element signature="e#679#680#0" expanded="true" />
-            <element signature="e#713#714#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ParkPaySystem/CommentManagerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="38" column="110" selection-start-line="38" selection-start-column="110" selection-end-line="38" selection-end-column="110" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1343#1344#0" expanded="true" />
-            <element signature="e#1372#1373#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ParkPaySystem/ParkInteractor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
+        <state relative-caret-position="391">
           <caret line="25" column="8" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -641,14 +599,74 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ParkPaySystem/CommentManager.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ParkPaySystem/Park.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        <state relative-caret-position="238">
+          <caret line="14" column="28" lean-forward="true" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#137#138#0" expanded="true" />
-            <element signature="e#178#179#0" expanded="true" />
+            <element signature="e#1040#1041#0" expanded="true" />
+            <element signature="e#1072#1073#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ParkPaySystem/test/CommentTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="66" column="91" selection-start-line="66" selection-start-column="91" selection-end-line="66" selection-end-column="91" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ParkPaySystem/Comment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="310">
+          <caret line="48" selection-start-line="48" selection-end-line="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#569#570#0" expanded="true" />
+            <element signature="e#599#600#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ParkPaySystem/test/ParkTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="25" column="94" selection-start-line="25" selection-start-column="94" selection-end-line="25" selection-end-column="94" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2461#2462#0" expanded="true" />
+            <element signature="e#2544#2545#0" expanded="true" />
+            <element signature="e#3025#3026#0" expanded="true" />
+            <element signature="e#3110#3111#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ParkPaySystem/test/CommentManagerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1394">
+          <caret line="82" column="73" selection-start-line="82" selection-start-column="73" selection-end-line="82" selection-end-column="73" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1699#1700#0" expanded="true" />
+            <element signature="e#1781#1782#0" expanded="true" />
+            <element signature="e#2318#2327#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ParkPaySystem/CommentManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1726#1735#0" expanded="true" />
           </folding>
         </state>
       </provider>

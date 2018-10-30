@@ -1,5 +1,8 @@
-package ParkPaySystem;
+package ParkPaySystem.test;
 
+import ParkPaySystem.Comment;
+import ParkPaySystem.CommentManager;
+import org.json.JSONArray;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -50,6 +53,34 @@ class CommentManagerTest {
     @Test
     public void testFindSpecificCommentIllegal(){
         assertEquals("{}", myComments.viewSpecificComment(200).toString());
+    }
+
+    @Test
+    public void testViewAllCommentAssociatedWithOneParkWithOnlyOneComment(){
+        int commentId = myComments.createNewComment(250, 350,new Date(), "Green Forest", "This forest was soo green");
+        newComment.setId(commentId);
+
+        assertEquals("["+newComment.limitedCommentInfo().toString()+"]", myComments.viewCommentsForPark(250).toString());
+    }
+
+    @Test
+    public void testViewAllCommentsAssociatedWithOneParkWithManyComments(){
+        int commentId;
+        Date testDate = new Date();
+        List<Comment> testComments = new ArrayList<Comment>();
+        JSONArray expectedOutput = new JSONArray();
+
+        for(int i = 0; i < 6; i++) {
+            commentId = myComments.createNewComment(250, 350, testDate, "Green Forest", "This forest was soo green");
+            testComments.add(new Comment(commentId, 250, 350,testDate, "Green Forest", "This forest was soo green"));
+            expectedOutput.put(testComments.get(i).limitedCommentInfo());
+        }
+        assertEquals(expectedOutput.toString(), myComments.viewCommentsForPark(250).toString());
+    }
+
+    @Test
+    public void testViewAllCommentsAssociatedWithParkWithNoComments(){
+        assertEquals("[]", myComments.viewCommentsForPark(250).toString());
     }
 
 }

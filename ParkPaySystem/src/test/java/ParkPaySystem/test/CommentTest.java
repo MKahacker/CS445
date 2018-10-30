@@ -11,9 +11,11 @@ import java.util.Date;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CommentTest {
-    Date timeStamp = new Date();
     Comment newComment;
     JSONObject expected;
+    JSONObject limitedExpected;
+    Date timeStamp = new Date();
+    DateFormat  formatter = new SimpleDateFormat("yyyy-MM-dd");
 
     @BeforeEach
     public void initTests(){
@@ -24,11 +26,11 @@ class CommentTest {
         String body = "I love this park";
         newComment = new Comment(id,parkId,author,timeStamp, title, body);
         expected =jsonBuilder(id, parkId, author, title, body);
+        limitedExpected = limitedJSONBuilder(id, title);
     }
 
     public JSONObject jsonBuilder(int id, int parkId, int author, String title, String body){
         JSONObject comment = new JSONObject();
-        DateFormat  formatter = new SimpleDateFormat("yyyy-MM-dd");
 
         comment.put("nid", id);
         comment.put("pid", parkId);
@@ -38,6 +40,16 @@ class CommentTest {
         comment.put("body", body);
 
         return comment;
+    }
+
+    public JSONObject limitedJSONBuilder(int id, String title){
+        JSONObject limitedComment = new JSONObject();
+
+        limitedComment.put("nid", id);
+        limitedComment.put("date", formatter.format(timeStamp));
+        limitedComment.put("title", title);
+
+        return limitedComment;
     }
 
     @Test
@@ -50,7 +62,10 @@ class CommentTest {
         assertEquals("I love this park", newComment.viewCommentBody());
     }
 
-
+    @Test
+    public void testViewLimitedComment(){
+        assertEquals(limitedExpected.toString(), newComment.limitedCommentInfo().toString());
+    }
 
 
 

@@ -39,6 +39,17 @@ public class Comment {
         return this.body;
     }
 
+    public JSONObject limitedCommentInfo(){
+        JSONObject commentInfo = new JSONObject();
+        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+
+        commentInfo.put("nid", this.id);
+        commentInfo.put("date", formatter.format(this.timeStamp));
+        commentInfo.put("title", this.title);
+
+        return commentInfo;
+    }
+
     public JSONObject viewComment(){
         JSONObject comment = new JSONObject();
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
