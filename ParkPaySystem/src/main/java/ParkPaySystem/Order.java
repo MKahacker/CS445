@@ -1,15 +1,17 @@
 package ParkPaySystem;
 
+import org.json.JSONObject;
+
 public class Order {
     int id, parkId, vistorId;
-    int amount;
+    double amount;
     int zip;
     String state, plate, vechileType;
     String name, email;
     String card, nameOnCard, expirationDate;
 
 
-    public Order(int id, int parkId, int amount, int zip, String state, String plate, String vechileType, String email
+    public Order(int id, int parkId, double amount, int zip, String state, String plate, String vechileType, String email
         , String card, String nameOnCard, String expirationDate){
         this.id = id;
         this.parkId = parkId;
@@ -26,7 +28,7 @@ public class Order {
         this.expirationDate = expirationDate;
     }
 
-    public Order(int id, int parkId, int vistorId, int amount, int zip, String state, String plate, String vechileType,
+    public Order(int id, int parkId, int vistorId, double amount, int zip, String state, String plate, String vechileType,
                  String email, String name, String card, String nameOnCard, String expirationDate){
         this.id = id;
         this.parkId = parkId;
@@ -51,4 +53,7 @@ public class Order {
         this.name = name;
     }
 
+    public JSONObject viewOrder() {
+        return new JSONObject();
+    }
 }

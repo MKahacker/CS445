@@ -39,6 +39,12 @@ public class Comment {
         return this.body;
     }
 
+    public void updateComment(int authorId, String title, String body) {
+        this.authorId = authorId;
+        this.title = title;
+        this.body = body;
+    }
+
     public JSONObject limitedCommentInfo(){
         JSONObject commentInfo = new JSONObject();
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -59,9 +65,10 @@ public class Comment {
         comment.put("vid", this.authorId);
         comment.put("date", formatter.format(this.timeStamp));
         comment.put("title", this.title);
-        comment.put("body", this.body);
+        comment.put("text", this.body);
 
         return comment;
     }
+
 }
 

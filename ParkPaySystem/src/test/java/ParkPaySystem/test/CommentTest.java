@@ -37,7 +37,7 @@ class CommentTest {
         comment.put("vid", author);
         comment.put("date", formatter.format(timeStamp));
         comment.put("title", title);
-        comment.put("body", body);
+        comment.put("text", body);
 
         return comment;
     }
@@ -67,6 +67,14 @@ class CommentTest {
         assertEquals(limitedExpected.toString(), newComment.limitedCommentInfo().toString());
     }
 
+    @Test
+    public void testUpdateComment(){
+        String newTitle = "Mosquitos galore";
+        String newText = "This is a nice place with good fihsing, but the mosquitos are killing us.";
+        String updatedComment = "{\"vid\":412,\"date\":\""+formatter.format(timeStamp)+"\",\"nid\":101,\"pid\":101,\"text\":\""+newText+"\",\"title\":\""+newTitle+"\"}";
+        newComment.updateComment(412, newTitle, newText);
+        assertEquals( updatedComment, newComment.viewComment().toString());
+    }
 
 
 }

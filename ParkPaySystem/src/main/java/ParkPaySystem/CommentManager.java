@@ -6,6 +6,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.PriorityBlockingQueue;
 
 public class CommentManager {
     List<Comment> commentList;
@@ -33,6 +34,23 @@ public class CommentManager {
 
     }
 
+    public int updateComment(int id, int authorId, String title, String body) {
+        int idx = returnIndexOfComment(id);
+
+        if(idx != -1) {
+            this.commentList.get(idx).updateComment(authorId, title, body);
+        }
+
+        return idx;
+    }
+
+    public void deleteComment(int nid) {
+        int idx = returnIndexOfComment(nid);
+        if(idx != -1){
+            this.commentList.remove(idx);
+        }
+    }
+
     public int returnIndexOfComment(int id){
         int idx = -1;
         for(int i = 0; i < this.commentList.size(); i++){
@@ -45,22 +63,27 @@ public class CommentManager {
     }
 
     public JSONArray viewAllComments(){
-        JSONArray innerArray = new JSONArray();
         JSONArray comments = new JSONArray();
-        JSONObject objectInArray = new JSONObject();
-        List<Integer> parkIdSet = new ArrayList<Integer>();
+        List<Integer> parkIdSet = returnAllParkIds();
 
+        for(int j=0; j < parkIdSet.size(); j++) {
+            JSONObject objectInArray = new JSONObject();
+            objectInArray.put("pid", parkIdSet.get(j));
+            objectInArray.put("notes", viewCommentsForPark(parkIdSet.get(j)));
+            comments.put(objectInArray);
+        }
+        return comments;
+    }
+
+    public List<Integer> returnAllParkIds(){
+        List<Integer> parkIdSet = new ArrayList<Integer>();
         for(int i = 0; i < this.commentList.size(); i++) {
             if (!(parkIdSet.contains(this.commentList.get(i).getParkId()))) {
-                objectInArray.put("pid", this.commentList.get(i).getParkId());
-                objectInArray.put("notes", viewCommentsForPark(this.commentList.get(i).getParkId()));
                 parkIdSet.add(this.commentList.get(i).getParkId());
-                comments.put(objectInArray);
             }
         }
 
-
-        return comments;
+        return parkIdSet;
     }
 
     public JSONArray viewCommentsForPark(int parkId){
@@ -72,7 +95,5 @@ public class CommentManager {
         }
         return parkComments;
     }
-
-
 
 }
