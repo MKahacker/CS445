@@ -3,10 +3,9 @@ package ParkPaySystem;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class CommentManager {
     List<Comment> commentList;
@@ -23,15 +22,6 @@ public class CommentManager {
         return commentId;
     }
 
-    public JSONArray viewCommentsForPark(int parkId){
-        JSONArray parkComments = new JSONArray();
-        for(int i= 0; i < commentList.size(); i++){
-            if(commentList.get(i).getParkId() == parkId){
-                parkComments.put(commentList.get(i).limitedCommentInfo());
-            }
-        }
-        return parkComments;
-    }
 
     public JSONObject viewSpecificComment(int id){
         JSONObject comment = new JSONObject();
@@ -55,11 +45,34 @@ public class CommentManager {
     }
 
     public JSONArray viewAllComments(){
+        JSONArray innerArray = new JSONArray();
         JSONArray comments = new JSONArray();
-        Set<Integer> parkIdSet = new HashSet<Integer>();
+        JSONObject objectInArray = new JSONObject();
+        List<Integer> parkIdSet = new ArrayList<Integer>();
+
+        for(int i = 0; i < this.commentList.size(); i++) {
+            if (!(parkIdSet.contains(this.commentList.get(i).getParkId()))) {
+                objectInArray.put("pid", this.commentList.get(i).getParkId());
+                objectInArray.put("notes", viewCommentsForPark(this.commentList.get(i).getParkId()));
+                parkIdSet.add(this.commentList.get(i).getParkId());
+                comments.put(objectInArray);
+            }
+        }
+
 
         return comments;
     }
+
+    public JSONArray viewCommentsForPark(int parkId){
+        JSONArray parkComments = new JSONArray();
+        for(int i= 0; i < commentList.size(); i++){
+            if(commentList.get(i).getParkId() == parkId){
+                parkComments.put(commentList.get(i).limitedCommentInfo());
+            }
+        }
+        return parkComments;
+    }
+
 
 
 }

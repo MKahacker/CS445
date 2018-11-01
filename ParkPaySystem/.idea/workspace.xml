@@ -10,11 +10,16 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/ParkPaySystem$CommentManagerTest_testViewAllCommentsWithManyCommentsFromOnePark.ic" NAME="CommentManagerTest.testViewAllCommentsWithManyCommentsFromOnePark Coverage Results" MODIFIED="1541032508926" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>ParkPaySystem.test.*</FILTER>
+    </SUITE>
+  </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-1560215767">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="11" />
+          <entry key="project.closed" value="13" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.12" value="1" />
@@ -22,11 +27,12 @@
           <entry key="project.open.time.41" value="1" />
           <entry key="project.open.time.42" value="2" />
           <entry key="project.open.time.43" value="1" />
+          <entry key="project.open.time.44" value="1" />
           <entry key="project.open.time.48" value="1" />
           <entry key="project.open.time.51" value="1" />
-          <entry key="project.open.time.53" value="1" />
+          <entry key="project.open.time.53" value="2" />
           <entry key="project.open.time.59" value="1" />
-          <entry key="project.opened" value="12" />
+          <entry key="project.opened" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -47,13 +53,13 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="26364" />
+          <entry key="java" value="28134" />
           <entry key="xml" value="47" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="26364" />
+          <entry key="JAVA" value="28134" />
           <entry key="XML" value="47" />
         </counts>
       </usages-collector>
@@ -64,11 +70,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/ParkPaySystem/CommentManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
+            <state relative-caret-position="191">
+              <caret line="53" column="74" selection-start-line="53" selection-start-column="74" selection-end-line="53" selection-end-column="74" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1726#1735#0" expanded="true" />
+                <element signature="e#1809#1818#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -77,13 +83,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/ParkPaySystem/test/CommentManagerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1394">
-              <caret line="82" column="73" selection-start-line="82" selection-start-column="73" selection-end-line="82" selection-end-column="73" />
+            <state relative-caret-position="41">
+              <caret line="118" column="4" selection-start-line="118" selection-start-column="4" selection-end-line="118" selection-end-column="4" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1699#1700#0" expanded="true" />
-                <element signature="e#1781#1782#0" expanded="true" />
-                <element signature="e#2318#2327#0" expanded="true" />
+                <element signature="e#3193#3202#0" expanded="true" />
+                <element signature="e#3330#3339#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -92,8 +97,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ParkPaySystem/Park.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="28" lean-forward="true" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
+            <state relative-caret-position="170">
+              <caret line="10" column="26" lean-forward="true" selection-start-line="10" selection-start-column="26" selection-end-line="12" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1040#1041#0" expanded="true" />
@@ -162,8 +167,8 @@
         <option value="$PROJECT_DIR$/src/test/java/ParkPaySystem/CommentManagerTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/ParkPaySystem/test/CommentTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/ParkPaySystem/Comment.java" />
-        <option value="$PROJECT_DIR$/src/test/java/ParkPaySystem/test/CommentManagerTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/ParkPaySystem/CommentManager.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ParkPaySystem/test/CommentManagerTest.java" />
       </list>
     </option>
   </component>
@@ -178,7 +183,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="915" />
@@ -190,6 +195,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -252,8 +259,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -269,6 +274,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="coverage" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -296,7 +302,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.CommentManagerTest">
+  <component name="RunManager" selected="JUnit.CommentManagerTest.testViewAllCommentsWithManyCommentsFromManyParks">
     <configuration name="CommentManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ParkPaySystem" />
       <extension name="coverage">
@@ -311,7 +317,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CommentManagerTest.testViewAllCommentsAssociatedWithOnePark" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CommentManagerTest.testViewAllCommentsThatExistWithNoComments" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ParkPaySystem" />
       <extension name="coverage">
         <pattern>
@@ -321,13 +327,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="ParkPaySystem.test" />
       <option name="MAIN_CLASS_NAME" value="ParkPaySystem.test.CommentManagerTest" />
-      <option name="METHOD_NAME" value="testViewAllCommentsAssociatedWithOnePark" />
+      <option name="METHOD_NAME" value="testViewAllCommentsThatExistWithNoComments" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CommentManagerTest.testViewAllCommentsAssociatedWithParkWithNoComments" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CommentManagerTest.testViewAllCommentsWithManyCommentsFromManyParks" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ParkPaySystem" />
       <extension name="coverage">
         <pattern>
@@ -337,13 +343,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="ParkPaySystem.test" />
       <option name="MAIN_CLASS_NAME" value="ParkPaySystem.test.CommentManagerTest" />
-      <option name="METHOD_NAME" value="testViewAllCommentsAssociatedWithParkWithNoComments" />
+      <option name="METHOD_NAME" value="testViewAllCommentsWithManyCommentsFromManyParks" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CommentManagerTest.testViewAllCommentsAssociatedWithaPark" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CommentManagerTest.testViewAllCommentsWithManyCommentsFromOnePark" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ParkPaySystem" />
       <extension name="coverage">
         <pattern>
@@ -353,13 +359,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="ParkPaySystem.test" />
       <option name="MAIN_CLASS_NAME" value="ParkPaySystem.test.CommentManagerTest" />
-      <option name="METHOD_NAME" value="testViewAllCommentsAssociatedWithaPark" />
+      <option name="METHOD_NAME" value="testViewAllCommentsWithManyCommentsFromOnePark" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CommentTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CommentManagerTest.testViewAllCommentsWithOneComment" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ParkPaySystem" />
       <extension name="coverage">
         <pattern>
@@ -368,25 +374,27 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="ParkPaySystem.test" />
-      <option name="MAIN_CLASS_NAME" value="ParkPaySystem.test.CommentTest" />
+      <option name="MAIN_CLASS_NAME" value="ParkPaySystem.test.CommentManagerTest" />
+      <option name="METHOD_NAME" value="testViewAllCommentsWithOneComment" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.CommentTest" />
       <item itemvalue="JUnit.CommentManagerTest" />
-      <item itemvalue="JUnit.CommentManagerTest.testViewAllCommentsAssociatedWithaPark" />
-      <item itemvalue="JUnit.CommentManagerTest.testViewAllCommentsAssociatedWithOnePark" />
-      <item itemvalue="JUnit.CommentManagerTest.testViewAllCommentsAssociatedWithParkWithNoComments" />
+      <item itemvalue="JUnit.CommentManagerTest.testViewAllCommentsThatExistWithNoComments" />
+      <item itemvalue="JUnit.CommentManagerTest.testViewAllCommentsWithOneComment" />
+      <item itemvalue="JUnit.CommentManagerTest.testViewAllCommentsWithManyCommentsFromOnePark" />
+      <item itemvalue="JUnit.CommentManagerTest.testViewAllCommentsWithManyCommentsFromManyParks" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CommentManagerTest.testViewAllCommentsWithManyCommentsFromManyParks" />
         <item itemvalue="JUnit.CommentManagerTest" />
-        <item itemvalue="JUnit.CommentManagerTest.testViewAllCommentsAssociatedWithParkWithNoComments" />
-        <item itemvalue="JUnit.CommentManagerTest.testViewAllCommentsAssociatedWithOnePark" />
-        <item itemvalue="JUnit.CommentManagerTest.testViewAllCommentsAssociatedWithaPark" />
-        <item itemvalue="JUnit.CommentTest" />
+        <item itemvalue="JUnit.CommentManagerTest.testViewAllCommentsWithManyCommentsFromOnePark" />
+        <item itemvalue="JUnit.CommentManagerTest.testViewAllCommentsWithOneComment" />
+        <item itemvalue="JUnit.CommentManagerTest.testViewAllCommentsThatExistWithNoComments" />
       </list>
     </recent_temporary>
   </component>
@@ -401,48 +409,48 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="CommentManagerTest - 2018.10.30 at 15h 50m 08s.xml">
+    <history-entry file="CommentManagerTest_testViewAllCommentsWithManyCommentsFromOnePark - 2018.10.31 at 19h 36m 14s.xml">
+      <configuration name="CommentManagerTest.testViewAllCommentsWithManyCommentsFromOnePark" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CommentManagerTest_testViewAllCommentsWithManyCommentsFromOnePark - 2018.10.31 at 19h 36m 15s.xml">
+      <configuration name="CommentManagerTest.testViewAllCommentsWithManyCommentsFromOnePark" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CommentManagerTest_testViewAllCommentsWithManyCommentsFromOnePark - 2018.10.31 at 19h 36m 47s.xml">
+      <configuration name="CommentManagerTest.testViewAllCommentsWithManyCommentsFromOnePark" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CommentManagerTest_testViewAllCommentsWithManyCommentsFromOnePark - 2018.10.31 at 19h 37m 33s.xml">
+      <configuration name="CommentManagerTest.testViewAllCommentsWithManyCommentsFromOnePark" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CommentManagerTest - 2018.10.31 at 19h 37m 48s.xml">
       <configuration name="CommentManagerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CommentManagerTest - 2018.10.30 at 15h 53m 49s.xml">
+    <history-entry file="CommentManagerTest_testViewAllCommentsWithManyCommentsFromManyParks - 2018.10.31 at 19h 43m 14s.xml">
+      <configuration name="CommentManagerTest.testViewAllCommentsWithManyCommentsFromManyParks" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CommentManagerTest - 2018.10.31 at 19h 47m 19s.xml">
       <configuration name="CommentManagerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CommentManagerTest_testViewAllCommentsAssociatedWithaPark - 2018.10.30 at 15h 57m 29s.xml">
-      <configuration name="CommentManagerTest.testViewAllCommentsAssociatedWithaPark" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CommentManagerTest - 2018.10.30 at 15h 58m 12s.xml">
+    <history-entry file="CommentManagerTest - 2018.10.31 at 19h 55m 36s.xml">
       <configuration name="CommentManagerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CommentManagerTest_testViewAllCommentsAssociatedWithOnePark - 2018.10.30 at 16h 05m 00s.xml">
-      <configuration name="CommentManagerTest.testViewAllCommentsAssociatedWithOnePark" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CommentManagerTest_testViewAllCommentsAssociatedWithOnePark - 2018.10.30 at 16h 05m 24s.xml">
-      <configuration name="CommentManagerTest.testViewAllCommentsAssociatedWithOnePark" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CommentManagerTest_testViewAllCommentsAssociatedWithOnePark - 2018.10.30 at 16h 06m 07s.xml">
-      <configuration name="CommentManagerTest.testViewAllCommentsAssociatedWithOnePark" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CommentManagerTest - 2018.10.30 at 16h 07m 14s.xml">
+    <history-entry file="CommentManagerTest - 2018.10.31 at 19h 57m 16s.xml">
       <configuration name="CommentManagerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CommentManagerTest_testViewAllCommentsAssociatedWithParkWithNoComments - 2018.10.30 at 16h 12m 54s.xml">
-      <configuration name="CommentManagerTest.testViewAllCommentsAssociatedWithParkWithNoComments" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CommentManagerTest - 2018.10.30 at 16h 14m 28s.xml">
-      <configuration name="CommentManagerTest" configurationId="JUnit" />
+    <history-entry file="CommentManagerTest_testViewAllCommentsWithManyCommentsFromManyParks - 2018.10.31 at 19h 58m 40s.xml">
+      <configuration name="CommentManagerTest.testViewAllCommentsWithManyCommentsFromManyParks" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.29425114" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.30332828" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3295082" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3295082" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -582,10 +590,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="22" column="22" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
-          <folding>
-            <element signature="e#137#138#0" expanded="true" />
-            <element signature="e#173#174#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -599,36 +603,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ParkPaySystem/Park.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="28" lean-forward="true" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1040#1041#0" expanded="true" />
-            <element signature="e#1072#1073#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/ParkPaySystem/test/CommentTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="174">
           <caret line="66" column="91" selection-start-line="66" selection-start-column="91" selection-end-line="66" selection-end-column="91" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ParkPaySystem/Comment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="48" selection-start-line="48" selection-end-line="48" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#569#570#0" expanded="true" />
-            <element signature="e#599#600#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -647,26 +627,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ParkPaySystem/test/CommentManagerTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ParkPaySystem/Park.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1394">
-          <caret line="82" column="73" selection-start-line="82" selection-start-column="73" selection-end-line="82" selection-end-column="73" />
+        <state relative-caret-position="170">
+          <caret line="10" column="26" lean-forward="true" selection-start-line="10" selection-start-column="26" selection-end-line="12" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1699#1700#0" expanded="true" />
-            <element signature="e#1781#1782#0" expanded="true" />
-            <element signature="e#2318#2327#0" expanded="true" />
+            <element signature="e#1040#1041#0" expanded="true" />
+            <element signature="e#1072#1073#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ParkPaySystem/Comment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="310">
+          <caret line="48" selection-start-line="48" selection-end-line="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#569#570#0" expanded="true" />
+            <element signature="e#599#600#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ParkPaySystem/test/CommentManagerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="41">
+          <caret line="118" column="4" selection-start-line="118" selection-start-column="4" selection-end-line="118" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3193#3202#0" expanded="true" />
+            <element signature="e#3330#3339#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ParkPaySystem/CommentManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
+        <state relative-caret-position="191">
+          <caret line="53" column="74" selection-start-line="53" selection-start-column="74" selection-end-line="53" selection-end-column="74" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1726#1735#0" expanded="true" />
+            <element signature="e#1809#1818#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -747,6 +750,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
+          <last-edited>Maven: org.apiguardian:apiguardian-api:1.0.0</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
