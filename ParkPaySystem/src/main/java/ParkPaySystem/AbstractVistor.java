@@ -1,6 +1,7 @@
 package ParkPaySystem;
 
 public abstract class AbstractVistor {
-    private String name;
-    private String email;
+    int id;
+    String name;
+    String email;
 }

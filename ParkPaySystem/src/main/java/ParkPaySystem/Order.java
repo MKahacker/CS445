@@ -2,58 +2,48 @@ package ParkPaySystem;
 
 import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Order {
     int id, parkId, vistorId;
     double amount;
-    int zip;
-    String state, plate, vechileType;
-    String name, email;
-    String card, nameOnCard, expirationDate;
+    Date dateOfTransaction;
+    Vehicle vehicleInfo;
+    PaymentInfo orderPayment;
+    String transactionId;
 
-
-    public Order(int id, int parkId, double amount, int zip, String state, String plate, String vechileType, String email
-        , String card, String nameOnCard, String expirationDate){
-        this.id = id;
-        this.parkId = parkId;
-        this.vistorId = -1;
-        this.amount = amount;
-        this.zip = zip;
-        this.state = state;
-        this.plate = plate;
-        this.vechileType = vechileType;
-        this.name = "";
-        this.email = email;
-        this.card = card;
-        this.nameOnCard = nameOnCard;
-        this.expirationDate = expirationDate;
-    }
-
-    public Order(int id, int parkId, int vistorId, double amount, int zip, String state, String plate, String vechileType,
-                 String email, String name, String card, String nameOnCard, String expirationDate){
+    public Order(int id, int parkId, int vistorId, double amount, Vehicle vehicleInfo, PaymentInfo orderPayment, Date orderDate){
         this.id = id;
         this.parkId = parkId;
         this.vistorId = vistorId;
         this.amount = amount;
-        this.zip = zip;
-        this.state = state;
-        this.plate = plate;
-        this.vechileType = vechileType;
-        this.name = name;
-        this.email = email;
-        this.card = card;
-        this.nameOnCard = nameOnCard;
-        this.expirationDate = expirationDate;
+        this.vehicleInfo = vehicleInfo;
+        this.orderPayment = orderPayment;
+        this.dateOfTransaction = orderDate;
     }
 
     public void setVistorId(int vistorId){
         this.vistorId = vistorId;
     }
 
-    public void setName(String name){
-        this.name = name;
+    public int getId() {
+        return this.id;
     }
 
     public JSONObject viewOrder() {
-        return new JSONObject();
+        JSONObject orderInfo = new JSONObject();
+        DateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+        orderInfo.put("oid",this.id);
+        orderInfo.put("pid", this.parkId);
+        orderInfo.put("amount", this.amount);
+        orderInfo.put("type", this.vehicleInfo.getType());
+        orderInfo.put("date", myFormat.format(this.dateOfTransaction));
+
+        return orderInfo;
     }
+
 }
