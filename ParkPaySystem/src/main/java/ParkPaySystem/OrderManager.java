@@ -1,6 +1,7 @@
 package ParkPaySystem;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 
 import java.util.ArrayList;
@@ -36,6 +37,35 @@ public class OrderManager {
         return orders;
     }
 
+    public JSONObject viewSpecificOrder(int oid) {
+        JSONObject specificOrder = new JSONObject();
+        JSONObject visitorInfo = new JSONObject();
+        int idx = returnIndex(oid), vidx;
+        if(idx !=  -1){
+            vidx = returnVistorIndex(getOrder(idx).getVid());
+            visitorInfo = getVisitor(vidx).viewVisitorInfo();
+            visitorInfo.put("payment_info", getOrder(idx).viewPaymentInfo());
+            specificOrder = getOrder(idx).viewOrder();
+            specificOrder.remove("type");
+            specificOrder.put("vid", getOrder(idx).getVid());
+            specificOrder.put("vehicle", getOrder(idx).viewVehicleInfo());
+            specificOrder.put("visitor", visitorInfo);
+            specificOrder.put("payment_processing", getOrder(idx).viewProcessingInfo());
+        }
+        return specificOrder;
+    }
+
+    private int returnVistorIndex(int vid) {
+        int idx = -1;
+        for(int i = 0; i < this.listOfVistor.size(); i++){
+            if(getVisitor(i).getVid() == vid){
+                idx = i;
+                return idx;
+            }
+        }
+        return idx;
+    }
+
     public int returnIndex(int id){
         int idx = -1;
         for(int i = 0; i < this.listOfOrders.size(); i++){
@@ -50,4 +80,9 @@ public class OrderManager {
     private Order getOrder(int i) {
         return this.listOfOrders.get(i);
     }
+
+    private AbstractVistor getVisitor(int idx) {
+        return this.listOfVistor.get(idx);
+    }
+
 }

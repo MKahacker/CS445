@@ -46,4 +46,33 @@ public class Order {
         return orderInfo;
     }
 
+    public int getVid() {
+        return this.vistorId;
+    }
+
+    public JSONObject viewVehicleInfo() {
+        JSONObject vehicleInfoJSON = new JSONObject();
+        vehicleInfoJSON.put("state", this.vehicleInfo.getState());
+        vehicleInfoJSON.put("plate", this.vehicleInfo.getPlate());
+        vehicleInfoJSON.put("type", this.vehicleInfo.getType());
+
+        return vehicleInfoJSON;
+    }
+
+    public JSONObject viewPaymentInfo() {
+        JSONObject paymentInfo = new JSONObject();
+        paymentInfo.put("zip", this.orderPayment.getZip());
+        paymentInfo.put("name_on_card", this.orderPayment.getName());
+        paymentInfo.put("expiration_date", this.orderPayment.getDate());
+        paymentInfo.put("card", this.orderPayment.getCard());
+        return paymentInfo;
+    }
+
+    public JSONObject viewProcessingInfo() {
+        DateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        JSONObject processingInfo = new JSONObject();
+        processingInfo.put("card_transaction_id", "123-4567-89");
+        processingInfo.put("date_and_time", myFormat.format(this.dateOfTransaction));
+        return processingInfo;
+    }
 }

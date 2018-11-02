@@ -19,12 +19,13 @@ public class OrderTest {
     Vehicle vehicleInfo;
     PaymentInfo orderPayment;
     private Date timeStamp;
+    String expiration = "12/19";
 
     @BeforeEach
     public void setup(){
         timeStamp = new Date();
         vehicleInfo = new Vehicle("IL", "Z567Z", "car");
-        orderPayment = new PaymentInfo(60659, "8080");
+        orderPayment = new PaymentInfo(60659, "4949", "John Doe", expiration);
         newOrder = new Order(oid, pid, vid,amount, vehicleInfo, orderPayment, timeStamp);
     }
 
@@ -42,5 +43,20 @@ public class OrderTest {
         return OrderInfoJSONFormat;
     }
 
+    @Test
+    public void viewVehicleInfo(){
+        assertEquals("{\"plate\":\"Z567Z\",\"state\":\"IL\",\"type\":\"car\"}", newOrder.viewVehicleInfo().toString());
+    }
+
+    @Test
+    public void viewPaymentInfo(){
+        assertEquals("{\"zip\":60659,\"expiration_date\":\"12/19\",\"card\":\"4949\",\"name_on_card\":\"John Doe\"}",newOrder.viewPaymentInfo().toString());
+    }
+
+    @Test
+    public void viewPaymentProcessingInfo(){
+        DateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        assertEquals("{\"date_and_time\":\""+myFormat.format(timeStamp)+"\",\"card_transaction_id\":\"123-4567-89\"}", newOrder.viewProcessingInfo().toString());
+    }
 
 }

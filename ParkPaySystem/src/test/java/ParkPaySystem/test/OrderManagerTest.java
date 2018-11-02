@@ -26,6 +26,9 @@ public class OrderManagerTest {
     int oid = 751, pid = 124,vid = 109;
     String type = "car";
     double amount = 4.50;
+    String name = "John Doe";
+    String email = "djohn@gmail.com";
+    PaymentInfo payment_info = new PaymentInfo(60659, "4949", name, "12/19");
 
     @BeforeEach
     public void setup(){
@@ -42,9 +45,9 @@ public class OrderManagerTest {
     @Test
     public void viewAllOrdersWhenOneOrderisPresent(){
         List<Order> listOfOrders = new ArrayList<Order>();
-        String acceptanceString = "[";
+        String acceptanceString = "[{";
         acceptanceString = addToString(acceptanceString);
-        acceptanceString += "]";
+        acceptanceString += "}]";
 
         buildOrderList(listOfOrders);
 
@@ -55,24 +58,18 @@ public class OrderManagerTest {
     @Test
     public void viewOrderWhenManyOrdersPresent(){
         List<Order> listOfOrders = new ArrayList<Order>();
-        String acceptanceString = "[";
+        String acceptanceString = "[{";
         acceptanceString = addToString(acceptanceString);
         buildOrderList(listOfOrders);
-        acceptanceString += ",";
+        acceptanceString += "},{";
 
         amount = 8.70; pid = 107; oid = 104; type = "RV";
         acceptanceString = addToString(acceptanceString);
         buildOrderList(listOfOrders);
-        acceptanceString +="]";
+        acceptanceString +="}]";
 
         myOrders = new OrderManager(listOfOrders);
         assertEquals(acceptanceString, myOrders.viewAllOrders().toString());
-    }
-
-    private String addToString(String myString){
-        myString+="{\"date\":\"" + formatter.format(timeStamp)+"\",\"amount\":"+amount+",\"pid\":"+pid;
-        myString+=",\"oid\":" + oid +",\"type\":\""+type+"\"}";
-        return myString;
     }
 
     @Test
@@ -82,7 +79,7 @@ public class OrderManagerTest {
     }
 
     private void buildOrderList(List<Order> listOfOrders) {
-        Order presentOrder = new Order(oid, pid, vid, amount, new Vehicle("IL","Z78Z", type), new PaymentInfo(60659, "4949"), timeStamp);
+        Order presentOrder = new Order(oid, pid, vid, amount, new Vehicle("IL","Z78Z", type), payment_info, timeStamp);
         listOfOrders.add(presentOrder);
     }
 
@@ -95,22 +92,49 @@ public class OrderManagerTest {
     public void returnIndexForId(){
         String name = "John Doe";
         String email = "djohn@gmail.com";
-        int oid = myOrders.createNewOrder(pid, amount, new Vehicle("IL", "Z78Z", type), new PaymentInfo(60669, "4949"), timeStamp, name, email);
+        int oid = myOrders.createNewOrder(pid, amount, new Vehicle("IL", "Z78Z", type), payment_info, timeStamp, name, email);
 
         assertNotEquals(-1, myOrders.returnIndex(oid));
     }
 
     @Test
     public void createNewOrder(){
-        String name = "John Doe";
-        String email = "djohn@gmail.com";
-        int oid = myOrders.createNewOrder(pid, amount, new Vehicle("IL", "Z78Z", type), new PaymentInfo(60669, "4949"), timeStamp, name, email);
-        assertNotEquals(-1, myOrders.returnIndex(oid));
+        int newOid = myOrders.createNewOrder(pid, amount, new Vehicle("IL", "Z78Z", type), payment_info, timeStamp, name, email);
+        assertNotEquals(-1, myOrders.returnIndex(newOid));
     }
 
     @Test
-    public void viewSpecificOrderWhenNotThere(){}
+    public void viewSpecificOrderWhenNotThere(){
+        assertEquals("{}", myOrders.viewSpecificOrder(1000).toString());
+    }
 
+    @Test
+    public void viewSpecificOrderWhenPresent(){
+        int newOid = myOrders.createNewOrder(pid, amount, new Vehicle("IL", "Z78Z", type), payment_info, timeStamp, name, email);
+        oid = newOid;
+        String acceptString = "{";
+        acceptString = addToSpecificString(acceptString);
+        acceptString += "}";
 
+        assertEquals(acceptString,myOrders.viewSpecificOrder(newOid).toString());
+    }
 
+    private String addToString(String myString) {
+        myString+="\"date\":\"" + formatter.format(timeStamp)+"\",\"amount\":"+amount+",\"pid\":"+pid;
+        myString+=",\"oid\":" + oid +",\"type\":\""+type+"\"";
+        return myString;
+    }
+
+    private String addToSpecificString(String myString){
+        DateFormat newFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        String specificVehicleInfo = "{\"plate\":\"Z78Z\",\"state\":\"IL\",\"type\":\"" + type+"\"}";
+        String paymentInfo = "{\"zip\":60659,\"expiration_date\":\"12/19\",\"card\":\"4949\",\"name_on_card\":\""+name+"\"}";
+        String visitorInfo = "{\"name\":\""+name+"\",\"payment_info\":" + paymentInfo+",\"email\":\""+email+"\"}";
+        String processingInfo = "{\"date_and_time\":\""+newFormat.format(timeStamp)+"\",\"card_transaction_id\":\"123-4567-89\"}";
+
+        myString+="\"date\":\"" + formatter.format(timeStamp)+"\",\"vid\":" + 1 +",\"amount\":"+amount+",\"pid\":"+pid;
+        myString+=",\"oid\":" + oid;
+        myString+= ",\"visitor\":" + visitorInfo +  ",\"payment_processing\":"+processingInfo+",\"vehicle\":" + specificVehicleInfo;
+        return myString;
+    }
 }
