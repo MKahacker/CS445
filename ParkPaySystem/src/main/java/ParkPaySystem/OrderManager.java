@@ -85,4 +85,14 @@ public class OrderManager {
         return this.listOfVistor.get(idx);
     }
 
+    public JSONArray viewVisitors() {
+        JSONArray visitorsInfo = new JSONArray();
+        JSONObject visitor = new JSONObject();
+        for(int i = 0; i < this.listOfVistor.size(); i++){
+            visitor = getVisitor(i).viewVisitorInfo();
+            visitor.put("vid", getVisitor(i).getVid());
+            visitorsInfo.put(visitor);
+        }
+        return visitorsInfo;
+    }
 }

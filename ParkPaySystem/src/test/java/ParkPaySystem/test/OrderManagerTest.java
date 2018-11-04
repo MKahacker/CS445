@@ -137,4 +137,20 @@ public class OrderManagerTest {
         myString+= ",\"visitor\":" + visitorInfo +  ",\"payment_processing\":"+processingInfo+",\"vehicle\":" + specificVehicleInfo;
         return myString;
     }
+
+    @Test
+    public void viewAllVisitorsWithNoOrders(){
+        assertEquals("[]", myOrders.viewVisitors().toString());
+    }
+
+    @Test
+    public void viewAllVisitorsWhenPresent(){
+        pid = 411;
+        name = "John Doe";
+        email = "john.doe@gmail.com";
+
+        myOrders.createNewOrder(pid,amount,new Vehicle("IL", "Z7868", type), payment_info,timeStamp,name,email);
+        assertEquals("[{\"vid\":1,\"name\":\"John Doe\",\"email\":\"john.doe@gmail.com\"}]", myOrders.viewVisitors().toString());
+    }
+
 }
