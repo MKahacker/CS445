@@ -13,6 +13,13 @@ public class ParkInteractor {
         this.parks = parks;
     }
 
+    public int createAPark(String name, String region, String phone, String web, String address,
+                           double lat, double lng, Payment[] parkPayment){
+        Park newPark = new Park(-1, name, region, address, phone,web, new Geolocation(lat, lng), parkPayment);
+        int pid = createPark(newPark);
+        return pid;
+    }
+
     public int createPark(Park newPark){
         int parkId = parks.size() + 100;
         newPark.setParkId(parkId);
@@ -20,11 +27,16 @@ public class ParkInteractor {
         return parkId;
     }
 
+    public void updateAPark(String name, String region, String phone, String web, String address,
+                           double lat, double lng, Payment[] parkPayment, int id){
+        Park updatedPark = new Park(id, name, region, address, phone,web, new Geolocation(lat, lng), parkPayment);
+        updatePark(updatedPark, id);
+    }
+
     public void updatePark(Park updatedPark, int id){
         int i = getIndexOfPark(id);
         updatedPark.setParkId(id);
         this.parks.set(i, updatedPark);
-
     }
 
     public void deletePark(int id){
