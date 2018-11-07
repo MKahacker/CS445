@@ -70,10 +70,34 @@ public class ParkInteractor {
     public JSONObject getSpecificParkInfo(int id){
         Park parkReturned;
         JSONObject choosenPark = new JSONObject();
+
         if((parkReturned = getSpecificPark(id)) != null){
+            JSONObject paymentInfo = buildPaymentInfo(parkReturned);
             choosenPark = parkReturned.viewInformation();
+            choosenPark.put("payment_info", paymentInfo);
         }
         return choosenPark;
+    }
+
+    public JSONObject buildPaymentInfo(Park parkReturned){
+        JSONObject paymentInfo = new JSONObject();
+        JSONArray motorcyclefee = new JSONArray();
+        JSONArray rvfee = new JSONArray();
+        JSONArray carFee = new JSONArray();
+
+        motorcyclefee.put(parkReturned.inStateFee(Payment.paymentType("motorcycle")));
+        motorcyclefee.put(parkReturned.outStateFee(Payment.paymentType("motorcycle")));
+        paymentInfo.put("motorcycle", motorcyclefee);
+
+        rvfee.put(parkReturned.inStateFee(Payment.paymentType("rv")));
+        rvfee.put(parkReturned.outStateFee(Payment.paymentType("rv")));
+        paymentInfo.put("rv", rvfee);
+
+        carFee.put(parkReturned.inStateFee(Payment.paymentType("car")));
+        carFee.put(parkReturned.outStateFee(Payment.paymentType("car")));
+        paymentInfo.put("car", carFee);
+
+        return paymentInfo;
     }
 
     public Park getSpecificPark(int id){
@@ -85,5 +109,17 @@ public class ParkInteractor {
             }
         }
         return choosenPark;
+    }
+
+    public double getParkFee(int pid, String type, String state) {
+        double fee = 0;
+        if(getSpecificPark(pid) != null){
+            if(state.equals("IL")) {
+                fee = getSpecificPark(pid).inStateFee(Payment.paymentType(type));
+            }else{
+                fee = getSpecificPark(pid).outStateFee(Payment.paymentType(type));
+            }
+        }
+        return fee;
     }
 }

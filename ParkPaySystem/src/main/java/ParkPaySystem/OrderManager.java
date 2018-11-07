@@ -17,7 +17,8 @@ public class OrderManager {
         this.listOfVistor = new ArrayList<AbstractVistor>();
     }
 
-    public int createNewOrder(int pid, double amount, Vehicle vehicleInfo, PaymentInfo paymentInfo, Date orderDate, String name, String email){
+    public int createNewOrder(int pid, double amount, Vehicle vehicleInfo, PaymentInfo paymentInfo,
+                              Date orderDate, String name, String email){
         int oid = listOfOrders.size() + 1;
         int vid = listOfVistor.size() + 1;
 

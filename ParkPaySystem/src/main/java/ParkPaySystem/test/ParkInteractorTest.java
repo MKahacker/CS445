@@ -42,6 +42,12 @@ class ParkInteractorTest {
     }
 
     @Test
+    public void testReturnInformationWithNothing(){
+        ParkInteractor myParks = new ParkInteractor(new ArrayList<Park>());
+        assertEquals("[]", myParks.getAllParksInfo().toString());
+    }
+
+    @Test
     public void testReturnInformationProperly(){
         ParkInteractor myParks;
         JSONArray result = new JSONArray();
@@ -65,13 +71,27 @@ class ParkInteractorTest {
 
         myParks = new ParkInteractor(list);
 
-        assertEquals(newPark.viewInformation().toString(), myParks.getSpecificParkInfo(size+1).toString());
+        JSONObject specificPark = newPark.viewInformation();
+        JSONArray motorCycleFee = new JSONArray();
+        JSONArray carFee = new JSONArray();
+        JSONArray rvFee = new JSONArray();
+        motorCycleFee.put(newPark.inStateFee(Payment.paymentType("motorcycle")));
+        motorCycleFee.put(newPark.outStateFee(Payment.paymentType("motorcycle")));
+        JSONObject paymentArray = new JSONObject();
+        paymentArray.put("motorcycle", motorCycleFee);
+        carFee.put(newPark.inStateFee(Payment.paymentType("car")));
+        carFee.put(newPark.outStateFee(Payment.paymentType("car")));
+        paymentArray.put("car", carFee);
+        rvFee.put(newPark.inStateFee(Payment.paymentType("rv")));
+        rvFee.put(newPark.outStateFee(Payment.paymentType("rv")));
+        paymentArray.put("rv",rvFee);
+        specificPark.put("payment_info", paymentArray);
+        assertEquals(specificPark.toString(), myParks.getSpecificParkInfo(size+1).toString());
     }
 
     @Test
     public void testReturnEmptyIfSpecificParkNotThere(){
-        ParkInteractor myParks;
-        myParks = new ParkInteractor(list);
+        ParkInteractor myParks= new ParkInteractor(list);
         assertEquals("{}", myParks.getSpecificParkInfo(size+1).toString());
     }
 
@@ -80,8 +100,9 @@ class ParkInteractorTest {
         ParkInteractor myParks = new ParkInteractor(list);
         Park newPark = new Park(-1, "White Moon", "1234 Michigan Ave", "www.whitemoon.com", geo, parkPayment);
         int pid = myParks.createPark(newPark);
-
-        assertEquals(newPark.viewInformation().toString(), myParks.getSpecificParkInfo(pid).toString());
+        JSONObject parkInfo = myParks.getSpecificParkInfo(pid);
+        parkInfo.remove("payment_info");
+        assertEquals(newPark.viewInformation().toString(), parkInfo.toString());
     }
 
     @Test
@@ -114,7 +135,10 @@ class ParkInteractorTest {
         int pid = myParks.createPark(newPark);
         myParks.updatePark(updatePark, pid);
 
-        assertEquals(updatePark.viewInformation().toString(), myParks.getSpecificParkInfo(pid).toString());
+        JSONObject parkInfo = myParks.getSpecificParkInfo(pid);
+        parkInfo.remove("payment_info");
+
+        assertEquals(updatePark.viewInformation().toString(), parkInfo.toString());
     }
 
     @Test

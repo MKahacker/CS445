@@ -1,12 +1,10 @@
 package ParkPaySystem;
 
-import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.core.*;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.json.JSONArray;
 
-import org.json.JSONObject;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -15,10 +13,12 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
+@RequestMapping("/parkpay")
 public class AppController {
     private List<Park> listPark = new ArrayList<Park>();
     private ParkInteractor myParks = new ParkInteractor(listPark);
     private CommentManager myComment = new CommentManager(new ArrayList<Comment>());
+    private OrderManager myOrder = new OrderManager(new ArrayList<Order>());
     private ObjectMapper parksMapper = new ObjectMapper();
 
     @GetMapping("/parks")
@@ -107,17 +107,48 @@ public class AppController {
         return null;
     }
 
-    @PostMapping("/parks/{pid}/notes/")
+    @PostMapping("/parks/{pid}/notes")
     public JsonNode createNote(@PathVariable("pid") int pid, @RequestBody JsonNode noteInfo){
         int vid = noteInfo.get("vid").asInt();
         String title = noteInfo.get("title").asText();
-        String body = noteInfo.get("body").asText();
+        String body = noteInfo.get("text").asText();
         int nid = myComment.createNewComment(pid, vid, new Date(), title, body);
         String json= "{\"nid\":" + nid+"}";
         JsonNode noteId;
         try {
             noteId = parksMapper.readTree(json);
             return noteId;
+        } catch (JsonMappingException e) {
+            e.printStackTrace();
+        } catch (JsonGenerationException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @PostMapping("/orders")
+    public JsonNode createOrder(@RequestBody JsonNode orderInfo){
+        JsonNode orderId;
+        int pid = orderInfo.get("pid").asInt();
+        String state = orderInfo.path("vehicle").path("state").asText();
+        String plate = orderInfo.path("vehicle").path("plate").asText();
+        String type = orderInfo.path("vehicle").path("type").asText();
+        String name = orderInfo.path("visitor").path("name").asText();
+        String email = orderInfo.path("visitor").path("email").asText();
+        String card = orderInfo.path("visitor").path("payment_info").path("card").asText();
+        String cardName = orderInfo.path("visitor").path("payment_info").path("name_on_card").asText();
+        String expirationDate = orderInfo.path("visitor").path("payment_info").path("expiration_date").asText();
+        int zip = orderInfo.path("visitor").path("payment_info").path("zip").asInt();
+        double amount = myParks.getParkFee(pid, type, state);
+        Vehicle vehicleInfo = new Vehicle(state, plate, type);
+        PaymentInfo paymentInfo = new PaymentInfo(zip, card, cardName, expirationDate);
+        int oid = myOrder.createNewOrder(pid,amount, vehicleInfo,paymentInfo,new Date(), name, email);
+        String json = "{\"oid\":" + oid+"}";
+        try {
+            orderId = parksMapper.readTree(json);
+            return orderId;
         } catch (JsonMappingException e) {
             e.printStackTrace();
         } catch (JsonGenerationException e) {
@@ -136,6 +167,16 @@ public class AppController {
             Payment[] parkPayment = paymentArrayBuilder(parkinfo);
 
             myParks.updateAPark(locationInfo[0],locationInfo[1],locationInfo[2],locationInfo[3],locationInfo[4],geoInfo[0],geoInfo[1],parkPayment,pid);
+        }
+    }
+
+    @PutMapping("/notes/{nid}")
+    public void updateNotes(@PathVariable("nid") int nid, @RequestBody JsonNode noteInfo){
+        if(myComment.returnIndexOfComment(nid) != -1){
+            int vid = noteInfo.get("vid").asInt();
+            String title = noteInfo.get("title").asText();
+            String body = noteInfo.get("text").asText();
+            myComment.updateComment(nid, vid, title,body);
         }
     }
 
