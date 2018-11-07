@@ -68,7 +68,7 @@
         <counts>
           <entry key="class" value="2" />
           <entry key="iml" value="1" />
-          <entry key="java" value="183" />
+          <entry key="java" value="191" />
           <entry key="xml" value="13" />
         </counts>
       </usages-collector>
@@ -76,19 +76,19 @@
         <counts>
           <entry key="CLASS" value="2" />
           <entry key="IDEA_MODULE" value="1" />
-          <entry key="JAVA" value="183" />
+          <entry key="JAVA" value="191" />
           <entry key="XML" value="13" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="46139" />
+          <entry key="java" value="46404" />
           <entry key="xml" value="243" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="46139" />
+          <entry key="JAVA" value="46404" />
           <entry key="XML" value="243" />
         </counts>
       </usages-collector>
@@ -124,11 +124,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+<<<<<<< HEAD
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Park/Park.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="359">
               <caret line="50" column="5" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
+=======
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/App/AppController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1989">
+              <caret line="117" lean-forward="true" selection-start-line="117" selection-end-line="117" />
+>>>>>>> 61b658cff2f911367f5651dce4bf48f1190d753e
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -137,10 +145,17 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/src/main/java/Park/ParkInteractor.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-85">
               <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+=======
+        <entry file="file://$PROJECT_DIR$/src/main/java/App/ApplicationInitializer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+>>>>>>> 61b658cff2f911367f5651dce4bf48f1190d753e
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -149,10 +164,17 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/src/test/java/test/ParkTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="612">
               <caret line="57" column="27" selection-start-line="57" selection-start-column="27" selection-end-line="57" selection-end-column="27" />
+=======
+        <entry file="file://$PROJECT_DIR$/src/test/java/test/ParkInteractorTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2822">
+              <caret line="166" column="64" selection-start-line="166" selection-start-column="64" selection-end-line="166" selection-end-column="64" />
+>>>>>>> 61b658cff2f911367f5651dce4bf48f1190d753e
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -160,6 +182,7 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/test/ParkInteractorTest.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -172,6 +195,8 @@
           </provider>
         </entry>
       </file>
+=======
+>>>>>>> 61b658cff2f911367f5651dce4bf48f1190d753e
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -237,13 +262,18 @@
         <option value="$PROJECT_DIR$/src/main/java/Comment/CommentManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/Park/InterfacePark.java" />
         <option value="$PROJECT_DIR$/src/main/java/Park/Geolocation.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Park/ParkInteractor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/App/AppController.java" />
         <option value="$PROJECT_DIR$/src/test/java/test/CommentManagerTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/test/OrderManagerTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/test/ParkTest.java" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/src/main/java/Park/Park.java" />
         <option value="$PROJECT_DIR$/src/test/java/test/ParkInteractorTest.java" />
+=======
+        <option value="$PROJECT_DIR$/src/test/java/test/ParkInteractorTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Park/ParkInteractor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/App/AppController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/App/ParkController.java" />
+>>>>>>> 61b658cff2f911367f5651dce4bf48f1190d753e
       </list>
     </option>
   </component>
@@ -312,12 +342,43 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
+              <item name="Park" type="462c0819:PsiDirectoryNode" />
+=======
+              <item name="App" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ParkPaySystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ParkPaySystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Comment" type="462c0819:PsiDirectoryNode" />
+>>>>>>> 61b658cff2f911367f5651dce4bf48f1190d753e
+            </path>
+            <path>
+              <item name="ParkPaySystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ParkPaySystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
+=======
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Fee" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ParkPaySystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ParkPaySystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="Park" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ParkPaySystem" type="b2602c69:ProjectViewProjectNode" />
               <item name="ParkPaySystem" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+>>>>>>> 61b658cff2f911367f5651dce4bf48f1190d753e
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -396,15 +457,14 @@
       </list>
     </option>
   </component>
+<<<<<<< HEAD
   <component name="RunManager" selected="JUnit.All in ParkPaySystem">
     <configuration name="All in ParkPaySystem" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ParkPaySystem" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+=======
+  <component name="RunManager" selected="JUnit.ParkInteractorTest">
     <configuration name="ParkInteractorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ParkPaySystem" />
       <extension name="coverage">
@@ -415,11 +475,16 @@
       </extension>
       <option name="PACKAGE_NAME" value="test" />
       <option name="MAIN_CLASS_NAME" value="test.ParkInteractorTest" />
+>>>>>>> 61b658cff2f911367f5651dce4bf48f1190d753e
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ParkInteractorTest.testCreatePark" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+<<<<<<< HEAD
+    <configuration name="ParkInteractorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+=======
+    <configuration name="ParkInteractorTest.testParkFeeGetter" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+>>>>>>> 61b658cff2f911367f5651dce4bf48f1190d753e
       <module name="ParkPaySystem" />
       <extension name="coverage">
         <pattern>
@@ -429,7 +494,34 @@
       </extension>
       <option name="PACKAGE_NAME" value="test" />
       <option name="MAIN_CLASS_NAME" value="test.ParkInteractorTest" />
+<<<<<<< HEAD
+=======
+      <option name="METHOD_NAME" value="testParkFeeGetter" />
+      <option name="TEST_OBJECT" value="method" />
+>>>>>>> 61b658cff2f911367f5651dce4bf48f1190d753e
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+<<<<<<< HEAD
+    <configuration name="ParkInteractorTest.testCreatePark" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+=======
+    <configuration name="ParkInteractorTest.testParkFeeGetterForCarInstate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+>>>>>>> 61b658cff2f911367f5651dce4bf48f1190d753e
+      <module name="ParkPaySystem" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="test.ParkInteractorTest" />
+<<<<<<< HEAD
       <option name="METHOD_NAME" value="testCreatePark" />
+=======
+      <option name="METHOD_NAME" value="testParkFeeGetterForCarInstate" />
+>>>>>>> 61b658cff2f911367f5651dce4bf48f1190d753e
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -468,6 +560,7 @@
       </method>
     </configuration>
     <list>
+<<<<<<< HEAD
       <item itemvalue="JUnit.ParkInteractorTest.testCreateParkWithAllParametersPassed" />
       <item itemvalue="JUnit.ParkInteractorTest.testCreatePark" />
       <item itemvalue="JUnit.ParkInteractorTest.testIfParkUpdatedWithAllParamenters" />
@@ -481,6 +574,21 @@
         <item itemvalue="JUnit.ParkInteractorTest.testIfParkUpdatedWithAllParamenters" />
         <item itemvalue="JUnit.ParkInteractorTest.testCreateParkWithAllParametersPassed" />
         <item itemvalue="JUnit.ParkInteractorTest.testCreatePark" />
+=======
+      <item itemvalue="JUnit.ParkTest" />
+      <item itemvalue="JUnit.test in ParkPaySystem" />
+      <item itemvalue="JUnit.ParkInteractorTest.testParkFeeGetterForCarInstate" />
+      <item itemvalue="JUnit.ParkInteractorTest.testParkFeeGetter" />
+      <item itemvalue="JUnit.ParkInteractorTest" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.ParkInteractorTest" />
+        <item itemvalue="JUnit.ParkInteractorTest.testParkFeeGetter" />
+        <item itemvalue="JUnit.ParkInteractorTest.testParkFeeGetterForCarInstate" />
+        <item itemvalue="JUnit.test in ParkPaySystem" />
+        <item itemvalue="JUnit.ParkTest" />
+>>>>>>> 61b658cff2f911367f5651dce4bf48f1190d753e
       </list>
     </recent_temporary>
   </component>
@@ -498,6 +606,7 @@
     <servers />
   </component>
   <component name="TestHistory">
+<<<<<<< HEAD
     <history-entry file="ParkPaySystem_test_in_ParkPaySystem - 2018.11.06 at 18h 38m 08s.xml">
       <configuration name="ParkPaySystem.test in ParkPaySystem" configurationId="JUnit" />
     </history-entry>
@@ -527,6 +636,37 @@
     </history-entry>
     <history-entry file="ParkInteractorTest_testCreateParkWithAllParametersPassed - 2018.11.06 at 20h 20m 33s.xml">
       <configuration name="ParkInteractorTest.testCreateParkWithAllParametersPassed" configurationId="JUnit" />
+=======
+    <history-entry file="test_in_ParkPaySystem - 2018.11.06 at 19h 27m 31s.xml">
+      <configuration name="test in ParkPaySystem" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ParkInteractorTest_testParkFeeGetterForCarInstate - 2018.11.06 at 19h 35m 19s.xml">
+      <configuration name="ParkInteractorTest.testParkFeeGetterForCarInstate" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ParkInteractorTest_testParkFeeGetter - 2018.11.06 at 19h 35m 54s.xml">
+      <configuration name="ParkInteractorTest.testParkFeeGetter" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ParkInteractorTest_testParkFeeGetter - 2018.11.06 at 19h 36m 23s.xml">
+      <configuration name="ParkInteractorTest.testParkFeeGetter" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ParkInteractorTest_testParkFeeGetter - 2018.11.06 at 19h 37m 34s.xml">
+      <configuration name="ParkInteractorTest.testParkFeeGetter" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ParkInteractorTest_testParkFeeGetter - 2018.11.06 at 19h 37m 59s.xml">
+      <configuration name="ParkInteractorTest.testParkFeeGetter" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ParkInteractorTest_testParkFeeGetter - 2018.11.06 at 19h 38m 23s.xml">
+      <configuration name="ParkInteractorTest.testParkFeeGetter" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ParkInteractorTest_testParkFeeGetter - 2018.11.06 at 19h 39m 20s.xml">
+      <configuration name="ParkInteractorTest.testParkFeeGetter" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ParkInteractorTest_testParkFeeGetter - 2018.11.06 at 19h 39m 51s.xml">
+      <configuration name="ParkInteractorTest.testParkFeeGetter" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ParkInteractorTest - 2018.11.06 at 19h 40m 08s.xml">
+      <configuration name="ParkInteractorTest" configurationId="JUnit" />
+>>>>>>> 61b658cff2f911367f5651dce4bf48f1190d753e
     </history-entry>
   </component>
   <component name="TodoView">
@@ -542,16 +682,24 @@
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
     <editor active="true" />
     <layout>
+<<<<<<< HEAD
       <window_info id="Image Layers" />
       <window_info id="UI Designer" />
       <window_info id="Capture Tool" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3446602" />
+=======
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27609682" />
+>>>>>>> 61b658cff2f911367f5651dce4bf48f1190d753e
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
+<<<<<<< HEAD
       <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.23094688" />
+=======
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.23114754" />
+>>>>>>> 61b658cff2f911367f5651dce4bf48f1190d753e
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -560,9 +708,12 @@
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.3295082" />
+<<<<<<< HEAD
       <window_info anchor="right" id="Palette" />
       <window_info anchor="right" id="Theme Preview" />
       <window_info anchor="right" id="Capture Analysis" />
+=======
+>>>>>>> 61b658cff2f911367f5651dce4bf48f1190d753e
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -624,13 +775,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
           <caret line="58" column="74" selection-start-line="58" selection-start-column="74" selection-end-line="58" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/test/AppInteractorTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -725,6 +869,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/main/java/App/AppController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -739,13 +884,38 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/main/java/Park/InterfacePark.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Park/InterfacePark.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/test/CommentManagerTest.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+>>>>>>> 61b658cff2f911367f5651dce4bf48f1190d753e
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/test/AppInteractorTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="68">
           <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+=======
+        <state relative-caret-position="51">
+          <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/test/ParkTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+>>>>>>> 61b658cff2f911367f5651dce4bf48f1190d753e
         </state>
       </provider>
     </entry>
@@ -756,16 +926,24 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/main/java/Order/Order.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/main/java/Park/Park.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+>>>>>>> 61b658cff2f911367f5651dce4bf48f1190d753e
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/main/java/App/Vehicle.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -777,39 +955,73 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/test/java/test/OrderManagerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="14" column="22" lean-forward="true" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/test/CommentTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="6" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+>>>>>>> 61b658cff2f911367f5651dce4bf48f1190d753e
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/App/ApplicationInitializer.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="119">
           <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+=======
+        <state relative-caret-position="2822">
+          <caret line="166" column="64" selection-start-line="166" selection-start-column="64" selection-end-line="166" selection-end-column="64" />
+>>>>>>> 61b658cff2f911367f5651dce4bf48f1190d753e
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/main/java/Park/Park.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="359">
           <caret line="50" column="5" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/main/java/Park/ParkInteractor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="116" column="23" lean-forward="true" selection-start-line="116" selection-start-column="23" selection-end-line="116" selection-end-column="23" />
+>>>>>>> 61b658cff2f911367f5651dce4bf48f1190d753e
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/test/ParkTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/App/ApplicationInitializer.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="612">
           <caret line="57" column="27" selection-start-line="57" selection-start-column="27" selection-end-line="57" selection-end-column="27" />
+=======
+        <state relative-caret-position="119">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+>>>>>>> 61b658cff2f911367f5651dce4bf48f1190d753e
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/main/java/Park/ParkInteractor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-85">
@@ -824,6 +1036,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="363">
           <caret line="170" column="74" selection-start-line="170" selection-start-column="74" selection-end-line="170" selection-end-column="74" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/main/java/App/ParkController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-225" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/App/AppController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1989">
+          <caret line="117" lean-forward="true" selection-start-line="117" selection-end-line="117" />
+>>>>>>> 61b658cff2f911367f5651dce4bf48f1190d753e
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

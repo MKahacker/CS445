@@ -185,4 +185,18 @@ class ParkInteractorTest {
         assertEquals(null, myParks.getSpecificPark(size-1));
     }
 
+    @Test
+    public void testParkFeeGetter(){
+        ParkInteractor myParks = new ParkInteractor(list);
+        assertEquals(3.00, myParks.getParkFee(size-1, "car", "IL"));
+        assertEquals(10.00, myParks.getParkFee(size-1, "car", "IN"));
+
+        assertEquals(5.00, myParks.getParkFee(size-1, "motorcycle", "IL"));
+        assertEquals(8.00, myParks.getParkFee(size-1, "motorcycle", "OK"));
+
+        assertEquals(10.00, myParks.getParkFee(size-1, "RV", "Il"));
+        assertEquals(11.00, myParks.getParkFee(size-1, "RV", "WY"));
+
+    }
+
 }
