@@ -115,8 +115,9 @@ public class ParkInteractor {
 
     public double getParkFee(int pid, String type, String state) {
         double fee = 0;
+        String uppercaseState = state.toUpperCase();
         if(getSpecificPark(pid) != null){
-            if(state.equals("IL")) {
+            if(uppercaseState.equals("IL")) {
                 fee = getSpecificPark(pid).inStateFee(Payment.paymentType(type));
             }else{
                 fee = getSpecificPark(pid).outStateFee(Payment.paymentType(type));
