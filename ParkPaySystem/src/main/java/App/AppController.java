@@ -94,6 +94,70 @@ public class AppController {
         return null;
     }
 
+    @GetMapping("/orders")
+    public JsonNode getOrders(){
+        JsonNode orders;
+        try {
+            orders = parksMapper.readTree(myOrder.viewAllOrders().toString());
+            return orders;
+        } catch (JsonMappingException e) {
+            e.printStackTrace();
+        } catch (JsonGenerationException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @GetMapping("/orders/{id}")
+    public JsonNode getOneOrder(@PathVariable int oid){
+        JsonNode orders;
+        try {
+            orders = parksMapper.readTree(myOrder.viewSpecificOrder(oid).toString());
+            return orders;
+        } catch (JsonMappingException e) {
+            e.printStackTrace();
+        } catch (JsonGenerationException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @GetMapping("/visitors")
+    public JsonNode getVisitors(){
+        JsonNode visitors;
+        try {
+            visitors = parksMapper.readTree(myOrder.viewVisitors().toString());
+            return visitors;
+        } catch (JsonMappingException e) {
+            e.printStackTrace();
+        } catch (JsonGenerationException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @GetMapping("/visitors/{id}")
+    public JsonNode getAVisitor(@PathVariable int vid){
+        JsonNode visitors;
+        try {
+            visitors = parksMapper.readTree(myOrder.viewVisitors().toString());
+            return visitors;
+        } catch (JsonMappingException e) {
+            e.printStackTrace();
+        } catch (JsonGenerationException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     @PostMapping("/parks")
     public JsonNode createPark(@RequestBody JsonNode parkinfo){
         String[] locationInfo = locationInfoString(parkinfo);
