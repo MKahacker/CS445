@@ -69,7 +69,7 @@
         <counts>
           <entry key="class" value="2" />
           <entry key="iml" value="1" />
-          <entry key="java" value="191" />
+          <entry key="java" value="192" />
           <entry key="xml" value="13" />
         </counts>
       </usages-collector>
@@ -77,7 +77,7 @@
         <counts>
           <entry key="CLASS" value="2" />
           <entry key="IDEA_MODULE" value="1" />
-          <entry key="JAVA" value="191" />
+          <entry key="JAVA" value="192" />
           <entry key="XML" value="13" />
         </counts>
       </usages-collector>
@@ -149,7 +149,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/test/ParkInteractorTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="246">
@@ -157,6 +157,15 @@
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Order/Order.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-357">
+              <caret line="28" column="5" lean-forward="true" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -182,7 +191,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/test/java/ParkTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/ParkPaySystem/Geolocation.java" />
         <option value="$PROJECT_DIR$/src/main/java/ParkPaySystem/ParkManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/ParkPaySystem/ParkRanger.java" />
@@ -233,6 +241,7 @@
         <option value="$PROJECT_DIR$/src/main/java/Park/ParkInteractor.java" />
         <option value="$PROJECT_DIR$/src/main/java/App/AppController.java" />
         <option value="$PROJECT_DIR$/src/main/java/App/ParkController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Order/Order.java" />
       </list>
     </option>
   </component>
@@ -478,9 +487,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="test_in_ParkPaySystem - 2018.11.06 at 19h 27m 31s.xml">
-      <configuration name="test in ParkPaySystem" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="ParkInteractorTest_testParkFeeGetterForCarInstate - 2018.11.06 at 19h 35m 19s.xml">
       <configuration name="ParkInteractorTest.testParkFeeGetterForCarInstate" configurationId="JUnit" />
     </history-entry>
@@ -507,6 +513,9 @@
     </history-entry>
     <history-entry file="ParkInteractorTest - 2018.11.06 at 19h 40m 08s.xml">
       <configuration name="ParkInteractorTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_ParkPaySystem - 2018.11.06 at 20h 53m 42s.xml">
+      <configuration name="All in ParkPaySystem" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -775,6 +784,13 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Order/Order.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-357">
+          <caret line="28" column="5" lean-forward="true" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
         </state>
       </provider>
     </entry>

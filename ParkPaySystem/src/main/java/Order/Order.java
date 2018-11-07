@@ -26,10 +26,6 @@ public class Order {
         this.dateOfTransaction = orderDate;
     }
 
-    public void setVistorId(int vistorId){
-        this.vistorId = vistorId;
-    }
-
     public int getId() {
         return this.id;
     }
