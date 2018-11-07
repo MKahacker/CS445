@@ -112,6 +112,18 @@ class ParkInteractorTest {
     }
 
     @Test
+    public void testCreateParkWithAllParametersPassed(){
+        ParkInteractor myParks = new ParkInteractor(list);
+        Park newPark = new Park(-1, "White Moon", "1234 Michigan Ave", "www.whitemoon.com", geo, parkPayment);
+        int pid = myParks.createAPark("White Moon", "", "","www.whitemoon.com",
+                "1234 Michigan Ave", geo.getLat(), geo.getLng(), parkPayment);
+        newPark.setParkId(pid);
+        JSONObject parkInfo = myParks.getSpecificParkInfo(pid);
+        parkInfo.remove("payment_info");
+        assertEquals(newPark.viewInformation().toString(), parkInfo.toString());
+    }
+
+    @Test
     public void testGetSpecificParkIfExists(){
         ParkInteractor myParks;
         Payment[] fee = assemblePayment();
@@ -141,6 +153,24 @@ class ParkInteractorTest {
         int pid = myParks.createPark(newPark);
         myParks.updatePark(updatePark, pid);
 
+        JSONObject parkInfo = myParks.getSpecificParkInfo(pid);
+        parkInfo.remove("payment_info");
+
+        assertEquals(updatePark.viewInformation().toString(), parkInfo.toString());
+    }
+
+    @Test
+    public void testIfParkUpdatedWithAllParamenters(){
+        ParkInteractor myParks = new ParkInteractor(list);
+
+        Park newPark = new Park(size+1, "Yosemite", "Northwest", "www.park.com", geo, parkPayment);
+        Park updatePark = new Park(size+1, "Yosemite", "Southwest", "www.park2.com", geo, parkPayment);
+
+        int pid = myParks.createPark(newPark);
+        myParks.updateAPark("Yosemite","","",
+                "www.park2.com","Southwest",geo.getLat(),geo.getLng(), parkPayment, pid);
+
+        updatePark.setParkId(pid);
         JSONObject parkInfo = myParks.getSpecificParkInfo(pid);
         parkInfo.remove("payment_info");
 

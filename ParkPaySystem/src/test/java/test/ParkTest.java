@@ -62,6 +62,13 @@ class ParkTest {
     }
 
     @Test
+    public void testGetGeo(){
+        Geolocation myGeo = new Geolocation(49.2, 56.1);
+        assertEquals(myGeo.getLat(), testPark.getGeo().getLat());
+        assertEquals(myGeo.getLng(), testPark.getGeo().getLng());
+    }
+
+    @Test
     public void testViewInformationGivesTheRightInformation(){
        String expected = expected1.toString();
         String actual = testPark.viewInformation().toString();

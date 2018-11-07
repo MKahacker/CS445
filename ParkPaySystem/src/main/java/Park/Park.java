@@ -50,11 +50,6 @@ public class Park implements InterfacePark {
         return this.id;
     }
 
-    public String getName(){
-        return this.name;
-    }
-
-
     public JSONObject viewInformation(){
         JSONObject string = new JSONObject();
 
