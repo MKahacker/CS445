@@ -193,7 +193,7 @@ public class AppController {
             int pid = myParks.createAPark(locationInfo[0],locationInfo[1],locationInfo[2],locationInfo[3],locationInfo[4],geoInfo[0],geoInfo[1],parkPayment);
             String json = "{\"pid\":"+pid+"}";
             parkId = parksMapper.readTree(json);
-            return new ResponseEntity<JsonNode>(parkId, HttpStatus.ACCEPTED);
+            return new ResponseEntity<JsonNode>(parkId, HttpStatus.CREATED);
 
         } catch(NullPointerException e){
             return new ResponseEntity<JsonNode>(parkId, HttpStatus.BAD_REQUEST);
@@ -284,10 +284,12 @@ public class AppController {
     }
 
     @DeleteMapping("/parks/{id}")
-    public void deletePark(@PathVariable("id") int pid){
+    public ResponseEntity<Void> deletePark(@PathVariable("id") int pid){
         if(myParks.getIndexOfPark(pid) != -1){
             myParks.deletePark(pid);
+            return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
         }
+        return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
     }
 
 
