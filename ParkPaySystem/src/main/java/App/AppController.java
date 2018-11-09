@@ -143,7 +143,7 @@ public class AppController {
     }
 
     @GetMapping("/visitors/{id}")
-    public JsonNode getAVisitor(@PathVariable int vid){
+    public JsonNode getAVisitor(@PathVariable("id") int vid){
         JsonNode visitors;
         try {
             visitors = parksMapper.readTree(myOrder.viewVisitors().toString());
@@ -284,12 +284,12 @@ public class AppController {
         Payment[] parkPayment = new Payment[3];
 
         JsonNode motorcycleFee = parkinfo.path("payment_info").path("motorcycle");
-        JsonNode RVFee = parkinfo.path("payment_info").path("RV");
+        JsonNode RVFee = parkinfo.path("payment_info").path("rv");
         JsonNode carFee = parkinfo.path("payment_info").path("car");
 
         parkPayment[Payment.paymentType("car")] = new CarFee(carFee.get(0).asDouble(), carFee.get(1).asDouble());
         parkPayment[Payment.paymentType("motorcycle")] = new MotorCycleFee(motorcycleFee.get(0).asDouble(), motorcycleFee.get(1).asDouble());
-        parkPayment[Payment.paymentType("RV")] = new RVFee(RVFee.get(0).asDouble(), RVFee.get(1).asDouble());
+        parkPayment[Payment.paymentType("rv")] = new RVFee(RVFee.get(0).asDouble(), RVFee.get(1).asDouble());
 
         return parkPayment;
     }
