@@ -163,22 +163,25 @@ public class AppController {
 
     @PostMapping("/parks")
     public ResponseEntity<JsonNode> createPark(@RequestBody JsonNode parkinfo){
-        String[] locationInfo = locationInfoString(parkinfo);
-        double[] geoInfo = geoInfoArray(parkinfo);
-        Payment[] parkPayment = paymentArrayBuilder(parkinfo);
-
-        int pid = myParks.createAPark(locationInfo[0],locationInfo[1],locationInfo[2],locationInfo[3],locationInfo[4],geoInfo[0],geoInfo[1],parkPayment);
-        String json = "{\"pid\":"+pid+"}";
         JsonNode parkId = null;
         try {
-            parkId = parksMapper.readTree(json);
-            return new ResponseEntity<JsonNode>(parkId, HttpStatus.ACCEPTED);
-        } catch (JsonMappingException e) {
-            e.printStackTrace();
-        } catch (JsonGenerationException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+            String[] locationInfo = locationInfoString(parkinfo);
+            double[] geoInfo = geoInfoArray(parkinfo);
+            Payment[] parkPayment = paymentArrayBuilder(parkinfo);
+            int pid = myParks.createAPark(locationInfo[0],locationInfo[1],locationInfo[2],locationInfo[3],locationInfo[4],geoInfo[0],geoInfo[1],parkPayment);
+            String json = "{\"pid\":"+pid+"}";
+            try {
+                parkId = parksMapper.readTree(json);
+                return new ResponseEntity<JsonNode>(parkId, HttpStatus.ACCEPTED);
+            } catch (JsonMappingException e) {
+                e.printStackTrace();
+            } catch (JsonGenerationException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } catch(NullPointerException e){
+            return new ResponseEntity<JsonNode>(parkId, HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<JsonNode>(parkId, HttpStatus.BAD_REQUEST);
     }
