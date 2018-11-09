@@ -170,19 +170,19 @@ public class AppController {
             Payment[] parkPayment = paymentArrayBuilder(parkinfo);
             if(geoInfo == null){
                 parkId = parksMapper.readTree("{\"type\":\"http://cs.iit.edu/~virgil/cs445/project/api/problems/data-validation\"," +
-                        "\"title\":\"Your request failed validation\",\"detail\":\"geo information is required but missing\",\"status\":400,\"" +
+                        "\"title\":\"Your request failed validation\",\"detail\":\"geo information is required but missing\",\"status\":400," +
                         "\"instance\":\"/parks\"}");
                 return new ResponseEntity<JsonNode>(parkId, HttpStatus.BAD_REQUEST);
             }
             if(locationInfo == null){
                 parkId = parksMapper.readTree("{\"type\":\"http://cs.iit.edu/~virgil/cs445/project/api/problems/data-validation\"," +
-                        "\"title\":\"Your request failed validation\",\"detail\":\"location information is required but missing\",\"status\":400,\"" +
+                        "\"title\":\"Your request failed validation\",\"detail\":\"location information is required but missing\",\"status\":400," +
                         "\"instance\":\"/parks\"}");
                 return new ResponseEntity<JsonNode>(parkId, HttpStatus.BAD_REQUEST);
             }
             if(parkPayment == null){
                 parkId = parksMapper.readTree("{\"type\":\"http://cs.iit.edu/~virgil/cs445/project/api/problems/data-validation\"," +
-                        "\"title\":\"Your request failed validation\",\"detail\":\"park payment information is required but missing\",\"status\":400,\"" +
+                        "\"title\":\"Your request failed validation\",\"detail\":\"park payment information is required but missing\",\"status\":400," +
                         "\"instance\":\"/parks\"}");
                 return new ResponseEntity<JsonNode>(parkId, HttpStatus.BAD_REQUEST);
             }
