@@ -168,23 +168,37 @@ public class AppController {
             String[] locationInfo = locationInfoString(parkinfo);
             double[] geoInfo = geoInfoArray(parkinfo);
             Payment[] parkPayment = paymentArrayBuilder(parkinfo);
-            if(parkPayment == null || locationInfo == null || geoInfo == null){
+            if(geoInfo == null){
+                parkId = parksMapper.readTree("{\"type\":\"http://cs.iit.edu/~virgil/cs445/project/api/problems/data-validation\"," +
+                        "\"title\":\"Your request failed validation\",\"detail\":\"geo information is required but missing\",\"status\":400,\"" +
+                        "\"instance\":\"/parks\"}");
+                return new ResponseEntity<JsonNode>(parkId, HttpStatus.BAD_REQUEST);
+            }
+            if(locationInfo == null){
+                parkId = parksMapper.readTree("{\"type\":\"http://cs.iit.edu/~virgil/cs445/project/api/problems/data-validation\"," +
+                        "\"title\":\"Your request failed validation\",\"detail\":\"location information is required but missing\",\"status\":400,\"" +
+                        "\"instance\":\"/parks\"}");
+                return new ResponseEntity<JsonNode>(parkId, HttpStatus.BAD_REQUEST);
+            }
+            if(parkPayment == null){
+                parkId = parksMapper.readTree("{\"type\":\"http://cs.iit.edu/~virgil/cs445/project/api/problems/data-validation\"," +
+                        "\"title\":\"Your request failed validation\",\"detail\":\"park payment information is required but missing\",\"status\":400,\"" +
+                        "\"instance\":\"/parks\"}");
                 return new ResponseEntity<JsonNode>(parkId, HttpStatus.BAD_REQUEST);
             }
             int pid = myParks.createAPark(locationInfo[0],locationInfo[1],locationInfo[2],locationInfo[3],locationInfo[4],geoInfo[0],geoInfo[1],parkPayment);
             String json = "{\"pid\":"+pid+"}";
-            try {
-                parkId = parksMapper.readTree(json);
-                return new ResponseEntity<JsonNode>(parkId, HttpStatus.ACCEPTED);
-            } catch (JsonMappingException e) {
-                e.printStackTrace();
-            } catch (JsonGenerationException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            parkId = parksMapper.readTree(json);
+            return new ResponseEntity<JsonNode>(parkId, HttpStatus.ACCEPTED);
+
         } catch(NullPointerException e){
             return new ResponseEntity<JsonNode>(parkId, HttpStatus.BAD_REQUEST);
+        }catch (JsonMappingException e) {
+            e.printStackTrace();
+        } catch (JsonGenerationException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return new ResponseEntity<JsonNode>(parkId, HttpStatus.BAD_REQUEST);
     }
