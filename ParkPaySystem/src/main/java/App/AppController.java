@@ -220,6 +220,9 @@ public class AppController {
             return new ResponseEntity<JsonNode>(noteId, HttpStatus.BAD_REQUEST);
         }
         int vid = noteInfo.get("vid").asInt();
+        if(!(myOrder.checkIfVisitorVisitedPark(pid, vid))){
+            return new ResponseEntity<JsonNode>(noteId, HttpStatus.BAD_REQUEST);
+        }
         String title = noteInfo.get("title").asText();
         String body = noteInfo.get("text").asText();
         int nid = myComment.createNewComment(pid, vid, new Date(), title, body);

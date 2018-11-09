@@ -72,4 +72,8 @@ public class Order {
         processingInfo.put("date_and_time", myFormat.format(this.dateOfTransaction));
         return processingInfo;
     }
+
+    public int getPid() {
+        return this.parkId;
+    }
 }

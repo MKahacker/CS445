@@ -100,4 +100,14 @@ public class OrderManager {
         }
         return visitorsInfo;
     }
+
+    public boolean checkIfVisitorVisitedPark(int pid, int vid) {
+        boolean visited = false;
+        for(int i = 0; i < this.listOfOrders.size(); i++){
+            if(listOfOrders.get(i).getVid() == vid && listOfOrders.get(i).getPid() == pid){
+                visited = true;
+            }
+        }
+        return visited;
+    }
 }
