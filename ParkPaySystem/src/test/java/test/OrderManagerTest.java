@@ -132,7 +132,7 @@ public class OrderManagerTest {
         String visitorInfo = "{\"name\":\""+name+"\",\"payment_info\":" + paymentInfo+",\"email\":\""+email+"\"}";
         String processingInfo = "{\"date_and_time\":\""+newFormat.format(timeStamp)+"\",\"card_transaction_id\":\"123-4567-89\"}";
 
-        myString+="\"date\":\"" + formatter.format(timeStamp)+"\",\"vid\":" + 1 +",\"amount\":"+amount+",\"pid\":"+pid;
+        myString+="\"date\":\"" + formatter.format(timeStamp)+"\",\"vid\":" + 100 +",\"amount\":"+amount+",\"pid\":"+pid;
         myString+=",\"oid\":" + oid;
         myString+= ",\"visitor\":" + visitorInfo +  ",\"payment_processing\":"+processingInfo+",\"vehicle\":" + specificVehicleInfo;
         return myString;
@@ -150,7 +150,7 @@ public class OrderManagerTest {
         email = "john.doe@gmail.com";
 
         myOrders.createNewOrder(pid,amount,new Vehicle("IL", "Z7868", type), payment_info,timeStamp,name,email);
-        assertEquals("[{\"vid\":1,\"name\":\"John Doe\",\"email\":\"john.doe@gmail.com\"}]", myOrders.viewVisitors().toString());
+        assertEquals("[{\"vid\":100,\"name\":\"John Doe\",\"email\":\"john.doe@gmail.com\"}]", myOrders.viewVisitors().toString());
     }
 
 }

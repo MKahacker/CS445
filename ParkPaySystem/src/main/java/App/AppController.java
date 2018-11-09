@@ -208,16 +208,25 @@ public class AppController {
     }
 
     @PostMapping("/parks/{pid}/notes")
-    public JsonNode createNote(@PathVariable("pid") int pid, @RequestBody JsonNode noteInfo){
+    public ResponseEntity<JsonNode> createNote(@PathVariable("pid") int pid, @RequestBody JsonNode noteInfo){
+        JsonNode noteId = null;
+        if(!(noteInfo.has("vid"))) {
+            return new ResponseEntity<JsonNode>(noteId, HttpStatus.BAD_REQUEST);
+        }
+        if(!(noteInfo.has("title"))) {
+            return new ResponseEntity<JsonNode>(noteId, HttpStatus.BAD_REQUEST);
+        }
+        if(!(noteInfo.has("text"))) {
+            return new ResponseEntity<JsonNode>(noteId, HttpStatus.BAD_REQUEST);
+        }
         int vid = noteInfo.get("vid").asInt();
         String title = noteInfo.get("title").asText();
         String body = noteInfo.get("text").asText();
         int nid = myComment.createNewComment(pid, vid, new Date(), title, body);
         String json= "{\"nid\":" + nid+"}";
-        JsonNode noteId;
         try {
             noteId = parksMapper.readTree(json);
-            return noteId;
+            return new ResponseEntity<JsonNode>(noteId, HttpStatus.CREATED);
         } catch (JsonMappingException e) {
             e.printStackTrace();
         } catch (JsonGenerationException e) {
@@ -225,12 +234,12 @@ public class AppController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+        return return new ResponseEntity<JsonNode>(noteId, HttpStatus.BAD_REQUEST);
     }
 
     @PostMapping("/orders")
-    public JsonNode createOrder(@RequestBody JsonNode orderInfo){
-        JsonNode orderId;
+    public ResponseEntity<JsonNode> createOrder(@RequestBody JsonNode orderInfo){
+        JsonNode orderId = null;
         int pid = orderInfo.get("pid").asInt();
         String state = orderInfo.path("vehicle").path("state").asText();
         String plate = orderInfo.path("vehicle").path("plate").asText();
@@ -248,7 +257,7 @@ public class AppController {
         String json = "{\"oid\":" + oid+"}";
         try {
             orderId = parksMapper.readTree(json);
-            return orderId;
+            return new ResponseEntity<JsonNode>(orderId, HttpStatus.CREATED);
         } catch (JsonMappingException e) {
             e.printStackTrace();
         } catch (JsonGenerationException e) {
@@ -256,7 +265,7 @@ public class AppController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+        return new ResponseEntity<JsonNode>(orderId, HttpStatus.BAD_REQUEST);
     }
 
     @PutMapping("/parks/{id}")

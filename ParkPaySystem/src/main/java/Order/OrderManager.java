@@ -23,8 +23,8 @@ public class OrderManager {
 
     public int createNewOrder(int pid, double amount, Vehicle vehicleInfo, PaymentInfo paymentInfo,
                               Date orderDate, String name, String email){
-        int oid = listOfOrders.size() + 1;
-        int vid = listOfVistor.size() + 1;
+        int oid = listOfOrders.size() + 100;
+        int vid = listOfVistor.size() + 100;
 
         AbstractVistor newVistor = new Vistor(vid, name, email);
         listOfVistor.add(newVistor);
