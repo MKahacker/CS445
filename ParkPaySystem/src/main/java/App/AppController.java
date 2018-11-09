@@ -153,7 +153,7 @@ public class AppController {
     public JsonNode getAVisitor(@PathVariable("id") int vid){
         JsonNode visitors;
         try {
-            visitors = parksMapper.readTree(myOrder.viewVisitors().toString());
+            visitors = parksMapper.readTree(myOrder.viewSpecificVistors(vid).toString());
             return visitors;
         } catch (JsonMappingException e) {
             e.printStackTrace();
@@ -237,7 +237,7 @@ public class AppController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return return new ResponseEntity<JsonNode>(noteId, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<JsonNode>(noteId, HttpStatus.BAD_REQUEST);
     }
 
     @PostMapping("/orders")

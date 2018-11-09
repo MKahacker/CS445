@@ -110,4 +110,34 @@ public class OrderManager {
         }
         return visited;
     }
+
+    public JSONObject viewSpecificVistors(int vid) {
+        JSONObject visitorInfo = new JSONObject();
+        int idx = returnVistorIndex(vid);
+        if(idx != -1) {
+            visitorInfo.put("vid", vid);
+            JSONObject name_email = getVisitor(idx).viewVisitorInfo();
+            visitorInfo.put("visitor", name_email);
+            JSONArray orderInfo = new JSONArray();
+            orderInfo = viewOrdersForVisitor(vid);
+            visitorInfo.put("orders", orderInfo);
+            JSONArray noteInfo = new JSONArray();
+            visitorInfo.put("notes", noteInfo);
+            return visitorInfo;
+        }
+        return visitorInfo;
+    }
+
+    public JSONArray viewOrdersForVisitor(int vid) {
+        JSONArray visitorsOrders = new JSONArray();
+        for(int i = 0; i < this.listOfOrders.size(); i++){
+            if(getOrder(i).getVid() == vid){
+             JSONObject orderDetails = getOrder(i).viewOrder();
+             orderDetails.remove("amount");
+             orderDetails.remove("type");
+             visitorsOrders.put(orderDetails);
+            }
+        }
+        return visitorsOrders;
+    }
 }
