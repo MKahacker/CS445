@@ -18,7 +18,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.constraints.Null;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -153,7 +152,7 @@ public class AppController {
     public JsonNode getAVisitor(@PathVariable("id") int vid){
         JsonNode visitors;
         try {
-            visitors = parksMapper.readTree(myOrder.viewSpecificVistors(vid).toString());
+            visitors = parksMapper.readTree(myOrder.viewSpecificVistors(vid, myComment.viewCommentsForVisitor(vid)).toString());
             return visitors;
         } catch (JsonMappingException e) {
             e.printStackTrace();

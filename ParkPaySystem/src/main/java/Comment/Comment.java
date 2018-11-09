@@ -70,5 +70,8 @@ public class Comment {
         return comment;
     }
 
+    public int getVid() {
+        return this.authorId;
+    }
 }
 

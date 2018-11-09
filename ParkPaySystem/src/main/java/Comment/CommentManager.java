@@ -96,4 +96,16 @@ public class CommentManager {
         return parkComments;
     }
 
+    public JSONArray viewCommentsForVisitor(int vid) {
+        JSONArray comments = new JSONArray();
+        for(int i = 0; i < this.commentList.size(); i++){
+            if(this.commentList.get(i).getVid() == vid){
+                JSONObject commentInfo = this.commentList.get(i).viewComment();
+                commentInfo.remove("text");
+                commentInfo.remove("vid");
+                comments.put(commentInfo);
+            }
+        }
+        return comments;
+    }
 }

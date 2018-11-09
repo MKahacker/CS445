@@ -6,6 +6,8 @@ import org.json.JSONArray;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -17,6 +19,7 @@ class CommentManagerTest {
     List<Comment> comments;
     Comment newComment;
     Comment testComment;
+    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
     @BeforeEach
     public void initTest() {
@@ -144,9 +147,17 @@ class CommentManagerTest {
 
     @Test
     public void testDeleteComment(){
-        int nid = myComments.createNewComment(250, 502, new Date(), "Hey", "About to write");;
+        int nid = myComments.createNewComment(250, 502, new Date(), "Hey", "About to write");
         myComments.deleteComment(nid);
         assertEquals("{}", myComments.viewSpecificComment(nid).toString());
+    }
+
+    @Test
+    public void viewSpecificCommentForVisitor(){
+        assertEquals("[]", myComments.viewCommentsForVisitor(700).toString());
+        int nid = myComments.createNewComment(102, 100, new Date(), "No Campground", "Lovely but no campground");
+        assertEquals("[{\"date\":\"" +
+                dateFormat.format(new Date())+"\",\"nid\":"+nid+",\"pid\":102,\"title\":\"No Campground\"}]",myComments.viewCommentsForVisitor(100).toString());
     }
 
 }

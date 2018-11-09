@@ -155,7 +155,7 @@ public class OrderManagerTest {
 
     @Test
     public void viewSpecificVisitor(){
-        assertEquals("{}", myOrders.viewSpecificVistors(500).toString());
+        assertEquals("{}", myOrders.viewSpecificVistors(500, new JSONArray()).toString());
 
         pid = 411;
         name = "John Doe";
@@ -167,15 +167,15 @@ public class OrderManagerTest {
                 "\"vid\":100," +
                 "\"notes\":[]," +
                 "\"orders\":[{" +
-                "\"oid\":100," +
-                "\"pid\":102," +
-                "\"date\":"+ formatter.format(new Date())+
+                "\"date\":\""+ formatter.format(new Date())+"\","+
+                "\"pid\":411," +
+                "\"oid\":100" +
                 "}]," +
                 "\"visitor\":{" +
                 "\"name\":\"John Doe\"," +
-                "\"email\":\"john.doe@example.com\"" +
+                "\"email\":\"john.doe@gmail.com\"" +
                 "}" +
-                "}", myOrders.viewSpecificVistors(100).toString());
+                "}", myOrders.viewSpecificVistors(100, new JSONArray()).toString());
     }
 
     @Test
