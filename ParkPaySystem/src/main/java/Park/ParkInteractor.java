@@ -125,4 +125,15 @@ public class ParkInteractor {
         }
         return fee;
     }
+
+    public JSONArray getParksKey(String key) {
+        JSONArray allParks = getAllParksInfo();
+        JSONArray parksWithKey = new JSONArray();
+        for(int i = 0; i < allParks.length(); i++){
+            if(allParks.get(i).toString().contains(key)){
+                parksWithKey.put(allParks.get(i));
+            }
+        }
+        return parksWithKey;
+    }
 }

@@ -34,10 +34,14 @@ public class AppController {
     private ObjectMapper parksMapper = new ObjectMapper();
 
     @GetMapping("/parks")
-    public JsonNode getAllParks(){
+    public JsonNode getAllParks(@RequestParam(value="key", defaultValue="") String key){
         JsonNode parks;
         try {
-            parks = parksMapper.readTree(myParks.getAllParksInfo().toString());
+            if(key.equals("")) {
+                parks = parksMapper.readTree(myParks.getAllParksInfo().toString());
+            }else{
+                parks = parksMapper.readTree(myParks.getParksKey(key).toString());
+            }
             return parks;
         } catch (JsonMappingException e) {
             e.printStackTrace();
@@ -256,24 +260,27 @@ public class AppController {
     }
 
     @PutMapping("/parks/{id}")
-    public void updatePark(@PathVariable("id") int pid, @RequestBody JsonNode parkinfo){
+    public ResponseEntity<Void> updatePark(@PathVariable("id") int pid, @RequestBody JsonNode parkinfo){
         if(myParks.getIndexOfPark(pid) != -1) {
             String[] locationInfo = locationInfoString(parkinfo);
             double[] geoInfo = geoInfoArray(parkinfo);
             Payment[] parkPayment = paymentArrayBuilder(parkinfo);
-
             myParks.updateAPark(locationInfo[0],locationInfo[1],locationInfo[2],locationInfo[3],locationInfo[4],geoInfo[0],geoInfo[1],parkPayment,pid);
+            return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
         }
+        return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
     }
 
     @PutMapping("/notes/{nid}")
-    public void updateNotes(@PathVariable("nid") int nid, @RequestBody JsonNode noteInfo){
+    public ResponseEntity<Void> updateNotes(@PathVariable("nid") int nid, @RequestBody JsonNode noteInfo){
         if(myComment.returnIndexOfComment(nid) != -1){
             int vid = noteInfo.get("vid").asInt();
             String title = noteInfo.get("title").asText();
             String body = noteInfo.get("text").asText();
             myComment.updateComment(nid, vid, title,body);
+            return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
         }
+        return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
     }
 
     @DeleteMapping("/parks/{id}")

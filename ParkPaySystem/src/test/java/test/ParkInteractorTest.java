@@ -199,4 +199,11 @@ class ParkInteractorTest {
 
     }
 
+    @Test
+    public void testParksKey(){
+        ParkInteractor myParks = new ParkInteractor(list);
+        assertEquals("[]", myParks.getParksKey("South").toString());
+        assertEquals(myParks.getAllParksInfo().toString(), myParks.getParksKey("pid").toString());
+    }
+
 }
