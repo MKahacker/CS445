@@ -168,6 +168,9 @@ public class AppController {
             String[] locationInfo = locationInfoString(parkinfo);
             double[] geoInfo = geoInfoArray(parkinfo);
             Payment[] parkPayment = paymentArrayBuilder(parkinfo);
+            if(parkPayment == null || locationInfo == null || geoInfo == null){
+                return new ResponseEntity<JsonNode>(parkId, HttpStatus.BAD_REQUEST);
+            }
             int pid = myParks.createAPark(locationInfo[0],locationInfo[1],locationInfo[2],locationInfo[3],locationInfo[4],geoInfo[0],geoInfo[1],parkPayment);
             String json = "{\"pid\":"+pid+"}";
             try {
@@ -269,35 +272,58 @@ public class AppController {
 
     public String[] locationInfoString(JsonNode parkinfo){
         String[] locationInfo = new String[5];
-        locationInfo[0] = parkinfo.path("location_info").path("name").asText();
-        locationInfo[1] = parkinfo.path("location_info").path("region").asText();
-        locationInfo[2] = parkinfo.path("location_info").path("phone").asText();
-        locationInfo[3] = parkinfo.path("location_info").path("web").asText();
-        locationInfo[4] = parkinfo.path("location_info").path("address").asText();
+        if(parkinfo.has("location_info")) {
+            if(parkinfo.path("location_info").path("name") != null &&
+                    parkinfo.path("location_info").path("web") != null &&
+                    parkinfo.path("location_info").path("web") != null &&
+                    parkinfo.path("location_info").path("address") != null) {
 
-        return locationInfo;
+                locationInfo[0] = parkinfo.path("location_info").path("name").asText();
+                locationInfo[1] = parkinfo.path("location_info").path("region").asText();
+                locationInfo[2] = parkinfo.path("location_info").path("phone").asText();
+                locationInfo[3] = parkinfo.path("location_info").path("web").asText();
+                locationInfo[4] = parkinfo.path("location_info").path("address").asText();
+
+                if(locationInfo[0] == ""||locationInfo[3] == ""||locationInfo[4] == "")
+                    return null;
+
+                return locationInfo;
+            }
+        }
+        return null;
     }
 
     public double[] geoInfoArray(JsonNode parkinfo){
         double[] geoInfo = new double[2];
-        geoInfo[0] = parkinfo.path("location_info").path("geo").path("lat").asDouble();
-        geoInfo[1] = parkinfo.path("location_info").path("geo").path("lng").asDouble();
-
-        return geoInfo;
+        if(parkinfo.path("location_info").path("geo").path("lat") != null && parkinfo.path("location_info").path("geo").path("lng") != null) {
+            geoInfo[0] = parkinfo.path("location_info").path("geo").path("lat").asDouble();
+            geoInfo[1] = parkinfo.path("location_info").path("geo").path("lng").asDouble();
+            if(geoInfo[0] == 0 || geoInfo[1] == 0)
+                return null;
+            return geoInfo;
+        }
+        return null;
     }
 
     public Payment[] paymentArrayBuilder(JsonNode parkinfo){
         Payment[] parkPayment = new Payment[3];
+        try {
+            JsonNode motorcycleFee = parkinfo.path("payment_info").path("motorcycle");
+            JsonNode RVFee = parkinfo.path("payment_info").path("rv");
+            JsonNode carFee = parkinfo.path("payment_info").path("car");
+            if(motorcycleFee.get(0).asDouble() < 0 || motorcycleFee.get(1).asDouble() < 0 ||
+            RVFee.get(0).asDouble() < 0 || RVFee.get(1).asDouble() < 0 ||
+            carFee.get(0).asDouble() < 0 || carFee.get(1).asDouble() < 0) {
+                return null;
+            }
+            parkPayment[Payment.paymentType("car")] = new CarFee(carFee.get(0).asDouble(), carFee.get(1).asDouble());
+            parkPayment[Payment.paymentType("motorcycle")] = new MotorCycleFee(motorcycleFee.get(0).asDouble(), motorcycleFee.get(1).asDouble());
+            parkPayment[Payment.paymentType("rv")] = new RVFee(RVFee.get(0).asDouble(), RVFee.get(1).asDouble());
 
-        JsonNode motorcycleFee = parkinfo.path("payment_info").path("motorcycle");
-        JsonNode RVFee = parkinfo.path("payment_info").path("rv");
-        JsonNode carFee = parkinfo.path("payment_info").path("car");
-
-        parkPayment[Payment.paymentType("car")] = new CarFee(carFee.get(0).asDouble(), carFee.get(1).asDouble());
-        parkPayment[Payment.paymentType("motorcycle")] = new MotorCycleFee(motorcycleFee.get(0).asDouble(), motorcycleFee.get(1).asDouble());
-        parkPayment[Payment.paymentType("rv")] = new RVFee(RVFee.get(0).asDouble(), RVFee.get(1).asDouble());
-
-        return parkPayment;
+            return parkPayment;
+        }catch (NullPointerException e){
+            return null;
+        }
     }
 
 }
