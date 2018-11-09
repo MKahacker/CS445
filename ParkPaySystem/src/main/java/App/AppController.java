@@ -14,8 +14,11 @@ import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.Null;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -159,17 +162,17 @@ public class AppController {
     }
 
     @PostMapping("/parks")
-    public JsonNode createPark(@RequestBody JsonNode parkinfo){
+    public ResponseEntity<JsonNode> createPark(@RequestBody JsonNode parkinfo){
         String[] locationInfo = locationInfoString(parkinfo);
         double[] geoInfo = geoInfoArray(parkinfo);
         Payment[] parkPayment = paymentArrayBuilder(parkinfo);
 
         int pid = myParks.createAPark(locationInfo[0],locationInfo[1],locationInfo[2],locationInfo[3],locationInfo[4],geoInfo[0],geoInfo[1],parkPayment);
         String json = "{\"pid\":"+pid+"}";
-        JsonNode parkId;
+        JsonNode parkId = null;
         try {
             parkId = parksMapper.readTree(json);
-            return parkId;
+            return new ResponseEntity<JsonNode>(parkId, HttpStatus.ACCEPTED);
         } catch (JsonMappingException e) {
             e.printStackTrace();
         } catch (JsonGenerationException e) {
@@ -177,7 +180,7 @@ public class AppController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+        return new ResponseEntity<JsonNode>(parkId, HttpStatus.BAD_REQUEST);
     }
 
     @PostMapping("/parks/{pid}/notes")
