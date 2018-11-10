@@ -195,4 +195,17 @@ public class OrderManagerTest {
                 "\"oid\":100" +
                 "}]", myOrders.viewOrdersForVisitor(100).toString());
     }
+
+    @Test
+    public void testSeeIfPidAndVidAreInTheSameOrder(){
+        assertEquals(false, myOrders.checkIfVisitorVisitedPark(500,100));
+
+        pid = 102;
+        name = "John Doe";
+        email = "john.doe@gmail.com";
+
+        myOrders.createNewOrder(pid,amount,new Vehicle("IL", "Z7868", type), payment_info,timeStamp,name,email);
+
+        assertEquals(true, myOrders.checkIfVisitorVisitedPark(102, 100));
+    }
 }

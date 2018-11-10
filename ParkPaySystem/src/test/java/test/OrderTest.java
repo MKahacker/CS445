@@ -59,4 +59,8 @@ public class OrderTest {
         assertEquals("{\"date_and_time\":\""+myFormat.format(timeStamp)+"\",\"card_transaction_id\":\"123-4567-89\"}", newOrder.viewProcessingInfo().toString());
     }
 
+    @Test
+    public void testGetPid(){
+        assertEquals(pid, newOrder.getPid());
+    }
 }
