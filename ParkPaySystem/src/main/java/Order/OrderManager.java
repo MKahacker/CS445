@@ -27,11 +27,9 @@ public class OrderManager {
         int vid = didVisitorAlreadyVisit(email);
         if(vid == -1) {
             vid = listOfVistor.size() + 100;
+            AbstractVistor newVistor = new Vistor(vid, name, email);
+            listOfVistor.add(newVistor);
         }
-
-        AbstractVistor newVistor = new Vistor(vid, name, email);
-        listOfVistor.add(newVistor);
-
         Order newOrder = new Order(oid, pid, vid, amount, vehicleInfo, paymentInfo, orderDate);
         listOfOrders.add(newOrder);
 
@@ -105,9 +103,8 @@ public class OrderManager {
 
     public JSONArray viewVisitors() {
         JSONArray visitorsInfo = new JSONArray();
-        JSONObject visitor = new JSONObject();
         for(int i = 0; i < this.listOfVistor.size(); i++){
-            visitor = getVisitor(i).viewVisitorInfo();
+            JSONObject visitor = getVisitor(i).viewVisitorInfo();
             visitor.put("vid", getVisitor(i).getVid());
             visitorsInfo.put(visitor);
         }
@@ -151,5 +148,15 @@ public class OrderManager {
             }
         }
         return visitorsOrders;
+    }
+
+    public JSONArray searchWithKey(String key) {
+        JSONArray ordersWithKeys = new JSONArray();
+        for(int i=0; i < this.listOfOrders.size(); i++){
+            if(getOrder(i).searchKey(key)){
+                ordersWithKeys.put(getOrder(i).viewOrder());
+            }
+        }
+        return ordersWithKeys;
     }
 }

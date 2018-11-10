@@ -19,6 +19,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -101,10 +103,14 @@ public class AppController {
     }
 
     @GetMapping("/orders")
-    public JsonNode getOrders(){
+    public JsonNode getOrders(@RequestParam(value="key", defaultValue="") String key){
         JsonNode orders;
         try {
-            orders = parksMapper.readTree(myOrder.viewAllOrders().toString());
+            if(key.equals("")) {
+                orders = parksMapper.readTree(myOrder.viewAllOrders().toString());
+            }else{
+                orders = parksMapper.readTree(myOrder.searchWithKey(key).toString());
+            }
             return orders;
         } catch (JsonMappingException e) {
             e.printStackTrace();
@@ -133,7 +139,7 @@ public class AppController {
     }
 
     @GetMapping("/visitors")
-    public JsonNode getVisitors(){
+    public JsonNode getVisitors(@RequestParam(value="key", defaultValue="") String key){
         JsonNode visitors;
         try {
             visitors = parksMapper.readTree(myOrder.viewVisitors().toString());
@@ -226,7 +232,7 @@ public class AppController {
                     "\"title\": \"Your request data didn't pass validation\"," +
                     "\"detail\": \"You may not post a note to a park unless you paid for admission at that park\"," +
                     "\"status\": 400," +
-                    "\"instance\": \"/parks/<pid3>\"" +
+                    "\"instance\": \"/parks/\"" + pid +
                     "}";
             noteId = parksMapper.readTree(json);
             return new ResponseEntity<JsonNode>(noteId, HttpStatus.BAD_REQUEST);
@@ -268,12 +274,15 @@ public class AppController {
         String json = "{\"oid\":" + oid+"}";
         try {
             orderId = parksMapper.readTree(json);
-            return new ResponseEntity<JsonNode>(orderId, HttpStatus.CREATED);
+            String uri = "/orders/"+Integer.toString(oid);
+            return ResponseEntity.created(new URI(uri)).body(orderId);
         } catch (JsonMappingException e) {
             e.printStackTrace();
         } catch (JsonGenerationException e) {
             e.printStackTrace();
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (URISyntaxException e){
             e.printStackTrace();
         }
         return new ResponseEntity<JsonNode>(orderId, HttpStatus.BAD_REQUEST);

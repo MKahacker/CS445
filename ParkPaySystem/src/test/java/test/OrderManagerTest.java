@@ -210,4 +210,28 @@ public class OrderManagerTest {
 
         assertEquals(true, myOrders.checkIfVisitorVisitedPark(102, 100));
     }
+
+    @Test
+    public void searchOrdersByKeys(){
+        assertEquals(myOrders.viewAllOrders().toString(), myOrders.searchWithKey("").toString());
+
+        pid = 102;
+        name = "John Doe";
+        email = "john.doe@gmail.com";
+
+        myOrders.createNewOrder(pid,amount,new Vehicle("IL", "Z7868", type), payment_info,timeStamp,name,email);
+
+        assertEquals(myOrders.viewAllOrders().toString(), myOrders.searchWithKey("").toString());
+
+        pid = 102;
+        name = "John Doe";
+        email = "john.doe@gmail.com";
+
+        int oid = myOrders.createNewOrder(pid,amount,new Vehicle("IL", "Z7890", type), payment_info,timeStamp,"George Washington",email);
+        Order testOrder = new Order(oid,pid,708,amount,new Vehicle("IL", "Z7890", type), payment_info,timeStamp);
+
+        assertEquals("["+testOrder.viewOrder().toString()+"]", myOrders.searchWithKey("Z7890").toString());
+
+
+    }
 }

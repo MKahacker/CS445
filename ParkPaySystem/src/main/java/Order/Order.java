@@ -76,4 +76,21 @@ public class Order {
     public int getPid() {
         return this.parkId;
     }
+
+    public boolean searchKey(String key) {
+        boolean found = false;
+        if(this.viewOrder().toString().contains(key)){
+            found = true;
+        }
+        if(this.viewPaymentInfo().toString().contains(key)){
+            found = true;
+        }
+        if(this.viewVehicleInfo().toString().contains(key)){
+            found = true;
+        }
+        if(this.viewProcessingInfo().toString().contains(key)){
+            found = true;
+        }
+        return found;
+    }
 }
