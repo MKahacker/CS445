@@ -24,7 +24,10 @@ public class OrderManager {
     public int createNewOrder(int pid, double amount, Vehicle vehicleInfo, PaymentInfo paymentInfo,
                               Date orderDate, String name, String email){
         int oid = listOfOrders.size() + 100;
-        int vid = listOfVistor.size() + 100;
+        int vid = didVisitorAlreadyVisit(email);
+        if(vid == -1) {
+            vid = listOfVistor.size() + 100;
+        }
 
         AbstractVistor newVistor = new Vistor(vid, name, email);
         listOfVistor.add(newVistor);
@@ -33,6 +36,16 @@ public class OrderManager {
         listOfOrders.add(newOrder);
 
         return oid;
+    }
+
+    private int didVisitorAlreadyVisit(String email) {
+        int vid = -1;
+        for(int i=0; i < this.listOfVistor.size(); i++){
+            if(getVisitor(i).getEmail().equals(email)){
+                vid = getVisitor(i).getVid();
+            }
+        }
+        return vid;
     }
 
     public JSONArray viewAllOrders() {

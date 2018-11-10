@@ -67,10 +67,7 @@ public class CommentManager {
         List<Integer> parkIdSet = returnAllParkIds();
 
         for(int j=0; j < parkIdSet.size(); j++) {
-            JSONObject objectInArray = new JSONObject();
-            objectInArray.put("pid", parkIdSet.get(j));
-            objectInArray.put("notes", viewCommentsForPark(parkIdSet.get(j)));
-            comments.put(objectInArray);
+            comments.put(viewCommentsForPark(parkIdSet.get(j)).get(0));
         }
         return comments;
     }
@@ -88,12 +85,17 @@ public class CommentManager {
 
     public JSONArray viewCommentsForPark(int parkId){
         JSONArray parkComments = new JSONArray();
-        for(int i= 0; i < commentList.size(); i++){
+        JSONArray returnArray = new JSONArray();
+        JSONObject parkObject = new JSONObject();
+        for(int i = 0; i < commentList.size(); i++){
             if(commentList.get(i).getParkId() == parkId){
                 parkComments.put(commentList.get(i).limitedCommentInfo());
             }
         }
-        return parkComments;
+        parkObject.put("pid", parkId);
+        parkObject.put("notes", parkComments);
+        returnArray.put(parkObject);
+        return returnArray;
     }
 
     public JSONArray viewCommentsForVisitor(int vid) {

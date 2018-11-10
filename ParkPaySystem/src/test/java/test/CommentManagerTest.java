@@ -3,6 +3,7 @@ package test;
 import Comment.Comment;
 import Comment.CommentManager;
 import org.json.JSONArray;
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -64,8 +65,7 @@ class CommentManagerTest {
     public void testViewAllCommentAssociatedWithOneParkWithOnlyOneComment() {
         int commentId = myComments.createNewComment(250, 350, new Date(), "Green Forest", "This forest was soo green");
         newComment.setId(commentId);
-
-        assertEquals("[" + newComment.limitedCommentInfo().toString() + "]", myComments.viewCommentsForPark(250).toString());
+        assertEquals("[{\"notes\":[" + newComment.limitedCommentInfo().toString() + "],\"pid\":250}]", myComments.viewCommentsForPark(250).toString());
     }
 
     @Test
@@ -80,12 +80,12 @@ class CommentManagerTest {
             testComments.add(new Comment(commentId, 250, 350, testDate, "Green Forest", "This forest was soo green"));
             expectedOutput.put(testComments.get(i).limitedCommentInfo());
         }
-        assertEquals(expectedOutput.toString(), myComments.viewCommentsForPark(250).toString());
+        assertEquals("[{\"notes\":"+expectedOutput.toString()+",\"pid\":250}]", myComments.viewCommentsForPark(250).toString());
     }
 
     @Test
     public void testViewAllCommentsAssociatedWithParkWithNoComments() {
-        assertEquals("[]", myComments.viewCommentsForPark(250).toString());
+        assertEquals("[{\"notes\":[],\"pid\":250}]", myComments.viewCommentsForPark(250).toString());
     }
 
     @Test

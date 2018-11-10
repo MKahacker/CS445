@@ -117,7 +117,7 @@ public class AppController {
     }
 
     @GetMapping("/orders/{id}")
-    public JsonNode getOneOrder(@PathVariable int oid){
+    public JsonNode getOneOrder(@PathVariable("id") int oid){
         JsonNode orders;
         try {
             orders = parksMapper.readTree(myOrder.viewSpecificOrder(oid).toString());
@@ -218,15 +218,24 @@ public class AppController {
         if(!(noteInfo.has("text"))) {
             return new ResponseEntity<JsonNode>(noteId, HttpStatus.BAD_REQUEST);
         }
+        try {
         int vid = noteInfo.get("vid").asInt();
         if(!(myOrder.checkIfVisitorVisitedPark(pid, vid))){
+            String json ="{" +
+                    "\"type\": \"http://cs.iit.edu/~virgil/cs445/project/api/problems/data-validation\"," +
+                    "\"title\": \"Your request data didn't pass validation\"," +
+                    "\"detail\": \"You may not post a note to a park unless you paid for admission at that park\"," +
+                    "\"status\": 400," +
+                    "\"instance\": \"/parks/<pid3>\"" +
+                    "}";
+            noteId = parksMapper.readTree(json);
             return new ResponseEntity<JsonNode>(noteId, HttpStatus.BAD_REQUEST);
         }
         String title = noteInfo.get("title").asText();
         String body = noteInfo.get("text").asText();
         int nid = myComment.createNewComment(pid, vid, new Date(), title, body);
         String json= "{\"nid\":" + nid+"}";
-        try {
+
             noteId = parksMapper.readTree(json);
             return new ResponseEntity<JsonNode>(noteId, HttpStatus.CREATED);
         } catch (JsonMappingException e) {

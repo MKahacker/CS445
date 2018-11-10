@@ -101,6 +101,8 @@ public class OrderManagerTest {
     public void createNewOrder(){
         int newOid = myOrders.createNewOrder(pid, amount, new Vehicle("IL", "Z78Z", type), payment_info, timeStamp, name, email);
         assertNotEquals(-1, myOrders.returnIndex(newOid));
+        newOid = myOrders.createNewOrder(101, 3.63, new Vehicle("IL", "Z78Z", type), payment_info, timeStamp, name, email);
+        assertNotEquals(-1, myOrders.returnIndex(newOid));
     }
 
     @Test

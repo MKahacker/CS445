@@ -18,4 +18,8 @@ public abstract class AbstractVistor {
     public int getVid() {
         return this.id;
     }
+
+    public String getEmail(){
+        return this.email;
+    }
 }
