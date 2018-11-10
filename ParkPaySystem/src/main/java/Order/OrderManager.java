@@ -159,4 +159,15 @@ public class OrderManager {
         }
         return ordersWithKeys;
     }
+
+    public JSONArray searchWithKeyVisitor(String key) {
+        JSONArray visitorsWithKey = new JSONArray();
+        JSONArray allVisitors = viewVisitors();
+        for(int i =0; i < allVisitors.length(); i++){
+            if(allVisitors.get(i).toString().contains(key)){
+                visitorsWithKey.put(allVisitors.get(i));
+            }
+        }
+        return visitorsWithKey;
+    }
 }

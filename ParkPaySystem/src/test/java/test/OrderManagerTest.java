@@ -232,6 +232,29 @@ public class OrderManagerTest {
 
         assertEquals("["+testOrder.viewOrder().toString()+"]", myOrders.searchWithKey("Z7890").toString());
 
+    }
+
+    @Test
+    public void searchVisitorsByKeys(){
+        assertEquals(myOrders.viewVisitors().toString(), myOrders.searchWithKeyVisitor("").toString());
+
+        pid = 102;
+        name = "John Doe";
+        email = "john.doe@gmail.com";
+
+        myOrders.createNewOrder(pid,amount,new Vehicle("IL", "Z7868", type), payment_info,timeStamp,name,email);
+
+        assertEquals(myOrders.viewVisitors().toString(), myOrders.searchWithKeyVisitor("").toString());
+
+        pid = 102;
+        name = "John Doe";
+        email = "john.doe@gmail.com";
+
+         myOrders.createNewOrder(pid,amount,new Vehicle("IL", "Z7890", type), payment_info,timeStamp,"George Washington","George.Washington@gmail.com");
+
+        assertEquals("[{\"vid\":101,\"name\":\"George Washington\",\"email\":\"George.Washington@gmail.com\"}]",  myOrders.searchWithKeyVisitor("George").toString());
 
     }
+
+
 }

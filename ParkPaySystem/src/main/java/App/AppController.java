@@ -142,7 +142,11 @@ public class AppController {
     public JsonNode getVisitors(@RequestParam(value="key", defaultValue="") String key){
         JsonNode visitors;
         try {
-            visitors = parksMapper.readTree(myOrder.viewVisitors().toString());
+            if(key.equals("")) {
+                visitors = parksMapper.readTree(myOrder.viewVisitors().toString());
+            }else{
+                visitors = parksMapper.readTree(myOrder.searchWithKeyVisitor(key).toString());
+            }
             return visitors;
         } catch (JsonMappingException e) {
             e.printStackTrace();
