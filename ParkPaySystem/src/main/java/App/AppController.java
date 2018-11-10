@@ -202,7 +202,7 @@ public class AppController {
             int pid = myParks.createAPark(locationInfo[0],locationInfo[1],locationInfo[2],locationInfo[3],locationInfo[4],geoInfo[0],geoInfo[1],parkPayment);
             String json = "{\"pid\":"+pid+"}";
             parkId = parksMapper.readTree(json);
-            String uri =  "/orders/"+Integer.toString(pid);;
+            String uri =  "/parks/"+Integer.toString(pid);;
             return ResponseEntity.created(new URI(uri)).body(parkId);
 
         } catch(NullPointerException e){
