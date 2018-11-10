@@ -202,7 +202,8 @@ public class AppController {
             int pid = myParks.createAPark(locationInfo[0],locationInfo[1],locationInfo[2],locationInfo[3],locationInfo[4],geoInfo[0],geoInfo[1],parkPayment);
             String json = "{\"pid\":"+pid+"}";
             parkId = parksMapper.readTree(json);
-            return new ResponseEntity<JsonNode>(parkId, HttpStatus.CREATED);
+            String uri =  "/orders/"+Integer.toString(pid);;
+            return ResponseEntity.created(new URI(uri)).body(parkId);
 
         } catch(NullPointerException e){
             return new ResponseEntity<JsonNode>(parkId, HttpStatus.BAD_REQUEST);
@@ -211,6 +212,8 @@ public class AppController {
         } catch (JsonGenerationException e) {
             e.printStackTrace();
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (URISyntaxException e){
             e.printStackTrace();
         }
         return new ResponseEntity<JsonNode>(parkId, HttpStatus.BAD_REQUEST);
@@ -236,7 +239,7 @@ public class AppController {
                     "\"title\": \"Your request data didn't pass validation\"," +
                     "\"detail\": \"You may not post a note to a park unless you paid for admission at that park\"," +
                     "\"status\": 400," +
-                    "\"instance\": \"/parks/\"" + pid +
+                    "\"instance\": \"/parks/" + pid + "\"" +
                     "}";
             noteId = parksMapper.readTree(json);
             return new ResponseEntity<JsonNode>(noteId, HttpStatus.BAD_REQUEST);
