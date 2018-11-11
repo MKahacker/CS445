@@ -130,7 +130,8 @@ public class ParkInteractor {
         JSONArray allParks = getAllParksInfo();
         JSONArray parksWithKey = new JSONArray();
         for(int i = 0; i < allParks.length(); i++){
-            if(allParks.get(i).toString().contains(key)){
+            String parkString = allParks.get(i).toString().toLowerCase();
+            if(parkString.contains(key.toLowerCase())){
                 parksWithKey.put(allParks.get(i));
             }
         }
