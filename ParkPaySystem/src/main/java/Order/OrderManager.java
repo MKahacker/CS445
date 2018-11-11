@@ -125,7 +125,7 @@ public class OrderManager {
         JSONObject visitorInfo = new JSONObject();
         int idx = returnVistorIndex(vid);
         if(idx != -1) {
-            visitorInfo.put("vid", vid);
+            visitorInfo.put("vid", Integer.toString(vid));
             JSONObject name_email = getVisitor(idx).viewVisitorInfo();
             visitorInfo.put("visitor", name_email);
             JSONArray orderInfo = viewOrdersForVisitor(vid);
