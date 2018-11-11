@@ -105,7 +105,7 @@ public class OrderManager {
         JSONArray visitorsInfo = new JSONArray();
         for(int i = 0; i < this.listOfVistor.size(); i++){
             JSONObject visitor = getVisitor(i).viewVisitorInfo();
-            visitor.put("vid", getVisitor(i).getVid());
+            visitor.put("vid", Integer.toString(getVisitor(i).getVid()));
             visitorsInfo.put(visitor);
         }
         return visitorsInfo;

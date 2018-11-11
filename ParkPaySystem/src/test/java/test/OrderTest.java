@@ -39,7 +39,7 @@ public class OrderTest {
         DateFormat myDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String OrderInfoJSONFormat;
         OrderInfoJSONFormat = "\"date\":\"" + myDateFormat.format(timeStamp)+"\",\"amount\":"+amount+",\"pid\":\""+pid+"\"";
-        OrderInfoJSONFormat += ",\"oid\":" + oid +",\"type\":\""+vehicleInfo.getType()+"\"";
+        OrderInfoJSONFormat += ",\"oid\":\"" + oid +"\",\"type\":\""+vehicleInfo.getType()+"\"";
         return OrderInfoJSONFormat;
     }
 

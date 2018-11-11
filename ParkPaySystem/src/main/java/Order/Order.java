@@ -34,7 +34,7 @@ public class Order {
         JSONObject orderInfo = new JSONObject();
         DateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-        orderInfo.put("oid",this.id);
+        orderInfo.put("oid",Integer.toString(this.id));
         orderInfo.put("pid", Integer.toString(this.parkId));
         orderInfo.put("amount", this.amount);
         orderInfo.put("type", this.vehicleInfo.getType());

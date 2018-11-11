@@ -123,7 +123,7 @@ public class OrderManagerTest {
 
     private String addToString(String myString) {
         myString+="\"date\":\"" + formatter.format(timeStamp)+"\",\"amount\":"+amount+",\"pid\":\""+pid+"\"";
-        myString+=",\"oid\":" + oid +",\"type\":\""+type+"\"";
+        myString+=",\"oid\":\"" + oid +"\",\"type\":\""+type+"\"";
         return myString;
     }
 
@@ -135,7 +135,7 @@ public class OrderManagerTest {
         String processingInfo = "{\"date_and_time\":\""+newFormat.format(timeStamp)+"\",\"card_transaction_id\":\"123-4567-89\"}";
 
         myString+="\"date\":\"" + formatter.format(timeStamp)+"\",\"vid\":" + 100 +",\"amount\":"+amount+",\"pid\":\""+pid+"\"";
-        myString+=",\"oid\":" + oid;
+        myString+=",\"oid\":\"" + oid+"\"";
         myString+= ",\"visitor\":" + visitorInfo +  ",\"payment_processing\":"+processingInfo+",\"vehicle\":" + specificVehicleInfo;
         return myString;
     }
@@ -152,7 +152,7 @@ public class OrderManagerTest {
         email = "john.doe@gmail.com";
 
         myOrders.createNewOrder(pid,amount,new Vehicle("IL", "Z7868", type), payment_info,timeStamp,name,email);
-        assertEquals("[{\"vid\":100,\"name\":\"John Doe\",\"email\":\"john.doe@gmail.com\"}]", myOrders.viewVisitors().toString());
+        assertEquals("[{\"vid\":\"100\",\"name\":\"John Doe\",\"email\":\"john.doe@gmail.com\"}]", myOrders.viewVisitors().toString());
     }
 
     @Test
@@ -171,7 +171,7 @@ public class OrderManagerTest {
                 "\"orders\":[{" +
                 "\"date\":\""+ formatter.format(new Date())+"\","+
                 "\"pid\":\"411\"," +
-                "\"oid\":100" +
+                "\"oid\":\"100\"" +
                 "}]," +
                 "\"visitor\":{" +
                 "\"name\":\"John Doe\"," +
@@ -194,7 +194,7 @@ public class OrderManagerTest {
         assertEquals("[{" +
                 "\"date\":\""+ formatter.format(new Date())+"\","+
                 "\"pid\":\"102\"," +
-                "\"oid\":100" +
+                "\"oid\":\"100\"" +
                 "}]", myOrders.viewOrdersForVisitor(100).toString());
     }
 
@@ -252,7 +252,7 @@ public class OrderManagerTest {
 
          myOrders.createNewOrder(pid,amount,new Vehicle("IL", "Z7890", type), payment_info,timeStamp,"George Washington","George.Washington@gmail.com");
 
-        assertEquals("[{\"vid\":101,\"name\":\"George Washington\",\"email\":\"George.Washington@gmail.com\"}]",  myOrders.searchWithKeyVisitor("George").toString());
+        assertEquals("[{\"vid\":\"101\",\"name\":\"George Washington\",\"email\":\"George.Washington@gmail.com\"}]",  myOrders.searchWithKeyVisitor("George").toString());
 
     }
 
