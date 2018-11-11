@@ -53,7 +53,7 @@ public class Park implements InterfacePark {
     public JSONObject viewInformation(){
         JSONObject string = new JSONObject();
 
-        string.put("pid", this.id);
+        string.put("pid", Integer.toString(this.id));
         string.put("location_info", parseLocationInfo());
 
         return string;

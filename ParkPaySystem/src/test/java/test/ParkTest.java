@@ -47,7 +47,7 @@ class ParkTest {
         expected2.put("web", web);
         expected2.put("geo", expected3);
 
-        expected1.put("pid", id);
+        expected1.put("pid", Integer.toString(id));
         expected1.put("location_info", expected2);
     }
 
