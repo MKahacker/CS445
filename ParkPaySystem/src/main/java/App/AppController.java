@@ -180,6 +180,21 @@ public class AppController {
         return Reports.getReport();
     }
 
+    @GetMapping("/reports/567")
+    public JsonNode getAdmissionsReport(@RequestParam(value="start_date", defaultValue="") String startDate,
+                                        @RequestParam(value="end_date", defaultValue="") String endDate){
+        JsonNode admissionReport = null;
+        try {
+            admissionReport = parksMapper.readTree(Reports.getAdmissionReport(myParks.getAllParksInfo(),
+                    myOrder.viewAllOrders(), startDate, endDate).toString());
+
+            return admissionReport;
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+        return admissionReport;
+    }
+
     @PostMapping("/parks")
     public ResponseEntity<JsonNode> createPark(@RequestBody JsonNode parkinfo){
         JsonNode parkId = null;
