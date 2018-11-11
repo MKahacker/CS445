@@ -247,7 +247,7 @@ public class AppController {
         String title = noteInfo.get("title").asText();
         String body = noteInfo.get("text").asText();
         int nid = myComment.createNewComment(pid, vid, new Date(), title, body);
-        String json= "{\"nid\":" + nid+"}";
+        String json= "{\"nid\":\"" + nid+"\"}";
 
             noteId = parksMapper.readTree(json);
             return new ResponseEntity<JsonNode>(noteId, HttpStatus.CREATED);
@@ -278,7 +278,7 @@ public class AppController {
         Vehicle vehicleInfo = new Vehicle(state, plate, type);
         PaymentInfo paymentInfo = new PaymentInfo(zip, card, cardName, expirationDate);
         int oid = myOrder.createNewOrder(pid,amount, vehicleInfo,paymentInfo,new Date(), name, email);
-        String json = "{\"oid\":" + oid+"}";
+        String json = "{\"oid\":\"" + oid+"\"}";
         try {
             orderId = parksMapper.readTree(json);
             String uri = "/orders/"+Integer.toString(oid);
