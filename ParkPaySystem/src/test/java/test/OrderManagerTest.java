@@ -166,7 +166,7 @@ public class OrderManagerTest {
         myOrders.createNewOrder(pid,amount,new Vehicle("IL", "Z7868", type), payment_info,timeStamp,name,email);
 
         assertEquals("{" +
-                "\"vid\":100," +
+                "\"vid\":\"100\"," +
                 "\"notes\":[]," +
                 "\"orders\":[{" +
                 "\"date\":\""+ formatter.format(new Date())+"\","+

@@ -49,7 +49,7 @@ public class Comment {
         JSONObject commentInfo = new JSONObject();
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
-        commentInfo.put("nid", this.id);
+        commentInfo.put("nid", Integer.toString(this.id));
         commentInfo.put("date", formatter.format(this.timeStamp));
         commentInfo.put("title", this.title);
 
@@ -60,9 +60,9 @@ public class Comment {
         JSONObject comment = new JSONObject();
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
-        comment.put("nid", this.id);
-        comment.put("pid", this.parkId);
-        comment.put("vid", this.authorId);
+        comment.put("nid", Integer.toString(this.id));
+        comment.put("pid", Integer.toString(this.parkId));
+        comment.put("vid", Integer.toString(this.authorId));
         comment.put("date", formatter.format(this.timeStamp));
         comment.put("title", this.title);
         comment.put("text", this.body);

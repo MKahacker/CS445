@@ -157,7 +157,7 @@ class CommentManagerTest {
         assertEquals("[]", myComments.viewCommentsForVisitor(700).toString());
         int nid = myComments.createNewComment(102, 100, new Date(), "No Campground", "Lovely but no campground");
         assertEquals("[{\"date\":\"" +
-                dateFormat.format(new Date())+"\",\"nid\":"+nid+",\"pid\":102,\"title\":\"No Campground\"}]",myComments.viewCommentsForVisitor(100).toString());
+                dateFormat.format(new Date())+"\",\"nid\":\""+nid+"\",\"pid\":\"102\",\"title\":\"No Campground\"}]",myComments.viewCommentsForVisitor(100).toString());
     }
 
 }

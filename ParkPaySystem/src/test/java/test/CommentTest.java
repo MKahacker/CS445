@@ -34,9 +34,9 @@ class CommentTest {
     public JSONObject jsonBuilder(int id, int parkId, int author, String title, String body){
         JSONObject comment = new JSONObject();
 
-        comment.put("nid", id);
-        comment.put("pid", parkId);
-        comment.put("vid", author);
+        comment.put("nid", Integer.toString(id));
+        comment.put("pid", Integer.toString(parkId));
+        comment.put("vid", Integer.toString(author));
         comment.put("date", formatter.format(timeStamp));
         comment.put("title", title);
         comment.put("text", body);
@@ -47,7 +47,7 @@ class CommentTest {
     public JSONObject limitedJSONBuilder(int id, String title){
         JSONObject limitedComment = new JSONObject();
 
-        limitedComment.put("nid", id);
+        limitedComment.put("nid", Integer.toString(id));
         limitedComment.put("date", formatter.format(timeStamp));
         limitedComment.put("title", title);
 
@@ -73,7 +73,7 @@ class CommentTest {
     public void testUpdateComment(){
         String newTitle = "Mosquitos galore";
         String newText = "This is a nice place with good fihsing, but the mosquitos are killing us.";
-        String updatedComment = "{\"vid\":412,\"date\":\""+formatter.format(timeStamp)+"\",\"nid\":101,\"pid\":101,\"text\":\""+newText+"\",\"title\":\""+newTitle+"\"}";
+        String updatedComment = "{\"vid\":\"412\",\"date\":\""+formatter.format(timeStamp)+"\",\"nid\":\"101\",\"pid\":\"101\",\"text\":\""+newText+"\",\"title\":\""+newTitle+"\"}";
         newComment.updateComment(412, newTitle, newText);
         assertEquals( updatedComment, newComment.viewComment().toString());
     }
