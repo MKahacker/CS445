@@ -6,6 +6,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
@@ -22,7 +23,7 @@ public class ReportingTest {
         String emptyParksAndOrders = "{\"end_date\":\"\",\"detail_by_park\":[],\"total_admissions\":0," +
                 "\"name\":\"Admissions report\",\"rid\":\"567\",\"start_date\":\"\"}";
 
-        assertEquals(emptyParksAndOrders, Reports.getAdmissionReport(new JSONArray(), new JSONArray(),null,null).toString());
+        assertEquals(emptyParksAndOrders, Reports.getAdmissionReport(new JSONArray(), new JSONArray(),"","").toString());
 
         JSONArray parks = generatePark();
         JSONArray orders = generateOrder();
@@ -34,7 +35,24 @@ public class ReportingTest {
                 "\"admissions\":0}],\"total_admissions\":4," +
                 "\"name\":\"Admissions report\",\"rid\":\"567\"," +
                 "\"start_date\":\"\"}",
-                Reports.getAdmissionReport(parks, orders,null,null).toString());
+                Reports.getAdmissionReport(parks, orders,"","").toString());
+
+        String admissionReportWithOutOfRangeDate = "{\"end_date\":\"2017-02-03\",\"detail_by_park\":" +
+                "[{\"name\":\"Apple River Canyon\",\"pid\":\"123\",\"admissions\":0}," +
+                "{\"name\":\"Castle Rock\",\"pid\":\"124\",\"admissions\":0}," +
+                "{\"name\":\"Mermet Lake\",\"pid\":\"131\",\"admissions\":0}],\"total_admissions\":0," +
+                "\"name\":\"Admissions report\",\"rid\":\"567\",\"start_date\":\"2017-01-03\"}";
+
+        assertEquals(admissionReportWithOutOfRangeDate, Reports.getAdmissionReport(parks,orders,"2017-01-03", "2017-02-03").toString());
+
+        String admissionReportWithTwoDatesInRange = "{\"end_date\":\"2018-07-04\",\"detail_by_park\":" +
+                "[{\"name\":\"Apple River Canyon\",\"pid\":\"123\",\"admissions\":1}," +
+                "{\"name\":\"Castle Rock\",\"pid\":\"124\",\"admissions\":1}," +
+                "{\"name\":\"Mermet Lake\",\"pid\":\"131\",\"admissions\":0}],\"total_admissions\":2," +
+                "\"name\":\"Admissions report\",\"rid\":\"567\",\"start_date\":\"2017-01-03\"}";
+
+        assertEquals(admissionReportWithTwoDatesInRange, Reports.getAdmissionReport(parks,orders,"2017-01-03", "2018-07-04").toString());
+
     }
 
     private JSONArray generateOrder() {
