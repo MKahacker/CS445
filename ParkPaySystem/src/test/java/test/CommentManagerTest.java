@@ -65,7 +65,7 @@ class CommentManagerTest {
     public void testViewAllCommentAssociatedWithOneParkWithOnlyOneComment() {
         int commentId = myComments.createNewComment(250, 350, new Date(), "Green Forest", "This forest was soo green");
         newComment.setId(commentId);
-        assertEquals("[{\"notes\":[" + newComment.limitedCommentInfo().toString() + "],\"pid\":250}]", myComments.viewCommentsForPark(250).toString());
+        assertEquals("[{\"notes\":[" + newComment.limitedCommentInfo().toString() + "],\"pid\":\"250\"}]", myComments.viewCommentsForPark(250).toString());
     }
 
     @Test
@@ -80,12 +80,12 @@ class CommentManagerTest {
             testComments.add(new Comment(commentId, 250, 350, testDate, "Green Forest", "This forest was soo green"));
             expectedOutput.put(testComments.get(i).limitedCommentInfo());
         }
-        assertEquals("[{\"notes\":"+expectedOutput.toString()+",\"pid\":250}]", myComments.viewCommentsForPark(250).toString());
+        assertEquals("[{\"notes\":"+expectedOutput.toString()+",\"pid\":\"250\"}]", myComments.viewCommentsForPark(250).toString());
     }
 
     @Test
     public void testViewAllCommentsAssociatedWithParkWithNoComments() {
-        assertEquals("[{\"notes\":[],\"pid\":250}]", myComments.viewCommentsForPark(250).toString());
+        assertEquals("[{\"notes\":[],\"pid\":\"250\"}]", myComments.viewCommentsForPark(250).toString());
     }
 
     @Test
@@ -102,14 +102,14 @@ class CommentManagerTest {
         oneCommentList.add(testComment);
         CommentManager oneComments = new CommentManager(oneCommentList);
 
-        String stringComment = "[{\"notes\":[" + testComment.limitedCommentInfo() + "],\"pid\":250}]";
+        String stringComment = "[{\"notes\":[" + testComment.limitedCommentInfo() + "],\"pid\":\"250\"}]";
         assertEquals(stringComment, oneComments.viewAllComments().toString());
     }
 
     @Test
     public void testViewAllCommentsWithManyCommentsFromOnePark() {
         String commentsInfo = testComment.limitedCommentInfo() + "," + newComment.limitedCommentInfo();
-        String stringComment = "[{\"notes\":[" + commentsInfo + "],\"pid\":250}]";
+        String stringComment = "[{\"notes\":[" + commentsInfo + "],\"pid\":\"250\"}]";
         comments.clear();
         comments.add(testComment);
         comments.add(newComment);
@@ -121,7 +121,7 @@ class CommentManagerTest {
     @Test
     public void testViewAllCommentsWithManyCommentsFromManyParks() {
         Comment testComment2 = new Comment(108, 160, 100, new Date(), "Lovely Day", "");
-        String stringComment = "[{\"notes\":[" + testComment.limitedCommentInfo() + "],\"pid\":250},{\"notes\":[" + testComment2.limitedCommentInfo() + "],\"pid\":160}]";
+        String stringComment = "[{\"notes\":[" + testComment.limitedCommentInfo() + "],\"pid\":\"250\"},{\"notes\":[" + testComment2.limitedCommentInfo() + "],\"pid\":\"160\"}]";
 
         comments.clear();
         comments.add(testComment);
