@@ -200,7 +200,7 @@ public class AppController {
                 return new ResponseEntity<JsonNode>(parkId, HttpStatus.BAD_REQUEST);
             }
             int pid = myParks.createAPark(locationInfo[0],locationInfo[1],locationInfo[2],locationInfo[3],locationInfo[4],geoInfo[0],geoInfo[1],parkPayment);
-            String json = "{\"pid\":"+pid+"}";
+            String json = "{\"pid\":\""+pid+"\"}";
             parkId = parksMapper.readTree(json);
             String uri =  "/parks/"+Integer.toString(pid);;
             return ResponseEntity.created(new URI(uri)).body(parkId);
