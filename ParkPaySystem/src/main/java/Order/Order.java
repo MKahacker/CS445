@@ -35,7 +35,7 @@ public class Order {
         DateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd");
 
         orderInfo.put("oid",this.id);
-        orderInfo.put("pid", this.parkId);
+        orderInfo.put("pid", Integer.toString(this.parkId));
         orderInfo.put("amount", this.amount);
         orderInfo.put("type", this.vehicleInfo.getType());
         orderInfo.put("date", myFormat.format(this.dateOfTransaction));

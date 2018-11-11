@@ -122,7 +122,7 @@ public class OrderManagerTest {
     }
 
     private String addToString(String myString) {
-        myString+="\"date\":\"" + formatter.format(timeStamp)+"\",\"amount\":"+amount+",\"pid\":"+pid;
+        myString+="\"date\":\"" + formatter.format(timeStamp)+"\",\"amount\":"+amount+",\"pid\":\""+pid+"\"";
         myString+=",\"oid\":" + oid +",\"type\":\""+type+"\"";
         return myString;
     }
@@ -134,7 +134,7 @@ public class OrderManagerTest {
         String visitorInfo = "{\"name\":\""+name+"\",\"payment_info\":" + paymentInfo+",\"email\":\""+email+"\"}";
         String processingInfo = "{\"date_and_time\":\""+newFormat.format(timeStamp)+"\",\"card_transaction_id\":\"123-4567-89\"}";
 
-        myString+="\"date\":\"" + formatter.format(timeStamp)+"\",\"vid\":" + 100 +",\"amount\":"+amount+",\"pid\":"+pid;
+        myString+="\"date\":\"" + formatter.format(timeStamp)+"\",\"vid\":" + 100 +",\"amount\":"+amount+",\"pid\":\""+pid+"\"";
         myString+=",\"oid\":" + oid;
         myString+= ",\"visitor\":" + visitorInfo +  ",\"payment_processing\":"+processingInfo+",\"vehicle\":" + specificVehicleInfo;
         return myString;
@@ -170,7 +170,7 @@ public class OrderManagerTest {
                 "\"notes\":[]," +
                 "\"orders\":[{" +
                 "\"date\":\""+ formatter.format(new Date())+"\","+
-                "\"pid\":411," +
+                "\"pid\":\"411\"," +
                 "\"oid\":100" +
                 "}]," +
                 "\"visitor\":{" +
@@ -193,7 +193,7 @@ public class OrderManagerTest {
 
         assertEquals("[{" +
                 "\"date\":\""+ formatter.format(new Date())+"\","+
-                "\"pid\":102," +
+                "\"pid\":\"102\"," +
                 "\"oid\":100" +
                 "}]", myOrders.viewOrdersForVisitor(100).toString());
     }
