@@ -92,7 +92,7 @@ public class CommentManager {
                 parkComments.put(commentList.get(i).limitedCommentInfo());
             }
         }
-        parkObject.put("pid", parkId);
+        parkObject.put("pid", Integer.toString(parkId));
         parkObject.put("notes", parkComments);
         returnArray.put(parkObject);
         return returnArray;
