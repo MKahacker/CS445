@@ -10,6 +10,7 @@ import Order.Order;
 import Order.OrderManager;
 import Park.Park;
 import Park.ParkInteractor;
+import Reporting.Reports;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -172,6 +173,11 @@ public class AppController {
             e.printStackTrace();
         }
         return null;
+    }
+
+    @GetMapping("/reports")
+    public String getReports(){
+        return Reports.getReport();
     }
 
     @PostMapping("/parks")
