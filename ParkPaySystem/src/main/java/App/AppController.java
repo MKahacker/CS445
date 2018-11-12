@@ -181,8 +181,14 @@ public class AppController {
     }
 
     @GetMapping("/reports")
-    public String getReports(){
-        return Reports.getReport();
+    public JsonNode getReports(){
+        JsonNode reports = null;
+        try{
+           reports = parksMapper.readTree( Reports.getReport());
+        }catch (IOException e){
+
+        }
+        return reports;
     }
 
     @GetMapping("/reports/567")
@@ -268,7 +274,7 @@ public class AppController {
             parseError = parksMapper.readTree(parseErrorString);
 
             if(startDate.equals("") && endDate.equals("")){
-                revenueReport = parksMapper.readTree(Reports.getAdmissionReport(myParks.getAllParksInfo(),
+                revenueReport = parksMapper.readTree(Reports.getRevenueReport(myParks.getAllParksInfo(),
                         myOrder.viewAllOrders(), startDate, endDate).toString());
 
                 return ResponseEntity.ok().body(revenueReport);
@@ -277,7 +283,7 @@ public class AppController {
                 Date end_Date = requestDate.parse(endDate);
                 endDate = myFormat.format(end_Date);
 
-                revenueReport = parksMapper.readTree(Reports.getAdmissionReport(myParks.getAllParksInfo(),
+                revenueReport = parksMapper.readTree(Reports.getRevenueReport(myParks.getAllParksInfo(),
                         myOrder.viewAllOrders(), startDate, endDate).toString());
 
                 return ResponseEntity.ok().body(revenueReport);
@@ -286,7 +292,7 @@ public class AppController {
                 Date start_date = requestDate.parse(startDate);
                 endDate = myFormat.format(start_date);
 
-                revenueReport = parksMapper.readTree(Reports.getAdmissionReport(myParks.getAllParksInfo(),
+                revenueReport = parksMapper.readTree(Reports.getRevenueReport(myParks.getAllParksInfo(),
                         myOrder.viewAllOrders(), startDate, endDate).toString());
 
                 return ResponseEntity.ok().body(revenueReport);
