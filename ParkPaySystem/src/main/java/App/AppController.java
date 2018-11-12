@@ -37,7 +37,7 @@ public class AppController {
     private CommentManager myComment = new CommentManager(new ArrayList<Comment>());
     private OrderManager myOrder = new OrderManager(new ArrayList<Order>());
     private ObjectMapper parksMapper = new ObjectMapper();
-    DateFormat requestDate = new SimpleDateFormat("yyyyMMdd");
+    SimpleDateFormat requestDate = new SimpleDateFormat("yyyyMMdd");
     DateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd");
 
     @GetMapping("/parks")
@@ -186,14 +186,12 @@ public class AppController {
     }
 
     @GetMapping("/reports/567")
-    public ResponseEntity<JsonNode> getAdmissionsReport(@RequestParam(value="start_date", defaultValue="19310701") String startDate,
+    public ResponseEntity<JsonNode> getAdmissionsReport(@RequestParam(value="start_date", defaultValue="") String startDate,
                                         @RequestParam(value="end_date", defaultValue="") String endDate){
         JsonNode admissionReport = null;
         JsonNode parseError = null;
+        requestDate.setLenient(false);
         try {
-            if(endDate.equals("")){
-                endDate = requestDate.format(new Date());
-            }
             String parseErrorString = "{\"type\": \"http://cs.iit.edu/~virgil/cs445/" +
                     "project/api/problems/data-validation\","+
                     "\"title\": \"Your request data didn't pass validation\"," +
@@ -201,6 +199,31 @@ public class AppController {
                     "\"status\": 400,"+
                     "\"instance\": \"/reports/568\"}";
             parseError = parksMapper.readTree(parseErrorString);
+
+            if(startDate.equals("") && endDate.equals("")){
+                admissionReport = parksMapper.readTree(Reports.getAdmissionReport(myParks.getAllParksInfo(),
+                        myOrder.viewAllOrders(), startDate, endDate).toString());
+
+                return ResponseEntity.ok().body(admissionReport);
+            }
+            if(startDate.equals("")){
+                Date end_Date = requestDate.parse(endDate);
+                endDate = myFormat.format(end_Date);
+
+                admissionReport = parksMapper.readTree(Reports.getAdmissionReport(myParks.getAllParksInfo(),
+                        myOrder.viewAllOrders(), startDate, endDate).toString());
+
+                return ResponseEntity.ok().body(admissionReport);
+            }
+            if(endDate.equals("")){
+                Date start_date = requestDate.parse(startDate);
+                endDate = myFormat.format(start_date);
+
+                admissionReport = parksMapper.readTree(Reports.getAdmissionReport(myParks.getAllParksInfo(),
+                        myOrder.viewAllOrders(), startDate, endDate).toString());
+
+                return ResponseEntity.ok().body(admissionReport);
+            }
 
             Date start_Date = requestDate.parse(startDate);
             Date end_Date = requestDate.parse(endDate);
@@ -230,14 +253,12 @@ public class AppController {
     }
 
     @GetMapping("/reports/568")
-    public ResponseEntity<JsonNode> getRevenueReport(@RequestParam(value="start_date", defaultValue="19310701") String startDate,
+    public ResponseEntity<JsonNode> getRevenueReport(@RequestParam(value="start_date", defaultValue="") String startDate,
                                         @RequestParam(value="end_date", defaultValue= "") String endDate){
         JsonNode revenueReport = null;
         JsonNode parseError = null;
+        requestDate.setLenient(false);
         try {
-            if(endDate.equals("")){
-                endDate = requestDate.format(new Date());
-            }
             String parseErrorString = "{\"type\": \"http://cs.iit.edu/~virgil/cs445/" +
                     "project/api/problems/data-validation\","+
                     "\"title\": \"Your request data didn't pass validation\"," +
@@ -245,6 +266,33 @@ public class AppController {
                     "\"status\": 400,"+
                     "\"instance\": \"/reports/568\"}";
             parseError = parksMapper.readTree(parseErrorString);
+
+            if(startDate.equals("") && endDate.equals("")){
+                revenueReport = parksMapper.readTree(Reports.getAdmissionReport(myParks.getAllParksInfo(),
+                        myOrder.viewAllOrders(), startDate, endDate).toString());
+
+                return ResponseEntity.ok().body(revenueReport);
+            }
+            if(startDate.equals("")){
+                Date end_Date = requestDate.parse(endDate);
+                endDate = myFormat.format(end_Date);
+
+                revenueReport = parksMapper.readTree(Reports.getAdmissionReport(myParks.getAllParksInfo(),
+                        myOrder.viewAllOrders(), startDate, endDate).toString());
+
+                return ResponseEntity.ok().body(revenueReport);
+            }
+            if(endDate.equals("")){
+                Date start_date = requestDate.parse(startDate);
+                endDate = myFormat.format(start_date);
+
+                revenueReport = parksMapper.readTree(Reports.getAdmissionReport(myParks.getAllParksInfo(),
+                        myOrder.viewAllOrders(), startDate, endDate).toString());
+
+                return ResponseEntity.ok().body(revenueReport);
+            }
+
+
             Date start_Date = requestDate.parse(startDate);
             Date end_Date = requestDate.parse(endDate);
             if(start_Date.compareTo(end_Date)> 0){
