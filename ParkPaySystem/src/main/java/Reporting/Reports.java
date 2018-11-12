@@ -161,5 +161,9 @@ public class Reports {
     }
 
 
+    public static JSONArray searchApplication(JSONArray parks, JSONArray orders,
+                                              JSONArray visitors, JSONArray notes, String start, String end) {
 
+        return new JSONArray();
+    }
 }

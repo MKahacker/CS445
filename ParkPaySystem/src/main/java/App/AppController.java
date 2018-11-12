@@ -329,6 +329,21 @@ public class AppController {
         return ResponseEntity.badRequest().body(revenueReport);
     }
 
+    @GetMapping("/search")
+    public ResponseEntity<JsonNode> searchApplication(@RequestParam("key") String key,
+                                                      @RequestParam("start_date") String startDate,
+                                                      @RequestParam("end_date") String endDate){
+        JsonNode searchAll = null;
+        try {
+            searchAll = parksMapper.readTree(Reports.searchApplication(myParks.getParksKey(key), myOrder.searchWithKey(key),
+                    myOrder.searchWithKeyVisitor(key), myComment.searchWithKey(key), startDate, endDate).toString());
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        return ResponseEntity.ok().body(searchAll);
+
+    }
+
 
     @PostMapping("/parks")
     public ResponseEntity<JsonNode> createPark(@RequestBody JsonNode parkinfo){

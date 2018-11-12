@@ -110,4 +110,15 @@ public class CommentManager {
         }
         return comments;
     }
+
+    public JSONArray searchWithKey(String key) {
+        JSONArray notesWithKey = new JSONArray();
+        for(int i = 0; i < this.commentList.size(); i++){
+            String noteInfo = this.commentList.get(i).viewComment().toString().toLowerCase();
+            if(noteInfo.contains(key.toLowerCase())){
+                notesWithKey.put(this.commentList.get(i).limitedCommentInfo());
+            }
+        }
+        return notesWithKey;
+    }
 }

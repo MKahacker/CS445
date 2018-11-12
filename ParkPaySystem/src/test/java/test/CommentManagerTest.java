@@ -161,4 +161,29 @@ class CommentManagerTest {
                 dateFormat.format(new Date())+"\",\"nid\":\""+nid+"\",\"pid\":\"102\",\"title\":\"No Campground\"}]",myComments.viewCommentsForVisitor(100).toString());
     }
 
+    @Test
+    public void searchNotesWithKey(){
+        assertEquals("[]", myComments.searchWithKey("somethingridculas").toString());
+        int nid = myComments.createNewComment(102, 100, new Date(), "No Campground", "Lovely but no campground");
+        assertEquals("[{\"date\":\"" +
+                dateFormat.format(new Date())+"\",\"nid\":\""+nid+"\",\"title\":\"No Campground\"}]",
+                myComments.searchWithKey("campground").toString());
+
+        assertEquals("[{\"date\":\"" +
+                        dateFormat.format(new Date())+"\",\"nid\":\""+100+"\",\"title\":\"Like 0\"}]",
+                myComments.searchWithKey("like 0").toString());
+
+        assertEquals("[]",
+                myComments.searchWithKey("againsomethingcrazy").toString());
+
+        for(int i=0; i < 4; i++) {
+            myComments.deleteComment(100+i);
+        }
+        assertEquals("[{\"date\":\"" +
+                        dateFormat.format(new Date())+"\",\"nid\":\""+104+"\",\"title\":\"Like 4\"},{\"date\":\"" +
+                        dateFormat.format(new Date())+"\",\"nid\":\""+nid+"\",\"title\":\"No Campground\"}]",
+                myComments.searchWithKey("").toString());
+
+    }
+
 }
