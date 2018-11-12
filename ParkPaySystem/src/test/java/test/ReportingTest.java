@@ -138,6 +138,11 @@ public class ReportingTest {
         assertEquals("[124, 123]", Reports.returnAllParkIds(orders).toString());
     }
 
+    @Test
+    public void testSearchApplication(){
+        assertEquals("[]", Reports.searchApplication(new JSONArray(), new JSONArray(), new JSONArray(),new JSONArray()
+                ,"", "").toString());
+    }
 
 
 }
