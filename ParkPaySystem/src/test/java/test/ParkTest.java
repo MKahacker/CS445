@@ -110,6 +110,8 @@ class ParkTest {
     @Test
     public void testInStateFeeWithIllegalInput(){
         assertEquals (-1, testPark.inStateFee(Payment.paymentType("plane")));
+        assertEquals(-1, testPark.inStateFee(-5));
+        assertEquals(-1, testPark.inStateFee(90));
     }
 
     @Test
@@ -130,5 +132,7 @@ class ParkTest {
     @Test
     public void testOutStateFeeWithIllegalInput(){
         assertEquals(-1, testPark.outStateFee(Payment.paymentType("plane")));
+        assertEquals(-1, testPark.outStateFee(-3));
+        assertEquals(-1, testPark.outStateFee(9));
     }
 }
