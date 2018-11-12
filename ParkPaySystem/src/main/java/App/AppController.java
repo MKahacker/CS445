@@ -223,7 +223,7 @@ public class AppController {
             }
             if(endDate.equals("")){
                 Date start_date = requestDate.parse(startDate);
-                endDate = myFormat.format(start_date);
+                startDate = myFormat.format(start_date);
 
                 admissionReport = parksMapper.readTree(Reports.getAdmissionReport(myParks.getAllParksInfo(),
                         myOrder.viewAllOrders(), startDate, endDate).toString());
@@ -290,7 +290,7 @@ public class AppController {
             }
             if(endDate.equals("")){
                 Date start_date = requestDate.parse(startDate);
-                endDate = myFormat.format(start_date);
+                startDate = myFormat.format(start_date);
 
                 revenueReport = parksMapper.readTree(Reports.getRevenueReport(myParks.getAllParksInfo(),
                         myOrder.viewAllOrders(), startDate, endDate).toString());
