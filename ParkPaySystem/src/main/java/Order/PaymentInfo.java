@@ -1,4 +1,4 @@
-package App;
+package Order;
 
 public class PaymentInfo {
     private int zip;

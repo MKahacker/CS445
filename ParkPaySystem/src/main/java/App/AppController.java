@@ -8,6 +8,8 @@ import Fee.Payment;
 import Fee.RVFee;
 import Order.Order;
 import Order.OrderManager;
+import Order.PaymentInfo;
+import Order.Vehicle;
 import Park.Park;
 import Park.ParkInteractor;
 import Reporting.Reports;

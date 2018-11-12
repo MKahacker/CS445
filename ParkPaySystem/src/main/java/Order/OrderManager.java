@@ -1,8 +1,6 @@
 package Order;
 
-import App.PaymentInfo;
-import App.Vehicle;
-import Order.Order;
+
 import Visitor.AbstractVistor;
 import Visitor.Vistor;
 import org.json.JSONArray;

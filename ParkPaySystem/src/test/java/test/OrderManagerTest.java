@@ -2,8 +2,8 @@ package test;
 
 import Order.Order;
 import Order.OrderManager;
-import App.PaymentInfo;
-import App.Vehicle;
+import Order.PaymentInfo;
+import Order.Vehicle;
 import org.json.JSONArray;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

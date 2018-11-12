@@ -1,7 +1,6 @@
 package Order;
 
-import App.PaymentInfo;
-import App.Vehicle;
+
 import org.json.JSONObject;
 
 import java.text.DateFormat;
