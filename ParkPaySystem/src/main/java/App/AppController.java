@@ -186,11 +186,14 @@ public class AppController {
     }
 
     @GetMapping("/reports/567")
-    public ResponseEntity<JsonNode> getAdmissionsReport(@RequestParam(value="start_date", defaultValue="") String startDate,
+    public ResponseEntity<JsonNode> getAdmissionsReport(@RequestParam(value="start_date", defaultValue="19310701") String startDate,
                                         @RequestParam(value="end_date", defaultValue="") String endDate){
         JsonNode admissionReport = null;
         JsonNode parseError = null;
         try {
+            if(endDate.equals("")){
+                endDate = requestDate.format(new Date());
+            }
             String parseErrorString = "{\"type\": \"http://cs.iit.edu/~virgil/cs445/" +
                     "project/api/problems/data-validation\","+
                     "\"title\": \"Your request data didn't pass validation\"," +
@@ -227,11 +230,14 @@ public class AppController {
     }
 
     @GetMapping("/reports/568")
-    public ResponseEntity<JsonNode> getRevenueReport(@RequestParam(value="start_date", defaultValue="") String startDate,
-                                        @RequestParam(value="end_date", defaultValue="") String endDate){
+    public ResponseEntity<JsonNode> getRevenueReport(@RequestParam(value="start_date", defaultValue="19310701") String startDate,
+                                        @RequestParam(value="end_date", defaultValue= "") String endDate){
         JsonNode revenueReport = null;
         JsonNode parseError = null;
         try {
+            if(endDate.equals("")){
+                endDate = requestDate.format(new Date());
+            }
             String parseErrorString = "{\"type\": \"http://cs.iit.edu/~virgil/cs445/" +
                     "project/api/problems/data-validation\","+
                     "\"title\": \"Your request data didn't pass validation\"," +
@@ -239,7 +245,6 @@ public class AppController {
                     "\"status\": 400,"+
                     "\"instance\": \"/reports/568\"}";
             parseError = parksMapper.readTree(parseErrorString);
-
             Date start_Date = requestDate.parse(startDate);
             Date end_Date = requestDate.parse(endDate);
             if(start_Date.compareTo(end_Date)> 0){
