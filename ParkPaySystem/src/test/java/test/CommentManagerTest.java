@@ -150,6 +150,7 @@ class CommentManagerTest {
         int nid = myComments.createNewComment(250, 502, new Date(), "Hey", "About to write");
         myComments.deleteComment(nid);
         assertEquals("{}", myComments.viewSpecificComment(nid).toString());
+        myComments.deleteComment(800);
     }
 
     @Test
