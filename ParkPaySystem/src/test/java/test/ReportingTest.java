@@ -53,6 +53,45 @@ public class ReportingTest {
 
         assertEquals(admissionReportWithTwoDatesInRange, Reports.getAdmissionReport(parks,orders,"2017-01-03", "2018-07-04").toString());
 
+        String errorParseTest = "{\"end_date\":\"2018-07ree-04\",\"detail_by_park\":" +
+                "[{\"name\":\"Apple River Canyon\",\"pid\":\"123\",\"admissions\":2}," +
+                "{\"name\":\"Castle Rock\",\"pid\":\"124\",\"admissions\":2}," +
+                "{\"name\":\"Mermet Lake\",\"pid\":\"131\",\"admissions\":0}],\"total_admissions\":4," +
+                "\"name\":\"Admissions report\",\"rid\":\"567\",\"start_date\":\"2017-01tre-03\"}";
+
+
+        assertEquals(errorParseTest, Reports.getAdmissionReport(parks,orders,"2017-01tre-03", "2018-07ree-04").toString());
+
+    }
+
+    @Test
+    public void getRevenueReports(){
+        JSONArray parks = new JSONArray();
+        JSONArray orders = new JSONArray();
+
+        String emptyParksAndOrders = "{\"end_date\":\"\",\"detail_by_park\":[],\"total_revenue\":0," +
+                "\"name\":\"Revenue report\",\"rid\":\"568\",\"total_orders\":0,\"start_date\":\"\"}";
+
+        assertEquals(emptyParksAndOrders,Reports.getRevenueReport(parks,orders,"","").toString());
+
+        parks = generatePark();
+        orders = generateOrder();
+
+        assertEquals("{\"end_date\":\"\"," +
+                "\"detail_by_park\":[{\"revenue\":23,\"name\":\"Apple River Canyon\",\"pid\":\"123\"," +
+                "\"orders\":2},{\"revenue\":13.75,\"name\":\"Castle Rock\",\"pid\":\"124\"," +
+                "\"orders\":2},{\"revenue\":0,\"name\":\"Mermet Lake\",\"pid\":\"131\"," +
+                "\"orders\":0}],\"total_revenue\":36.75," +
+                "\"name\":\"Revenue report\",\"rid\":\"568\",\"total_orders\":4," +
+                "\"start_date\":\"\"}",Reports.getRevenueReport(parks,orders,"","").toString());
+
+        assertEquals("{\"end_date\":\"2018-08-31\"," +
+                "\"detail_by_park\":[{\"revenue\":13,\"name\":\"Apple River Canyon\",\"pid\":\"123\"," +
+                "\"orders\":1},{\"revenue\":9.25,\"name\":\"Castle Rock\",\"pid\":\"124\"," +
+                "\"orders\":1},{\"revenue\":0,\"name\":\"Mermet Lake\",\"pid\":\"131\"," +
+                "\"orders\":0}],\"total_revenue\":22.25," +
+                "\"name\":\"Revenue report\",\"rid\":\"568\",\"total_orders\":2," +
+                "\"start_date\":\"2018-08-01\"}",Reports.getRevenueReport(parks,orders,"2018-08-01","2018-08-31").toString());
     }
 
     private JSONArray generateOrder() {
