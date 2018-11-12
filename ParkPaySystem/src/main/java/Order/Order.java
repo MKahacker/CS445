@@ -65,8 +65,8 @@ public class Order {
     }
 
     public JSONObject viewProcessingInfo() {
-        DateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
-        //DateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd");
+        //DateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        DateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd");
         JSONObject processingInfo = new JSONObject();
         processingInfo.put("card_transaction_id", "123-4567-89");
         processingInfo.put("date_and_time", myFormat.format(this.dateOfTransaction));
