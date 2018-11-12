@@ -25,7 +25,7 @@ public class OrderTest {
     public void setup(){
         timeStamp = new Date();
         vehicleInfo = new Vehicle("IL", "Z567Z", "car");
-        orderPayment = new PaymentInfo(60659, "4949", "John Doe", expiration);
+        orderPayment = new PaymentInfo(60659, "4949494949495689", "John Doe", expiration);
         newOrder = new Order(oid, pid, vid,amount, vehicleInfo, orderPayment, timeStamp);
     }
 
@@ -50,7 +50,7 @@ public class OrderTest {
 
     @Test
     public void viewPaymentInfo(){
-        assertEquals("{\"zip\":60659,\"expiration_date\":\"12/19\",\"card\":\"4949\",\"name_on_card\":\"John Doe\"}",newOrder.viewPaymentInfo().toString());
+        assertEquals("{\"zip\":60659,\"expiration_date\":\"12/19\",\"card\":\"xxxxxxxxxxxx5689\",\"name_on_card\":\"John Doe\"}",newOrder.viewPaymentInfo().toString());
     }
 
     @Test

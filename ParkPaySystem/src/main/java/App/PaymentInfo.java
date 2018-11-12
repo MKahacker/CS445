@@ -19,7 +19,14 @@ public class PaymentInfo {
     }
 
     public String getCard() {
-        return this.card;
+        String maskedCard = maskCreditCard(this.card);
+        return maskedCard;
+    }
+
+    private String maskCreditCard(String card) {
+        String maskedCard = "xxxxxxxxxxxx";
+        String stringLastFour = card.substring(card.length()-4);
+        return maskedCard + stringLastFour;
     }
 
     public String getName() {
