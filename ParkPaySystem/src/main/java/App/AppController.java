@@ -22,6 +22,9 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -34,6 +37,8 @@ public class AppController {
     private CommentManager myComment = new CommentManager(new ArrayList<Comment>());
     private OrderManager myOrder = new OrderManager(new ArrayList<Order>());
     private ObjectMapper parksMapper = new ObjectMapper();
+    DateFormat requestDate = new SimpleDateFormat("yyyyMMdd");
+    DateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd");
 
     @GetMapping("/parks")
     public JsonNode getAllParks(@RequestParam(value="key", defaultValue="") String key){
@@ -181,33 +186,86 @@ public class AppController {
     }
 
     @GetMapping("/reports/567")
-    public JsonNode getAdmissionsReport(@RequestParam(value="start_date", defaultValue="") String startDate,
+    public ResponseEntity<JsonNode> getAdmissionsReport(@RequestParam(value="start_date", defaultValue="") String startDate,
                                         @RequestParam(value="end_date", defaultValue="") String endDate){
         JsonNode admissionReport = null;
+        JsonNode parseError = null;
         try {
+            String parseErrorString = "{\"type\": \"http://cs.iit.edu/~virgil/cs445/" +
+                    "project/api/problems/data-validation\","+
+                    "\"title\": \"Your request data didn't pass validation\"," +
+                    "\"detail\": \"Wrong date format try (yyyyMMdd)\","+
+                    "\"status\": 400,"+
+                    "\"instance\": \"/reports/568\"}";
+            parseError = parksMapper.readTree(parseErrorString);
+
+            Date start_Date = requestDate.parse(startDate);
+            Date end_Date = requestDate.parse(endDate);
+            if(start_Date.compareTo(end_Date)> 0){
+                String json = "{\"type\": \"http://cs.iit.edu/~virgil/cs445/" +
+                        "project/api/problems/data-validation\","+
+                        "\"title\": \"Your request data didn't pass validation\"," +
+                        "\"detail\": \"Start date has to be before end Date\","+
+                        "\"status\": 400,"+
+                        "\"instance\": \"/reports/567\"}";
+                admissionReport = parksMapper.readTree(json);
+                return ResponseEntity.badRequest().body(admissionReport);
+            }
+            startDate = myFormat.format(start_Date);
+            endDate = myFormat.format(end_Date);
             admissionReport = parksMapper.readTree(Reports.getAdmissionReport(myParks.getAllParksInfo(),
                     myOrder.viewAllOrders(), startDate, endDate).toString());
 
-            return admissionReport;
+            return ResponseEntity.ok().body(admissionReport);
         }catch (IOException e) {
             e.printStackTrace();
+        }catch (ParseException e){
+            e.printStackTrace();
+            admissionReport = parseError;
         }
-        return admissionReport;
+        return ResponseEntity.badRequest().body(admissionReport);
     }
 
     @GetMapping("/reports/568")
-    public JsonNode getRevenueReport(@RequestParam(value="start_date", defaultValue="") String startDate,
+    public ResponseEntity<JsonNode> getRevenueReport(@RequestParam(value="start_date", defaultValue="") String startDate,
                                         @RequestParam(value="end_date", defaultValue="") String endDate){
         JsonNode revenueReport = null;
+        JsonNode parseError = null;
         try {
-            revenueReport = parksMapper.readTree(Reports.getAdmissionReport(myParks.getAllParksInfo(),
+            String parseErrorString = "{\"type\": \"http://cs.iit.edu/~virgil/cs445/" +
+                    "project/api/problems/data-validation\","+
+                    "\"title\": \"Your request data didn't pass validation\"," +
+                    "\"detail\": \"Wrong date format try (yyyyMMdd)\","+
+                    "\"status\": 400,"+
+                    "\"instance\": \"/reports/568\"}";
+            parseError = parksMapper.readTree(parseErrorString);
+
+            Date start_Date = requestDate.parse(startDate);
+            Date end_Date = requestDate.parse(endDate);
+            if(start_Date.compareTo(end_Date)> 0){
+                String json = "{\"type\": \"http://cs.iit.edu/~virgil/cs445/" +
+                        "project/api/problems/data-validation\","+
+                        "\"title\": \"Your request data didn't pass validation\"," +
+                        "\"detail\": \"Start date has to be before end Date\","+
+                        "\"status\": 400,"+
+                        "\"instance\": \"/reports/568\"}";
+                revenueReport = parksMapper.readTree(json);
+                return ResponseEntity.badRequest().body(revenueReport);
+            }
+
+
+            startDate = myFormat.format(start_Date);
+            endDate = myFormat.format(end_Date);
+            revenueReport = parksMapper.readTree(Reports.getRevenueReport(myParks.getAllParksInfo(),
                     myOrder.viewAllOrders(), startDate, endDate).toString());
 
-            return revenueReport;
+            return ResponseEntity.ok().body(revenueReport);
         }catch (IOException e) {
             e.printStackTrace();
+        }catch (ParseException e){
+            revenueReport = parseError;
         }
-        return revenueReport;
+        return ResponseEntity.badRequest().body(revenueReport);
     }
 
 
