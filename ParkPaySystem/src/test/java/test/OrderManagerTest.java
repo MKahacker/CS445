@@ -25,7 +25,7 @@ public class OrderManagerTest {
     DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
     int oid = 751, pid = 124,vid = 109;
     String type = "car";
-    double amount = 4.50;
+    double amount = 4.5;
     String name = "John Doe";
     String email = "djohn@gmail.com";
     PaymentInfo payment_info = new PaymentInfo(60659, "4949494949495689", name, "12/19");
@@ -130,7 +130,7 @@ public class OrderManagerTest {
     private String addToSpecificString(String myString){
         DateFormat newFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
         String specificVehicleInfo = "{\"plate\":\"Z78Z\",\"state\":\"IL\",\"type\":\"" + type+"\"}";
-        String paymentInfo = "{\"zip\":60659,\"expiration_date\":\"12/19\",\"card\":\"xxxxxxxxxxxx5689\",\"name_on_card\":\""+name+"\"}";
+        String paymentInfo = "{\"zip\":60659,\"expiration_date\":\"12/19\",\"card\":\"xxxxxxxxxxx5689\",\"name_on_card\":\""+name+"\"}";
         String visitorInfo = "{\"name\":\""+name+"\",\"payment_info\":" + paymentInfo+",\"email\":\""+email+"\"}";
         String processingInfo = "{\"date_and_time\":\""+newFormat.format(timeStamp)+"\",\"card_transaction_id\":\"123-4567-89\"}";
 

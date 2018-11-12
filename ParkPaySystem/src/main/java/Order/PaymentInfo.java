@@ -24,7 +24,7 @@ public class PaymentInfo {
     }
 
     private String maskCreditCard(String card) {
-        String maskedCard = "xxxxxxxxxxxx";
+        String maskedCard = "xxxxxxxxxxx";
         String stringLastFour = card.substring(card.length()-4);
         return maskedCard + stringLastFour;
     }
