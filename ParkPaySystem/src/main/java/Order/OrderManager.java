@@ -61,7 +61,7 @@ public class OrderManager {
             visitorInfo.put("payment_info", getOrder(idx).viewPaymentInfo());
             specificOrder = getOrder(idx).viewOrder();
             specificOrder.remove("type");
-            specificOrder.put("vid", getOrder(idx).getVid());
+            specificOrder.put("vid", Integer.toString(getOrder(idx).getVid()));
             specificOrder.put("vehicle", getOrder(idx).viewVehicleInfo());
             specificOrder.put("visitor", visitorInfo);
             specificOrder.put("payment_processing", getOrder(idx).viewProcessingInfo());

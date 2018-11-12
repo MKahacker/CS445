@@ -134,7 +134,7 @@ public class OrderManagerTest {
         String visitorInfo = "{\"name\":\""+name+"\",\"payment_info\":" + paymentInfo+",\"email\":\""+email+"\"}";
         String processingInfo = "{\"date_and_time\":\""+newFormat.format(timeStamp)+"\",\"card_transaction_id\":\"123-4567-89\"}";
 
-        myString+="\"date\":\"" + formatter.format(timeStamp)+"\",\"vid\":" + 100 +",\"amount\":"+amount+",\"pid\":\""+pid+"\"";
+        myString+="\"date\":\"" + formatter.format(timeStamp)+"\",\"vid\":\"" + 100 +"\",\"amount\":"+amount+",\"pid\":\""+pid+"\"";
         myString+=",\"oid\":\"" + oid+"\"";
         myString+= ",\"visitor\":" + visitorInfo +  ",\"payment_processing\":"+processingInfo+",\"vehicle\":" + specificVehicleInfo;
         return myString;
