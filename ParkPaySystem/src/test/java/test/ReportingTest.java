@@ -15,7 +15,7 @@ public class ReportingTest {
     @Test
     public void getReportIds(){
         assertEquals("[{\"rid\":\"567\",\"name\":\"Admissions report\"}," +
-                "{\"mrid\":\"568\",\"name\":\"Revenue report\"}]", Reports.getReport());
+                "{\"rid\":\"568\",\"name\":\"Revenue report\"}]", Reports.getReport());
     }
 
     @Test

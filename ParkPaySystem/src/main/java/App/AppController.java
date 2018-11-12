@@ -195,6 +195,22 @@ public class AppController {
         return admissionReport;
     }
 
+    @GetMapping("/reports/568")
+    public JsonNode getRevenueReport(@RequestParam(value="start_date", defaultValue="") String startDate,
+                                        @RequestParam(value="end_date", defaultValue="") String endDate){
+        JsonNode revenueReport = null;
+        try {
+            revenueReport = parksMapper.readTree(Reports.getAdmissionReport(myParks.getAllParksInfo(),
+                    myOrder.viewAllOrders(), startDate, endDate).toString());
+
+            return revenueReport;
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+        return revenueReport;
+    }
+
+
     @PostMapping("/parks")
     public ResponseEntity<JsonNode> createPark(@RequestBody JsonNode parkinfo){
         JsonNode parkId = null;
@@ -298,6 +314,9 @@ public class AppController {
         double amount = myParks.getParkFee(pid, type, state);
         Vehicle vehicleInfo = new Vehicle(state, plate, type);
         PaymentInfo paymentInfo = new PaymentInfo(zip, card, cardName, expirationDate);
+        if(name.equals("")){
+            name = cardName;
+        }
         int oid = myOrder.createNewOrder(pid,amount, vehicleInfo,paymentInfo,new Date(), name, email);
         String json = "{\"oid\":\"" + oid+"\"}";
         try {

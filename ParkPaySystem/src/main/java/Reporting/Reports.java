@@ -14,7 +14,7 @@ public class Reports {
 
     public static String getReport() {
         return "[{\"rid\":\"567\",\"name\":\"Admissions report\"}," +
-                "{\"mrid\":\"568\",\"name\":\"Revenue report\"}]";
+                "{\"rid\":\"568\",\"name\":\"Revenue report\"}]";
     }
 
     public static JSONObject getAdmissionReport(JSONArray parks, JSONArray order, String startDate, String endDate){
