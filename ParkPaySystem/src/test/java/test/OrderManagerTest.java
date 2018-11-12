@@ -196,6 +196,7 @@ public class OrderManagerTest {
                 "\"pid\":\"102\"," +
                 "\"oid\":\"100\"" +
                 "}]", myOrders.viewOrdersForVisitor(100).toString());
+        assertEquals("[]", myOrders.viewOrdersForVisitor(700).toString());
     }
 
     @Test
@@ -209,6 +210,7 @@ public class OrderManagerTest {
         myOrders.createNewOrder(pid,amount,new Vehicle("IL", "Z7868", type), payment_info,timeStamp,name,email);
 
         assertEquals(true, myOrders.checkIfVisitorVisitedPark(102, 100));
+        assertEquals(false, myOrders.checkIfVisitorVisitedPark(102, 800));
     }
 
     @Test
@@ -253,7 +255,6 @@ public class OrderManagerTest {
          myOrders.createNewOrder(pid,amount,new Vehicle("IL", "Z7890", type), payment_info,timeStamp,"George Washington","George.Washington@gmail.com");
 
         assertEquals("[{\"vid\":\"101\",\"name\":\"George Washington\",\"email\":\"George.Washington@gmail.com\"}]",  myOrders.searchWithKeyVisitor("George").toString());
-
     }
 
 

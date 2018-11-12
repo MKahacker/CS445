@@ -196,6 +196,7 @@ class ParkInteractorTest {
 
         assertEquals(10.00, myParks.getParkFee(size-1, "RV", "Il"));
         assertEquals(11.00, myParks.getParkFee(size-1, "RV", "WY"));
+        assertEquals(0, myParks.getParkFee(800,"RV", "OH"));
 
     }
 
@@ -204,6 +205,12 @@ class ParkInteractorTest {
         ParkInteractor myParks = new ParkInteractor(list);
         assertEquals("[]", myParks.getParksKey("South").toString());
         assertEquals(myParks.getAllParksInfo().toString(), myParks.getParksKey("pid").toString());
+    }
+
+    @Test
+    public void testIfIndexIsNonexistent(){
+        ParkInteractor myParks = new ParkInteractor(list);
+        assertEquals(-1, myParks.getIndexOfPark(9000));
     }
 
 }
