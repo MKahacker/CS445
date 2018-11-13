@@ -330,15 +330,51 @@ public class AppController {
     }
 
     @GetMapping("/search")
-    public ResponseEntity<JsonNode> searchApplication(@RequestParam("key") String key,
-                                                      @RequestParam("start_date") String startDate,
-                                                      @RequestParam("end_date") String endDate){
+    public ResponseEntity<JsonNode> searchApplication(@RequestParam(value ="key", defaultValue = "") String key,
+                                                      @RequestParam(value="start_date", defaultValue = "") String startDate,
+                                                      @RequestParam(value="end_date", defaultValue = "") String endDate){
         JsonNode searchAll = null;
+        JsonNode errorParse = null;
+        String errorMsg = "{\"type\": \"http://cs.iit.edu/~virgil/cs445/" +
+                "project/api/problems/data-validation\","+
+                "\"title\": \"Your request data didn't pass validation\"," +
+                "\"detail\": \"Format of date is wrong try (yyyyMMdd)\","+
+                "\"status\": 400,"+
+                "\"instance\": \"/search\"}";
         try {
+            errorParse = parksMapper.readTree(errorMsg);
+
+            if(startDate.equals("") && endDate.equals("")) {
+
+            }else if(startDate.equals("")){
+                Date endDate_format = requestDate.parse(endDate);
+                endDate = myFormat.format(endDate_format);
+            }else if(endDate.equals("")){
+                Date startDate_format = requestDate.parse(startDate);
+                startDate = myFormat.format(startDate_format);
+            }else{
+                Date endDate_format = requestDate.parse(endDate);
+                Date startDate_format = requestDate.parse(startDate);
+                if(startDate_format.compareTo(endDate_format) > 0){
+                    String dateError = "{\"type\": \"http://cs.iit.edu/~virgil/cs445/" +
+                            "project/api/problems/data-validation\","+
+                            "\"title\": \"Your request data didn't pass validation\"," +
+                            "\"detail\": \"Start date has to be before end Date\","+
+                            "\"status\": 400,"+
+                            "\"instance\": \"/search\"}";
+                    errorParse = parksMapper.readTree(dateError);
+                    return ResponseEntity.badRequest().body(errorParse);
+                }
+                startDate = myFormat.format(startDate_format);
+                endDate = myFormat.format(endDate_format);
+            }
+
             searchAll = parksMapper.readTree(Reports.searchApplication(myParks.getParksKey(key), myOrder.searchWithKey(key),
                     myOrder.searchWithKeyVisitor(key), myComment.searchWithKey(key), startDate, endDate).toString());
         }catch (IOException e){
             e.printStackTrace();
+        }catch (ParseException e){
+            return ResponseEntity.badRequest().body(errorParse);
         }
         return ResponseEntity.ok().body(searchAll);
 

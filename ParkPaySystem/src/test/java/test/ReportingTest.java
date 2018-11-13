@@ -6,7 +6,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
@@ -94,6 +93,129 @@ public class ReportingTest {
                 "\"start_date\":\"2018-08-01\"}",Reports.getRevenueReport(parks,orders,"2018-08-01","2018-08-31").toString());
     }
 
+
+    @Test
+    public void returnAllParksIds(){
+        JSONArray orders = generateOrder();
+        assertEquals("[124, 123]", Reports.returnAllParkIds(orders).toString());
+    }
+
+    @Test
+    public void testSearchApplication(){
+
+        String actual = Reports.searchApplication(new JSONArray(), new JSONArray(), new JSONArray(),new JSONArray()
+                ,"", "").toString();
+
+        assertEquals("[]", actual);
+
+        JSONArray parks = generatePark();
+        JSONArray orders = generateOrder();
+        JSONArray visitors = generateVisitors();
+        JSONArray notes = generateNotes();
+
+        actual = Reports.searchApplication(parks, orders, visitors,notes, "","").toString();
+
+        assertEquals(returnAllData(parks,orders,visitors,notes), actual);
+
+        actual = Reports.searchApplication(parks, orders, visitors, notes, "2018-08-04", "").toString();
+        assertEquals(returnBeforeStart(orders, notes, parks, visitors), actual);
+
+        actual = Reports.searchApplication(parks, orders, visitors, notes, "", "2018-07-03").toString();
+        assertEquals(returnAfterEnd(orders, notes, parks, visitors), actual);
+
+        actual = Reports.searchApplication(parks, orders, visitors, notes, "2018-08-01", "2018-08-03").toString();
+        assertEquals(returnRange(orders, notes, parks, visitors), actual);
+
+
+    }
+
+    private String returnRange(JSONArray orders, JSONArray notes, JSONArray parks, JSONArray visitors) {
+        JSONArray betweenData = returnParksAndVisitors(parks, visitors);
+        betweenData.put(orders.getJSONObject(1));
+        return betweenData.toString();
+    }
+
+    private String returnAfterEnd(JSONArray orders, JSONArray notes, JSONArray parks, JSONArray visitors) {
+        JSONArray EndData = returnParksAndVisitors(parks, visitors);
+        EndData.put(orders.getJSONObject(0));
+        EndData.put(notes.getJSONObject(0));
+        return EndData.toString();
+    }
+
+    private String returnBeforeStart(JSONArray orders, JSONArray notes, JSONArray parks, JSONArray visitors) {
+        JSONArray startData = returnParksAndVisitors(parks, visitors);
+        startData.put(orders.getJSONObject(3));
+        startData.put(notes.getJSONObject(1));
+        return startData.toString();
+    }
+
+    private String returnAllData(JSONArray parks, JSONArray orders, JSONArray visitors, JSONArray notes) {
+        JSONArray returnDate = returnParksAndVisitors(parks, visitors);
+
+        for(int i = 0; i < orders.length(); i++){
+            returnDate.put(orders.getJSONObject(i));
+        }
+
+        for(int i = 0; i < notes.length(); i++){
+            returnDate.put(notes.getJSONObject(i));
+        }
+        return returnDate.toString();
+    }
+
+    private JSONArray returnParksAndVisitors(JSONArray parks, JSONArray visitors) {
+        JSONArray returnDate = new JSONArray();
+
+        for(int i = 0; i < parks.length(); i++){
+            returnDate.put(parks.getJSONObject(i));
+        }
+
+        for(int i = 0; i < visitors.length(); i++){
+            returnDate.put(visitors.getJSONObject(i));
+        }
+
+        return returnDate;
+    }
+
+
+
+    private JSONArray generatePark() {
+        JSONArray parks = new JSONArray();
+        int[] pids = new int[]{123, 124, 131};
+        String[] names = new String[]{"Apple River Canyon", "Castle Rock", "Mermet Lake"};
+        String[] region = {"Northwestern Illinois", "Southern Illinois", "Northwesten Illinois"};
+        String[] address = {"8765 N Campbell Ave", "901 N State St","67 Michigan" };
+        String[] web = {"wwww.apple.com", "www.casterock.com", "www.mermetlake.com"};
+        for(int i = 0; i < 3; i++) {
+            JSONObject parksInfo = new JSONObject();
+            JSONObject locationInfo = new JSONObject();
+
+            parksInfo.put("pid", Integer.toString(pids[i]));
+            locationInfo.put("name", names[i]);
+            locationInfo.put("region", region[i]);
+            locationInfo.put("address", address[i]);
+            locationInfo.put("phone", "");
+            locationInfo.put("web", web[i]);
+            locationInfo.put("geo", generateGeo().getJSONObject(i));
+            parksInfo.put("location_info", locationInfo);
+            parks.put(parksInfo);
+        }
+        return parks;
+    }
+
+    private JSONArray generateGeo() {
+        JSONArray geoInfo = new JSONArray();
+        double[] lat = {37.275, 42.448, 41.978};
+        double[] lng = {-88.849, -90.043, -89.364};
+
+        for(int i = 0; i < 3; i++) {
+            JSONObject specificParkGeo = new JSONObject();
+            specificParkGeo.put("lat", lat[i]);
+            specificParkGeo.put("lng", lng[i]);
+            geoInfo.put(specificParkGeo);
+        }
+        return geoInfo;
+    }
+
     private JSONArray generateOrder() {
         JSONArray orders = new JSONArray();
         int[] oid = new int[]{751, 761, 757, 773};
@@ -115,34 +237,31 @@ public class ReportingTest {
         return orders;
     }
 
-    private JSONArray generatePark() {
-        JSONArray parks = new JSONArray();
-        int[] pids = new int[]{123, 124, 131};
-        String[] names = new String[]{"Apple River Canyon", "Castle Rock", "Mermet Lake"};
-
-        for(int i = 0; i < 3; i++) {
-            JSONObject parksInfo = new JSONObject();
-            JSONObject locationInfo = new JSONObject();
-
-            parksInfo.put("pid", Integer.toString(pids[i]));
-            locationInfo.put("name", names[i]);
-            parksInfo.put("location_info", locationInfo);
-            parks.put(parksInfo);
+    private JSONArray generateVisitors() {
+        JSONArray visitors = new JSONArray();
+        String[] name = {"James Smith", "John Doe", "Sarah Devon", "George Clooney"};
+        String[] email = {"jSmith@google.com", "jDoe@threeletter.org", "Sar456@yahoo.com", "clooney@gmail.com"};
+        for(int i = 0; i < 4; i++) {
+            JSONObject visitor = new JSONObject();
+            visitor.put("name", name[i]);
+            visitor.put("email", email[i]);
+            visitors.put(visitor);
         }
-        return parks;
+        return visitors;
     }
 
-    @Test
-    public void returnAllParksIds(){
-        JSONArray orders = generateOrder();
-        assertEquals("[124, 123]", Reports.returnAllParkIds(orders).toString());
+    private JSONArray generateNotes() {
+        JSONArray notes = new JSONArray();
+        String[] nid = {"456", "785"};
+        String[] date = {"2018-01-05", "2018-11-12"};
+        String[] title = {"Great time!", "Trails are frozen"};
+        for(int i = 0; i < 2; i++) {
+            JSONObject note = new JSONObject();
+            note.put("nid", nid[i]);
+            note.put("date", date[i]);
+            note.put("title", title[i]);
+            notes.put(note);
+        }
+        return notes;
     }
-
-    @Test
-    public void testSearchApplication(){
-        assertEquals("[]", Reports.searchApplication(new JSONArray(), new JSONArray(), new JSONArray(),new JSONArray()
-                ,"", "").toString());
-    }
-
-
 }

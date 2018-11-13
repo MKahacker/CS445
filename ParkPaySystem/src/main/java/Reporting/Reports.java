@@ -108,35 +108,6 @@ public class Reports {
         return revenue;
     }
 
-    private static JSONArray removeDatesAfter(JSONArray order, String endDate) throws ParseException {
-        DateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd");
-        JSONArray ArrayWithValidDates = new JSONArray();
-
-            Date actualStartDate = myFormat.parse(endDate);
-            for(int i = 0; i < order.length(); i++){
-                Date orderDate = myFormat.parse(order.getJSONObject(i).getString("date"));
-                if(actualStartDate.compareTo(orderDate) >= 0){
-                    ArrayWithValidDates.put(order.getJSONObject(i));
-                }
-            }
-            return ArrayWithValidDates;
-
-    }
-
-    private static JSONArray removeDatesBefore(JSONArray order, String startDate) throws ParseException {
-        DateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd");
-        JSONArray ArrayWithValidDates = new JSONArray();
-
-            Date actualStartDate = myFormat.parse(startDate);
-            for(int i = 0; i < order.length(); i++){
-                Date orderDate = myFormat.parse(order.getJSONObject(i).getString("date"));
-                if(actualStartDate.compareTo(orderDate) <= 0){
-                    ArrayWithValidDates.put(order.getJSONObject(i));
-                }
-            }
-            return ArrayWithValidDates;
-
-    }
 
 
     private static int countAdmissions(JSONArray order, int pid) {
@@ -164,6 +135,67 @@ public class Reports {
     public static JSONArray searchApplication(JSONArray parks, JSONArray orders,
                                               JSONArray visitors, JSONArray notes, String start, String end) {
 
-        return new JSONArray();
+        JSONArray searchResult = new JSONArray();
+
+        try {
+            if (!(start.equals(""))) {
+                orders = removeDatesBefore(orders, start);
+                notes = removeDatesBefore(notes, start);
+            }
+
+            if (!(end.equals(""))) {
+                orders = removeDatesAfter(orders, end);
+                notes = removeDatesAfter(notes, end);
+            }
+        }catch (ParseException e){
+
+        }
+
+        for(int i = 0; i < parks.length(); i++){
+            searchResult.put(parks.getJSONObject(i));
+        }
+
+        for(int i = 0; i < visitors.length(); i++){
+            searchResult.put(visitors.getJSONObject(i));
+        }
+
+        for(int i = 0; i < orders.length(); i++){
+            searchResult.put(orders.getJSONObject(i));
+        }
+
+        for(int i = 0; i < notes.length(); i++){
+            searchResult.put(notes.getJSONObject(i));
+        }
+        return searchResult;
+    }
+
+    private static JSONArray removeDatesAfter(JSONArray order, String endDate) throws ParseException {
+        DateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd");
+        JSONArray ArrayWithValidDates = new JSONArray();
+
+        Date actualStartDate = myFormat.parse(endDate);
+        for(int i = 0; i < order.length(); i++){
+            Date orderDate = myFormat.parse(order.getJSONObject(i).getString("date"));
+            if(actualStartDate.compareTo(orderDate) >= 0){
+                ArrayWithValidDates.put(order.getJSONObject(i));
+            }
+        }
+        return ArrayWithValidDates;
+
+    }
+
+    private static JSONArray removeDatesBefore(JSONArray order, String startDate) throws ParseException {
+        DateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd");
+        JSONArray ArrayWithValidDates = new JSONArray();
+
+        Date actualStartDate = myFormat.parse(startDate);
+        for(int i = 0; i < order.length(); i++){
+            Date orderDate = myFormat.parse(order.getJSONObject(i).getString("date"));
+            if(actualStartDate.compareTo(orderDate) <= 0){
+                ArrayWithValidDates.put(order.getJSONObject(i));
+            }
+        }
+        return ArrayWithValidDates;
+
     }
 }
