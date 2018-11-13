@@ -17,6 +17,7 @@ import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.annotation.JacksonStdImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -63,11 +64,15 @@ public class AppController {
     }
 
     @GetMapping("/parks/{id}")
-    public JsonNode getAPark(@PathVariable("id") int pid){
+    public ResponseEntity<JsonNode> getAPark(@PathVariable("id") int pid){
         JsonNode apark;
         try {
-            apark = parksMapper.readTree(myParks.getSpecificParkInfo(pid).toString());
-            return apark;
+            if(myParks.getIndexOfPark(pid)==-1){
+                return ResponseEntity.notFound().build();
+            }else {
+                apark = parksMapper.readTree(myParks.getSpecificParkInfo(pid).toString());
+                return ResponseEntity.ok().body(apark);
+            }
         } catch (JsonMappingException e) {
             e.printStackTrace();
         } catch (JsonGenerationException e) {
@@ -79,11 +84,15 @@ public class AppController {
     }
 
     @GetMapping("/parks/{pid}/notes")
-    public JsonNode viewNotesAssociatedWithPark(@PathVariable("pid") int id){
+    public ResponseEntity<JsonNode> viewNotesAssociatedWithPark(@PathVariable("pid") int id){
         JsonNode notes;
         try {
-            notes = parksMapper.readTree(myComment.viewCommentsForPark(id).toString());
-            return notes;
+            if(myParks.getIndexOfPark(id) == -1){
+                return ResponseEntity.notFound().build();
+            }else {
+                notes = parksMapper.readTree(myComment.viewCommentsForPark(id).toString());
+                return ResponseEntity.ok().body(notes);
+            }
         } catch (JsonMappingException e) {
             e.printStackTrace();
         } catch (JsonGenerationException e) {
@@ -94,12 +103,45 @@ public class AppController {
         return null;
     }
 
-    @GetMapping({"/parks/{pid}/notes/{nid}", "/notes/{nid}"})
-    public JsonNode viewNote(@PathVariable("nid") int id){
+    @GetMapping({"/parks/{pid}/notes/{nid}"})
+    public ResponseEntity<JsonNode> viewNote(@PathVariable("pid") int pid, @PathVariable("nid") int id){
         JsonNode note;
         try {
-            note = parksMapper.readTree(myComment.viewSpecificComment(id).toString());
-            return note;
+            if(myParks.getIndexOfPark(pid)==-1 || myComment.returnIndexOfComment(id) == -1){
+                return ResponseEntity.notFound().build();
+            }else if(!(myComment.checkIfAssociated(pid, id))){
+                String errorMsg = "{\"type\": \"http://cs.iit.edu/~virgil/cs445/" +
+                        "project/api/problems/data-validation\","+
+                        "\"title\": \"Your request data didn't pass validation\"," +
+                        "\"detail\": \"The note is not associated with this park\","+
+                        "\"status\": 400,"+
+                        "\"instance\": \"/parks/"+pid+"/notes/"+id+"\"}";
+                JsonNode errorReponse = parksMapper.readTree(errorMsg);
+                return ResponseEntity.badRequest().body(errorReponse);
+            }else{
+                note = parksMapper.readTree(myComment.viewSpecificComment(id).toString());
+                return ResponseEntity.ok().body(note);
+            }
+        } catch (JsonMappingException e) {
+            e.printStackTrace();
+        } catch (JsonGenerationException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @GetMapping({"/notes/{nid}"})
+    public ResponseEntity<JsonNode> viewNote(@PathVariable("nid") int id){
+        JsonNode note;
+        try {
+            if(myComment.returnIndexOfComment(id) == -1){
+                return ResponseEntity.notFound().build();
+            }else {
+                note = parksMapper.readTree(myComment.viewSpecificComment(id).toString());
+                return ResponseEntity.ok().body(note);
+            }
         } catch (JsonMappingException e) {
             e.printStackTrace();
         } catch (JsonGenerationException e) {
@@ -213,7 +255,7 @@ public class AppController {
                     "\"title\": \"Your request data didn't pass validation\"," +
                     "\"detail\": \"Wrong date format try (yyyyMMdd)\","+
                     "\"status\": 400,"+
-                    "\"instance\": \"/reports/568\"}";
+                    "\"instance\": \"/reports/567\"}";
             parseError = parksMapper.readTree(parseErrorString);
 
             if(startDate.equals("") && endDate.equals("")){
@@ -437,32 +479,57 @@ public class AppController {
     @PostMapping("/parks/{pid}/notes")
     public ResponseEntity<JsonNode> createNote(@PathVariable("pid") int pid, @RequestBody JsonNode noteInfo){
         JsonNode noteId = null;
-        if(!(noteInfo.has("vid"))) {
-            return new ResponseEntity<JsonNode>(noteId, HttpStatus.BAD_REQUEST);
-        }
-        if(!(noteInfo.has("title"))) {
-            return new ResponseEntity<JsonNode>(noteId, HttpStatus.BAD_REQUEST);
-        }
-        if(!(noteInfo.has("text"))) {
-            return new ResponseEntity<JsonNode>(noteId, HttpStatus.BAD_REQUEST);
-        }
         try {
-        int vid = noteInfo.get("vid").asInt();
-        if(!(myOrder.checkIfVisitorVisitedPark(pid, vid))){
-            String json ="{" +
+            if(!(noteInfo.has("vid"))) {
+                String errorMsg = "{" +
+                        "\"type\": \"http://cs.iit.edu/~virgil/cs445/project/api/problems/data-validation\"," +
+                        "\"title\": \"Your request data didn't pass validation\"," +
+                        "\"detail\": \"The vid fieldname is missing\"," +
+                        "\"status\": 400," +
+                        "\"instance\": \"/parks/" + pid + "\"" +
+                        "}";;
+                JsonNode errorJson = parksMapper.readTree(errorMsg);
+                return new ResponseEntity<JsonNode>(errorJson, HttpStatus.BAD_REQUEST);
+            }
+            if(!(noteInfo.has("title"))) {
+                String errorMsg = "{" +
+                        "\"type\": \"http://cs.iit.edu/~virgil/cs445/project/api/problems/data-validation\"," +
+                        "\"title\": \"Your request data didn't pass validation\"," +
+                        "\"detail\": \"The title fieldname is missing\"," +
+                        "\"status\": 400," +
+                        "\"instance\": \"/parks/" + pid + "\"" +
+                        "}";;
+                JsonNode errorJson = parksMapper.readTree(errorMsg);
+                return new ResponseEntity<JsonNode>(errorJson, HttpStatus.BAD_REQUEST);
+            }
+            if(!(noteInfo.has("text"))) {
+                String errorMsg = "{" +
+                        "\"type\": \"http://cs.iit.edu/~virgil/cs445/project/api/problems/data-validation\"," +
+                        "\"title\": \"Your request data didn't pass validation\"," +
+                        "\"detail\": \"The text fieldname is missing\"," +
+                        "\"status\": 400," +
+                        "\"instance\": \"/parks/" + pid + "\"" +
+                        "}";;
+                JsonNode errorJson = parksMapper.readTree(errorMsg);
+                return new ResponseEntity<JsonNode>(errorJson, HttpStatus.BAD_REQUEST);
+            }
+
+            int vid = noteInfo.get("vid").asInt(-1);
+            if(!(myOrder.checkIfVisitorVisitedPark(pid, vid))){
+                String json ="{" +
                     "\"type\": \"http://cs.iit.edu/~virgil/cs445/project/api/problems/data-validation\"," +
                     "\"title\": \"Your request data didn't pass validation\"," +
                     "\"detail\": \"You may not post a note to a park unless you paid for admission at that park\"," +
                     "\"status\": 400," +
                     "\"instance\": \"/parks/" + pid + "\"" +
                     "}";
-            noteId = parksMapper.readTree(json);
-            return new ResponseEntity<JsonNode>(noteId, HttpStatus.BAD_REQUEST);
-        }
-        String title = noteInfo.get("title").asText();
-        String body = noteInfo.get("text").asText();
-        int nid = myComment.createNewComment(pid, vid, new Date(), title, body);
-        String json= "{\"nid\":\"" + nid+"\"}";
+                noteId = parksMapper.readTree(json);
+                return new ResponseEntity<JsonNode>(noteId, HttpStatus.BAD_REQUEST);
+            }
+            String title = noteInfo.get("title").asText();
+            String body = noteInfo.get("text").asText();
+            int nid = myComment.createNewComment(pid, vid, new Date(), title, body);
+            String json= "{\"nid\":\"" + nid+"\"}";
 
             noteId = parksMapper.readTree(json);
             return new ResponseEntity<JsonNode>(noteId, HttpStatus.CREATED);
@@ -479,7 +546,8 @@ public class AppController {
     @PostMapping("/orders")
     public ResponseEntity<JsonNode> createOrder(@RequestBody JsonNode orderInfo){
         JsonNode orderId = null;
-        int pid = orderInfo.get("pid").asInt();
+        int pid = -1;
+
         String state = orderInfo.path("vehicle").path("state").asText();
         String plate = orderInfo.path("vehicle").path("plate").asText();
         String type = orderInfo.path("vehicle").path("type").asText();
@@ -489,7 +557,32 @@ public class AppController {
         String cardName = orderInfo.path("visitor").path("payment_info").path("name_on_card").asText();
         String expirationDate = orderInfo.path("visitor").path("payment_info").path("expiration_date").asText();
         int zip = orderInfo.path("visitor").path("payment_info").path("zip").asInt();
-        double amount = myParks.getParkFee(pid, type, state);
+        try {
+            if(orderInfo.has("pid")) {
+                pid = orderInfo.get("pid").asInt(-1);
+            }else{
+                String errorMsg = "{" +
+                    "\"type\": \"http://cs.iit.edu/~virgil/cs445/project/api/problems/data-validation\"," +
+                    "\"title\": \"Your request data didn't pass validation\"," +
+                    "\"detail\": \"The pid fieldname is missing\"," +
+                    "\"status\": 400," +
+                    "\"instance\": \"/orders"+
+                    "}";
+                JsonNode errorJson = parksMapper.readTree(errorMsg);
+                return new ResponseEntity<JsonNode>(errorJson, HttpStatus.BAD_REQUEST);
+            }
+            if(pid == -1 || myParks.getIndexOfPark(pid) == -1) {
+                String errorMsg = "{" +
+                        "\"type\": \"http://cs.iit.edu/~virgil/cs445/project/api/problems/data-validation\"," +
+                        "\"title\": \"Your request data didn't pass validation\"," +
+                        "\"detail\": \"The pid isn't valid\"," +
+                        "\"status\": 400," +
+                        "\"instance\": \"/orders"+
+                        "}";
+                JsonNode errorJson = parksMapper.readTree(errorMsg);
+                return new ResponseEntity<JsonNode>(errorJson, HttpStatus.BAD_REQUEST);
+            }
+            double amount = myParks.getParkFee(pid, type, state);
         Vehicle vehicleInfo = new Vehicle(state, plate, type);
         PaymentInfo paymentInfo = new PaymentInfo(zip, card, cardName, expirationDate);
         if(name.equals("")){
@@ -497,7 +590,7 @@ public class AppController {
         }
         int oid = myOrder.createNewOrder(pid,amount, vehicleInfo,paymentInfo,new Date(), name, email);
         String json = "{\"oid\":\"" + oid+"\"}";
-        try {
+
             orderId = parksMapper.readTree(json);
             String uri = "/orders/"+Integer.toString(oid);
             return ResponseEntity.created(new URI(uri)).body(orderId);

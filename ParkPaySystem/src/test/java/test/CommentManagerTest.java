@@ -186,4 +186,12 @@ class CommentManagerTest {
 
     }
 
+    @Test
+    public void isCommentAssociatedWithPark(){
+        assertEquals(false, myComments.checkIfAssociated(506, 100));
+        assertEquals(true, myComments.checkIfAssociated(200, 100));
+        assertEquals(false, myComments.checkIfAssociated(200, 250));
+
+    }
+
 }

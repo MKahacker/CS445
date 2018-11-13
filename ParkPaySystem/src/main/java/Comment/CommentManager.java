@@ -121,4 +121,15 @@ public class CommentManager {
         }
         return notesWithKey;
     }
+
+    public boolean checkIfAssociated(int pid, int nid) {
+        boolean found = false;
+        int idx = returnIndexOfComment(nid);
+        if(idx!=-1) {
+            if (this.commentList.get(idx).getParkId() == pid) {
+                found = true;
+            }
+        }
+        return found;
+    }
 }
