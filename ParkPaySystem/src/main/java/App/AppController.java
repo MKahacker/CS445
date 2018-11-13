@@ -131,11 +131,15 @@ public class AppController {
     }
 
     @GetMapping("/orders/{id}")
-    public JsonNode getOneOrder(@PathVariable("id") int oid){
+    public ResponseEntity<JsonNode> getOneOrder(@PathVariable("id") int oid){
         JsonNode orders;
         try {
-            orders = parksMapper.readTree(myOrder.viewSpecificOrder(oid).toString());
-            return orders;
+            if(myOrder.returnIndex(oid) == -1){
+                return ResponseEntity.notFound().build();
+            }else {
+                orders = parksMapper.readTree(myOrder.viewSpecificOrder(oid).toString());
+                return ResponseEntity.ok().body(orders);
+            }
         } catch (JsonMappingException e) {
             e.printStackTrace();
         } catch (JsonGenerationException e) {
@@ -167,11 +171,15 @@ public class AppController {
     }
 
     @GetMapping("/visitors/{id}")
-    public JsonNode getAVisitor(@PathVariable("id") int vid){
+    public ResponseEntity<JsonNode> getAVisitor(@PathVariable("id") int vid){
         JsonNode visitors;
         try {
-            visitors = parksMapper.readTree(myOrder.viewSpecificVistors(vid, myComment.viewCommentsForVisitor(vid)).toString());
-            return visitors;
+            if(myOrder.returnIndex(vid) == -1){
+                return new ResponseEntity<JsonNode>(HttpStatus.NOT_FOUND);
+            }else {
+                visitors = parksMapper.readTree(myOrder.viewSpecificVistors(vid, myComment.viewCommentsForVisitor(vid)).toString());
+                return ResponseEntity.ok().body(visitors);
+            }
         } catch (JsonMappingException e) {
             e.printStackTrace();
         } catch (JsonGenerationException e) {
