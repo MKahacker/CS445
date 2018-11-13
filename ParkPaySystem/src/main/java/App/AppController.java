@@ -29,6 +29,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -546,18 +547,65 @@ public class AppController {
     @PostMapping("/orders")
     public ResponseEntity<JsonNode> createOrder(@RequestBody JsonNode orderInfo){
         JsonNode orderId = null;
+        String[] states = {"AK","AL","AR","AS","AZ","CA","CO","CT","DC","DE","FL","GA","GU","HI","IA","ID","IL","IN","KS","KY","LA","MA","MD","ME","MI","MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM","NV","NY","OH","OK","OR","PA","PR","RI","SC","SD","TN","TX","UT","VA","VI","VT","WA","WI","WV","WY"};
+        List<String> listOfStates = Arrays.asList(states);
         int pid = -1;
-
-        String state = orderInfo.path("vehicle").path("state").asText();
-        String plate = orderInfo.path("vehicle").path("plate").asText();
-        String type = orderInfo.path("vehicle").path("type").asText();
-        String name = orderInfo.path("visitor").path("name").asText();
-        String email = orderInfo.path("visitor").path("email").asText();
-        String card = orderInfo.path("visitor").path("payment_info").path("card").asText();
-        String cardName = orderInfo.path("visitor").path("payment_info").path("name_on_card").asText();
-        String expirationDate = orderInfo.path("visitor").path("payment_info").path("expiration_date").asText();
-        int zip = orderInfo.path("visitor").path("payment_info").path("zip").asInt();
         try {
+            String state = orderInfo.path("vehicle").path("state").asText();
+            if(!(listOfStates.contains(state.toUpperCase()))){
+                String errorMsg = "{" +
+                        "\"type\": \"http://cs.iit.edu/~virgil/cs445/project/api/problems/data-validation\"," +
+                        "\"title\": \"Your request data didn't pass validation\"," +
+                        "\"detail\": \"You entered an invalid state\"," +
+                        "\"status\": 400," +
+                        "\"instance\": \"/orders"+
+                        "}";
+                JsonNode errorJson = parksMapper.readTree(errorMsg);
+                return new ResponseEntity<JsonNode>(errorJson, HttpStatus.BAD_REQUEST);
+            }
+            String plate = orderInfo.path("vehicle").path("plate").asText();
+            String type = orderInfo.path("vehicle").path("type").asText();
+            if(plate.equals("") || type.equals("")){
+                String errorMsg = "{" +
+                        "\"type\": \"http://cs.iit.edu/~virgil/cs445/project/api/problems/data-validation\"," +
+                        "\"title\": \"Your request data didn't pass validation\"," +
+                        "\"detail\": \"Your vehicle information is incomplete\"," +
+                        "\"status\": 400," +
+                        "\"instance\": \"/orders"+
+                        "}";
+                JsonNode errorJson = parksMapper.readTree(errorMsg);
+                return new ResponseEntity<JsonNode>(errorJson, HttpStatus.BAD_REQUEST);
+            }
+            String name = orderInfo.path("visitor").path("name").asText();
+            String email = orderInfo.path("visitor").path("email").asText();
+            if(email.equals("") || !(isAnEmail(email))){
+                String errorMsg = "{" +
+                        "\"type\": \"http://cs.iit.edu/~virgil/cs445/project/api/problems/data-validation\"," +
+                        "\"title\": \"Your request data didn't pass validation\"," +
+                        "\"detail\": \"Please enter a valid email\"," +
+                        "\"status\": 400," +
+                        "\"instance\": \"/orders"+
+                        "}";
+                JsonNode errorJson = parksMapper.readTree(errorMsg);
+                return new ResponseEntity<JsonNode>(errorJson, HttpStatus.BAD_REQUEST);
+            }
+            String card = orderInfo.path("visitor").path("payment_info").path("card").asText();
+            String cardName = orderInfo.path("visitor").path("payment_info").path("name_on_card").asText();
+            String expirationDate = orderInfo.path("visitor").path("payment_info").path("expiration_date").asText();
+            int zip = orderInfo.path("visitor").path("payment_info").path("zip").asInt();
+            if(card.equals("")||cardName.equals("")||expirationDate.equals("")||zip == 0){
+                String errorMsg = "{" +
+                        "\"type\": \"http://cs.iit.edu/~virgil/cs445/project/api/problems/data-validation\"," +
+                        "\"title\": \"Your request data didn't pass validation\"," +
+                        "\"detail\": \"Please enter a valid Paymentinformation\"," +
+                        "\"status\": 400," +
+                        "\"instance\": \"/orders"+
+                        "}";
+                JsonNode errorJson = parksMapper.readTree(errorMsg);
+                return new ResponseEntity<JsonNode>(errorJson, HttpStatus.BAD_REQUEST);
+            }
+
+
             if(orderInfo.has("pid")) {
                 pid = orderInfo.get("pid").asInt(-1);
             }else{
@@ -583,13 +631,13 @@ public class AppController {
                 return new ResponseEntity<JsonNode>(errorJson, HttpStatus.BAD_REQUEST);
             }
             double amount = myParks.getParkFee(pid, type, state);
-        Vehicle vehicleInfo = new Vehicle(state, plate, type);
-        PaymentInfo paymentInfo = new PaymentInfo(zip, card, cardName, expirationDate);
-        if(name.equals("")){
-            name = cardName;
-        }
-        int oid = myOrder.createNewOrder(pid,amount, vehicleInfo,paymentInfo,new Date(), name, email);
-        String json = "{\"oid\":\"" + oid+"\"}";
+            Vehicle vehicleInfo = new Vehicle(state, plate, type);
+            PaymentInfo paymentInfo = new PaymentInfo(zip, card, cardName, expirationDate);
+            if(name.equals("")){
+                name = cardName;
+            }
+            int oid = myOrder.createNewOrder(pid,amount, vehicleInfo,paymentInfo,new Date(), name, email);
+            String json = "{\"oid\":\"" + oid+"\"}";
 
             orderId = parksMapper.readTree(json);
             String uri = "/orders/"+Integer.toString(oid);
@@ -605,6 +653,7 @@ public class AppController {
         }
         return new ResponseEntity<JsonNode>(orderId, HttpStatus.BAD_REQUEST);
     }
+
 
     @PutMapping("/parks/{id}")
     public ResponseEntity<Void> updatePark(@PathVariable("id") int pid, @RequestBody JsonNode parkinfo){
@@ -639,6 +688,12 @@ public class AppController {
         return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
     }
 
+    private boolean isAnEmail(String email) {
+        if(!(email.contains("@")) || !(email.contains("."))){
+            return false;
+        }
+        return true;
+    }
 
     public String[] locationInfoString(JsonNode parkinfo){
         String[] locationInfo = new String[5];
