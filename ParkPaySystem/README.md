@@ -1,3 +1,5 @@
+#CS 445 Final Project Pay to Park application
+
 To run this application you should have maven, git, and java jdk.
 
 First start by `updating` apt-get
