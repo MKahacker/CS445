@@ -85,7 +85,7 @@ public class OrderManagerTest {
 
     @Test
     public void returnIndexReturnsMinusOneForNonExistantIDs(){
-        assertEquals(null, myOrders.returnIndex(1000));
+        assertEquals(null, myOrders.returnOrder(1000));
     }
 
     @Test
@@ -94,15 +94,15 @@ public class OrderManagerTest {
         String email = "djohn@gmail.com";
         int oid = myOrders.createNewOrder(pid, amount, new Vehicle("IL", "Z78Z", type), payment_info, timeStamp, name, email);
 
-        assertNotEquals(-1, myOrders.returnIndex(oid));
+        assertNotEquals(-1, myOrders.returnOrder(oid));
     }
 
     @Test
     public void createNewOrder(){
         int newOid = myOrders.createNewOrder(pid, amount, new Vehicle("IL", "Z78Z", type), payment_info, timeStamp, name, email);
-        assertNotEquals(-1, myOrders.returnIndex(newOid));
+        assertNotEquals(-1, myOrders.returnOrder(newOid));
         newOid = myOrders.createNewOrder(101, 3.63, new Vehicle("IL", "Z78Z", type), payment_info, timeStamp, name, email);
-        assertNotEquals(-1, myOrders.returnIndex(newOid));
+        assertNotEquals(-1, myOrders.returnOrder(newOid));
     }
 
     @Test

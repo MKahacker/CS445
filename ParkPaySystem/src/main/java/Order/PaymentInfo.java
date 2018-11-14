@@ -19,14 +19,8 @@ public class PaymentInfo {
     }
 
     public String getCard() {
-        String maskedCard = maskCreditCard(this.card);
-        return maskedCard;
-    }
-
-    private String maskCreditCard(String card) {
         String maskedCard = "xxxxxxxxxxx";
-        String stringLastFour = card.substring(card.length()-4);
-        return maskedCard + stringLastFour;
+        return maskedCard + card.substring(card.length()-4);
     }
 
     public String getName() {
@@ -34,7 +28,6 @@ public class PaymentInfo {
     }
 
     public String getDate() {
-        String dateExpiration = this.expiration;
-        return dateExpiration;
+        return expiration;
     }
 }

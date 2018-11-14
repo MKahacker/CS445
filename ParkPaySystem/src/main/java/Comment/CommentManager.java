@@ -27,41 +27,40 @@ public class CommentManager {
 
 
     public JSONObject viewSpecificComment(int id){
-        JSONObject comment = new JSONObject();
-        int indexOfComment = returnIndexOfComment(id);
-        if (indexOfComment != -1) {
-            comment = this.commentList.get(indexOfComment).viewComment();
-        }
-        return comment;
+        JSONObject commentInfo = new JSONObject();
+        Comment comment = returnComment(id);
+        try {
+            commentInfo = comment.viewComment();
+        }catch (NullPointerException e){
 
+      }
+        return commentInfo;
     }
 
     public int updateComment(int id, int authorId, String title, String body) {
-        int idx = returnIndexOfComment(id);
-
-        if(idx != -1) {
-            this.commentList.get(idx).updateComment(authorId, title, body);
+        Comment comment = returnComment(id);
+        try{
+            comment.updateComment(authorId, title, body);
+            return 2;
+        }catch(NullPointerException e){
+            return -1;
         }
 
-        return idx;
     }
 
     public void deleteComment(int nid) {
-        int idx = returnIndexOfComment(nid);
-        if(idx != -1){
-            this.commentList.remove(idx);
-        }
+        Comment comment = returnComment(nid);
+
+            this.commentList.remove(comment);
     }
 
-    public int returnIndexOfComment(int id){
-        int idx = -1;
-        for(int i = 0; i < this.commentList.size(); i++){
-            if(this.commentList.get(i).getId() == id){
-                idx = i;
-                return idx;
+    public Comment returnComment(int id){
+        for(Comment c:commentList){
+            if(c.getId() == id){
+                return c;
             }
         }
-        return idx;
+        return null;
     }
 
     public JSONArray viewAllComments(){
@@ -125,13 +124,12 @@ public class CommentManager {
     }
 
     public boolean checkIfAssociated(int pid, int nid) {
-        boolean found = false;
-        int idx = returnIndexOfComment(nid);
-        if(idx!=-1) {
-            if (this.commentList.get(idx).getParkId() == pid) {
-                found = true;
-            }
+        Comment comment = returnComment(nid);
+        try {
+          return comment.getParkId() == pid;
+
+        }catch(NullPointerException e){
+           return false;
         }
-        return found;
     }
 }

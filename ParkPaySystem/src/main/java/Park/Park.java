@@ -78,17 +78,19 @@ public class Park implements InterfacePark {
     }
 
     public double inStateFee(int type){
-       if(type >= 0 && type < 3) {
+        try{
           return fee[type].getInStateFee();
-       }
-       return -1;
+       }catch (ArrayIndexOutOfBoundsException e){
+            return -1;
+        }
     }
 
     public double outStateFee(int type){
-        if(type >= 0 && type <3){
+        try{
            return fee[type].getOutStateFee();
+        }catch(ArrayIndexOutOfBoundsException e) {
+            return -1;
         }
-        return -1;
     }
 
 

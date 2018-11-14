@@ -104,7 +104,7 @@ public class AppController {
     public ResponseEntity<JsonNode> viewNote(@PathVariable("pid") int pid, @PathVariable("nid") int id){
         JsonNode note;
         try {
-            if(myParks.getIndexOfPark(pid)==-1 || myComment.returnIndexOfComment(id) == -1){
+            if(myParks.getIndexOfPark(pid)==-1 || myComment.returnComment(id) == null){
                 return ResponseEntity.notFound().build();
             }else if(!(myComment.checkIfAssociated(pid, id))){
                 String errorMsg = "{\"type\": \"http://cs.iit.edu/~virgil/cs445/" +
@@ -133,7 +133,7 @@ public class AppController {
     public ResponseEntity<JsonNode> viewNote(@PathVariable("nid") int id){
         JsonNode note;
         try {
-            if(myComment.returnIndexOfComment(id) == -1){
+            if(myComment.returnComment(id) == null){
                 return ResponseEntity.notFound().build();
             }else {
                 note = parksMapper.readTree(myComment.viewSpecificComment(id).toString());
@@ -169,7 +169,7 @@ public class AppController {
     public ResponseEntity<JsonNode> getOneOrder(@PathVariable("id") int oid){
         JsonNode orders;
         try {
-            if(myOrder.returnIndex(oid)==null){
+            if(myOrder.returnOrder(oid)==null){
                 return ResponseEntity.notFound().build();
             }else {
                 orders = parksMapper.readTree(myOrder.viewSpecificOrder(oid).toString());
@@ -205,7 +205,7 @@ public class AppController {
     public ResponseEntity<JsonNode> getAVisitor(@PathVariable("id") int vid){
         JsonNode visitors;
         try {
-            if(myOrder.returnIndex(vid) == null){
+            if(myOrder.returnVisitor(vid) == null){
                 return new ResponseEntity<JsonNode>(HttpStatus.NOT_FOUND);
             }else {
                 visitors = parksMapper.readTree(myOrder.viewSpecificVistors(vid, myComment.viewCommentsForVisitor(vid)).toString());
@@ -657,7 +657,7 @@ public class AppController {
 
     @PutMapping("/notes/{nid}")
     public ResponseEntity<Void> updateNotes(@PathVariable("nid") int nid, @RequestBody JsonNode noteInfo){
-        if(myComment.returnIndexOfComment(nid) != -1){
+        if(myComment.returnComment(nid) != null){
             int vid = noteInfo.get("vid").asInt();
             String title = noteInfo.get("title").asText();
             String body = noteInfo.get("text").asText();

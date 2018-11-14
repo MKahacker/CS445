@@ -13,7 +13,6 @@ public class Order {
     Date dateOfTransaction;
     Vehicle vehicleInfo;
     PaymentInfo orderPayment;
-    String transactionId;
 
     public Order(int id, int parkId, int vistorId, double amount, Vehicle vehicleInfo, PaymentInfo orderPayment, Date orderDate){
         this.id = id;
@@ -33,6 +32,10 @@ public class Order {
         return this.vistorId;
     }
 
+    public int getPid() {
+        return this.parkId;
+    }
+
     public JSONObject viewOrder() {
         JSONObject orderInfo = new JSONObject();
         DateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -45,7 +48,6 @@ public class Order {
 
         return orderInfo;
     }
-
 
 
     public JSONObject viewVehicleInfo() {
@@ -63,6 +65,7 @@ public class Order {
         paymentInfo.put("name_on_card", this.orderPayment.getName());
         paymentInfo.put("expiration_date", this.orderPayment.getDate());
         paymentInfo.put("card", this.orderPayment.getCard());
+
         return paymentInfo;
     }
 
@@ -75,17 +78,11 @@ public class Order {
         return processingInfo;
     }
 
-    public int getPid() {
-        return this.parkId;
-    }
 
     public boolean searchKey(String key) {
-        boolean found = false;
         String order = this.viewOrder().toString() + this.viewPaymentInfo().toString()+
                 this.viewVehicleInfo().toString()+this.viewProcessingInfo().toString();
-        if(order.contains(key)){
-            found = true;
-        }
-        return found;
+
+        return order.toLowerCase().contains(key.toLowerCase());
     }
 }

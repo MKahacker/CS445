@@ -19,7 +19,8 @@ public abstract class AbstractVistor {
         return this.id;
     }
 
-    public String getEmail(){
-        return this.email;
+
+    public boolean emailSame(String email){
+        return email == this.email;
     }
 }
