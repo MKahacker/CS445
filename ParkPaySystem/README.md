@@ -1,5 +1,8 @@
 # CS 445 Final Project Pay to Park application
 
+This application is written in **Java** and I am using **Maven** as the project manager. 
+
+
 ## Setup For the Project
 To run this application you should have maven, git, and java jdk.
 
