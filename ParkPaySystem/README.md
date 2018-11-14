@@ -1,5 +1,6 @@
 # CS 445 Final Project Pay to Park application
 
+## Setup For the Project
 To run this application you should have maven, git, and java jdk.
 
 First start by `updating` apt-get
@@ -24,6 +25,7 @@ Install maven by using this command
 sudo apt-get install maven
 ```
 
+## Get and test the project
 Get the project
 ```
 git clone https://github.com/Makk-Attack/CS445
@@ -49,6 +51,8 @@ In Ubuntu 16.04 you can use this command to open the report made by jacoco
 ```
 xdg-open target/site/jacoco/index.html
 ```
+
+## Run the project
 Finally run the application using Spring Boot
 ```
 mvn spring-boot:run
