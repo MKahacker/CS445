@@ -39,68 +39,63 @@ public class OrderManager {
 
     private int didVisitorAlreadyVisit(String email) {
         int vid = -1;
-        for(int i=0; i < this.listOfVistor.size(); i++){
-            if(getVisitor(i).getEmail().equals(email)){
-                vid = getVisitor(i).getVid();
+        for(AbstractVistor visitor:listOfVistor){
+            if(visitor.getEmail().equals(email)){
+                vid = visitor.getVid();
             }
         }
         return vid;
     }
 
-    public JSONArray viewAllOrders() {
+    public JSONArray viewAllOrders(String key) {
         JSONArray orders = new JSONArray();
-        for (int i = 0; i < this.listOfOrders.size(); i++)
-            orders.put(listOfOrders.get(i).viewOrder());
+        for (Order order: listOfOrders){
+            if(order.searchKey(key)){
+                orders.put(order.viewOrder());
+            }
+        }
         return orders;
     }
 
     public JSONObject viewSpecificOrder(int oid) {
-        JSONObject specificOrder = new JSONObject();
+        JSONObject specificOrder ;
         JSONObject visitorInfo;
-        int idx = returnIndex(oid), vidx;
-        if(idx !=  -1){
-            vidx = returnVistorIndex(getOrder(idx).getVid());
-            visitorInfo = getVisitor(vidx).viewVisitorInfo();
-            visitorInfo.put("payment_info", getOrder(idx).viewPaymentInfo());
-            specificOrder = getOrder(idx).viewOrder();
+        Order order = returnIndex(oid);
+        try {
+            AbstractVistor visitor = returnVistorIndex(order.getVid());
+            visitorInfo = visitor.viewVisitorInfo();
+            visitorInfo.put("payment_info", order.viewPaymentInfo());
+            specificOrder = order.viewOrder();
             specificOrder.remove("type");
-            specificOrder.put("vid", Integer.toString(getOrder(idx).getVid()));
-            specificOrder.put("vehicle", getOrder(idx).viewVehicleInfo());
+            specificOrder.put("vid", Integer.toString(order.getVid()));
+            specificOrder.put("vehicle", order.viewVehicleInfo());
             specificOrder.put("visitor", visitorInfo);
-            specificOrder.put("payment_processing", getOrder(idx).viewProcessingInfo());
+            specificOrder.put("payment_processing", order.viewProcessingInfo());
+        }catch(NullPointerException e){
+            specificOrder = new JSONObject();
         }
         return specificOrder;
     }
 
-    private int returnVistorIndex(int vid) {
-        int idx = -1;
-        for(int i = 0; i < this.listOfVistor.size(); i++){
-            if(getVisitor(i).getVid() == vid){
-                idx = i;
-                return idx;
+    private AbstractVistor returnVistorIndex(int vid) {
+        for(AbstractVistor visitor:listOfVistor){
+            if(visitor.getVid() == vid){
+                return visitor;
             }
         }
-        return idx;
+        return null;
     }
 
-    public int returnIndex(int id){
-        int idx = -1;
-        for(int i = 0; i < this.listOfOrders.size(); i++){
-            if(getOrder(i).getId() == id){
-                idx = i;
-                return idx;
+    public Order returnIndex(int id){
+        for(Order order:listOfOrders){
+            if(order.getId() == id){
+                return order;
             }
         }
-        return idx;
+        return null;
     }
 
-    private Order getOrder(int i) {
-        return this.listOfOrders.get(i);
-    }
 
-    private AbstractVistor getVisitor(int idx) {
-        return this.listOfVistor.get(idx);
-    }
 
     public JSONArray viewVisitors(String key) {
         JSONArray visitors = new JSONArray();
@@ -131,15 +126,17 @@ public class OrderManager {
 
     public JSONObject viewSpecificVistors(int vid, JSONArray commentInfo) {
         JSONObject visitorInfo = new JSONObject();
-        int idx = returnVistorIndex(vid);
-        if(idx != -1) {
+        AbstractVistor visitor = returnVistorIndex(vid);
+        try {
             visitorInfo.put("vid", Integer.toString(vid));
-            JSONObject name_email = getVisitor(idx).viewVisitorInfo();
+            JSONObject name_email = visitor.viewVisitorInfo();
             visitorInfo.put("visitor", name_email);
             JSONArray orderInfo = viewOrdersForVisitor(vid);
             visitorInfo.put("orders", orderInfo);
             visitorInfo.put("notes", commentInfo);
-            return visitorInfo;
+
+        }catch (NullPointerException e) {
+            visitorInfo = new JSONObject();
         }
         return visitorInfo;
     }
@@ -158,15 +155,6 @@ public class OrderManager {
         return visitorsOrders;
     }
 
-    public JSONArray searchWithKey(String key) {
-        JSONArray ordersWithKeys = new JSONArray();
-        for(int i=0; i < this.listOfOrders.size(); i++){
-            if(getOrder(i).searchKey(key)){
-                ordersWithKeys.put(getOrder(i).viewOrder());
-            }
-        }
-        return ordersWithKeys;
-    }
 
 
     private Order getOrderForVid(int vid){

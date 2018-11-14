@@ -38,7 +38,7 @@ public class OrderManagerTest {
 
     @Test
     public void viewAllOrdersWhenNoOrdersPresent(){
-        JSONArray allOrders = myOrders.viewAllOrders();
+        JSONArray allOrders = myOrders.viewAllOrders("");
         assertEquals("[]", allOrders.toString());
     }
 
@@ -52,7 +52,7 @@ public class OrderManagerTest {
         buildOrderList(listOfOrders);
 
         myOrders = new OrderManager(listOfOrders);
-        assertEquals(acceptanceString, myOrders.viewAllOrders().toString());
+        assertEquals(acceptanceString, myOrders.viewAllOrders("").toString());
     }
 
     @Test
@@ -69,7 +69,7 @@ public class OrderManagerTest {
         acceptanceString +="}]";
 
         myOrders = new OrderManager(listOfOrders);
-        assertEquals(acceptanceString, myOrders.viewAllOrders().toString());
+        assertEquals(acceptanceString, myOrders.viewAllOrders("").toString());
     }
 
     @Test
@@ -85,7 +85,7 @@ public class OrderManagerTest {
 
     @Test
     public void returnIndexReturnsMinusOneForNonExistantIDs(){
-        assertEquals(-1, myOrders.returnIndex(1000));
+        assertEquals(null, myOrders.returnIndex(1000));
     }
 
     @Test
@@ -215,7 +215,6 @@ public class OrderManagerTest {
 
     @Test
     public void searchOrdersByKeys(){
-        assertEquals(myOrders.viewAllOrders().toString(), myOrders.searchWithKey("").toString());
 
         pid = 102;
         name = "John Doe";
@@ -223,16 +222,10 @@ public class OrderManagerTest {
 
         myOrders.createNewOrder(pid,amount,new Vehicle("IL", "Z7868", type), payment_info,timeStamp,name,email);
 
-        assertEquals(myOrders.viewAllOrders().toString(), myOrders.searchWithKey("").toString());
-
-        pid = 102;
-        name = "John Doe";
-        email = "john.doe@gmail.com";
-
         int oid = myOrders.createNewOrder(pid,amount,new Vehicle("IL", "Z7890", type), payment_info,timeStamp,"George Washington",email);
         Order testOrder = new Order(oid,pid,708,amount,new Vehicle("IL", "Z7890", type), payment_info,timeStamp);
 
-        assertEquals("["+testOrder.viewOrder().toString()+"]", myOrders.searchWithKey("Z7890").toString());
+        assertEquals("["+testOrder.viewOrder().toString()+"]", myOrders.viewAllOrders("Z7890").toString());
 
     }
 
