@@ -6,10 +6,12 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class ParkInteractor {
 
     List<Park> parks;
+    private static AtomicInteger idGenerator = new AtomicInteger(100);
 
     public ParkInteractor(List<Park> parks){
         this.parks = parks;
@@ -23,7 +25,7 @@ public class ParkInteractor {
     }
 
     public int createPark(Park newPark){
-        int parkId = parks.size() + 100;
+        int parkId = idGenerator.getAndIncrement();
         newPark.setParkId(parkId);
         this.parks.add(newPark);
         return parkId;

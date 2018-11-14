@@ -9,10 +9,13 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class OrderManager {
     private List<Order> listOfOrders;
     private List<AbstractVistor> listOfVistor;
+
+    private static AtomicInteger idGenerator = new AtomicInteger(100);
 
     public OrderManager(List<Order> listOfOrders) {
         this.listOfOrders = listOfOrders;
@@ -21,7 +24,7 @@ public class OrderManager {
 
     public int createNewOrder(int pid, double amount, Vehicle vehicleInfo, PaymentInfo paymentInfo,
                               Date orderDate, String name, String email){
-        int oid = listOfOrders.size() + 100;
+        int oid = idGenerator.getAndIncrement();
         int vid = didVisitorAlreadyVisit(email);
         if(vid == -1) {
             vid = listOfVistor.size() + 100;

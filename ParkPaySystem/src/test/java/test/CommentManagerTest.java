@@ -35,7 +35,7 @@ class CommentManagerTest {
         String title = "Like";
         String body = "I Like very much";
         for (int i = 0; i < 5; i++) {
-            comment = new Comment(i + 100, i + 200, i + 300, new Date(), title + " " + Integer.toString(i), body);
+            comment = new Comment(i + 250, i + 200, i + 300, new Date(), title + " " + Integer.toString(i), body);
             comments.add(comment);
         }
         return comments;
@@ -170,17 +170,17 @@ class CommentManagerTest {
                 myComments.searchWithKey("campground").toString());
 
         assertEquals("[{\"date\":\"" +
-                        dateFormat.format(new Date())+"\",\"nid\":\""+100+"\",\"title\":\"Like 0\"}]",
+                        dateFormat.format(new Date())+"\",\"nid\":\""+250+"\",\"title\":\"Like 0\"}]",
                 myComments.searchWithKey("like 0").toString());
 
         assertEquals("[]",
                 myComments.searchWithKey("againsomethingcrazy").toString());
 
         for(int i=0; i < 4; i++) {
-            myComments.deleteComment(100+i);
+            myComments.deleteComment(250+i);
         }
         assertEquals("[{\"date\":\"" +
-                        dateFormat.format(new Date())+"\",\"nid\":\""+104+"\",\"title\":\"Like 4\"},{\"date\":\"" +
+                        dateFormat.format(new Date())+"\",\"nid\":\""+254+"\",\"title\":\"Like 4\"},{\"date\":\"" +
                         dateFormat.format(new Date())+"\",\"nid\":\""+nid+"\",\"title\":\"No Campground\"}]",
                 myComments.searchWithKey("").toString());
 
@@ -189,8 +189,8 @@ class CommentManagerTest {
     @Test
     public void isCommentAssociatedWithPark(){
         assertEquals(false, myComments.checkIfAssociated(506, 100));
-        assertEquals(true, myComments.checkIfAssociated(200, 100));
-        assertEquals(false, myComments.checkIfAssociated(200, 250));
+        assertEquals(true, myComments.checkIfAssociated(200, 250));
+        assertEquals(false, myComments.checkIfAssociated(200, 343));
 
     }
 

@@ -163,7 +163,7 @@ public class OrderManagerTest {
         name = "John Doe";
         email = "john.doe@gmail.com";
 
-        myOrders.createNewOrder(pid,amount,new Vehicle("IL", "Z7868", type), payment_info,timeStamp,name,email);
+        int oid = myOrders.createNewOrder(pid,amount,new Vehicle("IL", "Z7868", type), payment_info,timeStamp,name,email);
 
         assertEquals("{" +
                 "\"vid\":\"100\"," +
@@ -171,7 +171,7 @@ public class OrderManagerTest {
                 "\"orders\":[{" +
                 "\"date\":\""+ formatter.format(new Date())+"\","+
                 "\"pid\":\"411\"," +
-                "\"oid\":\"100\"" +
+                "\"oid\":\""+oid+"\"" +
                 "}]," +
                 "\"visitor\":{" +
                 "\"name\":\"John Doe\"," +
@@ -188,13 +188,13 @@ public class OrderManagerTest {
         name = "John Doe";
         email = "john.doe@gmail.com";
 
-        myOrders.createNewOrder(pid,amount,new Vehicle("IL", "Z7868", type), payment_info,timeStamp,name,email);
+        int oid = myOrders.createNewOrder(pid,amount,new Vehicle("IL", "Z7868", type), payment_info,timeStamp,name,email);
 
 
         assertEquals("[{" +
                 "\"date\":\""+ formatter.format(new Date())+"\","+
                 "\"pid\":\"102\"," +
-                "\"oid\":\"100\"" +
+                "\"oid\":\""+oid+"\"" +
                 "}]", myOrders.viewOrdersForVisitor(100).toString());
         assertEquals("[]", myOrders.viewOrdersForVisitor(700).toString());
     }

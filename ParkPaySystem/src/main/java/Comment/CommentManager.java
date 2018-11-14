@@ -7,16 +7,18 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class CommentManager {
     List<Comment> commentList;
+    private static AtomicInteger idGenerator = new AtomicInteger(100);
 
     public CommentManager(List<Comment> commentList){
         this.commentList = commentList;
     }
 
     public int createNewComment(int parkId, int vistorId, Date timeStamp, String title, String body){
-        int commentId = commentList.size()+100;
+        int commentId = idGenerator.getAndIncrement();
         Comment newComment = new Comment(commentId, parkId, vistorId, timeStamp,title, body);
 
         this.commentList.add(newComment);
