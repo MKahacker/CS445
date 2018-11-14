@@ -55,8 +55,8 @@ public class OrderTest {
 
     @Test
     public void viewPaymentProcessingInfo(){
-       //DateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
-        DateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd");
+        DateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        //DateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd");
         assertEquals("{\"date_and_time\":\""+myFormat.format(timeStamp)+"\",\"card_transaction_id\":\"123-4567-89\"}", newOrder.viewProcessingInfo().toString());
     }
 

@@ -132,7 +132,7 @@ public class OrderManagerTest {
         String specificVehicleInfo = "{\"plate\":\"Z78Z\",\"state\":\"IL\",\"type\":\"" + type+"\"}";
         String paymentInfo = "{\"zip\":60659,\"expiration_date\":\"12/19\",\"card\":\"xxxxxxxxxxx5689\",\"name_on_card\":\""+name+"\"}";
         String visitorInfo = "{\"name\":\""+name+"\",\"payment_info\":" + paymentInfo+",\"email\":\""+email+"\"}";
-        String processingInfo = "{\"date_and_time\":\""+/*newFormat.format(timeStamp)*/formatter.format(timeStamp)+"\",\"card_transaction_id\":\"123-4567-89\"}";
+        String processingInfo = "{\"date_and_time\":\""+newFormat.format(timeStamp)/*formatter.format(timeStamp)*/+"\",\"card_transaction_id\":\"123-4567-89\"}";
 
         myString+="\"date\":\"" + formatter.format(timeStamp)+"\",\"vid\":\"" + 100 +"\",\"amount\":"+amount+",\"pid\":\""+pid+"\"";
         myString+=",\"oid\":\"" + oid+"\"";
