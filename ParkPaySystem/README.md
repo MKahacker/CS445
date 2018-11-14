@@ -11,52 +11,48 @@ First start by `updating` apt-get
 sudo apt-get update
 ```
 
-Then install java jdk, maven, and git
-
+Then install **java jdk**
 For Ubuntu 16.04 use command to get the latest java jdk 
 ```
 sudo apt-get install openjdk-8-jdk
 ```
 
-Install git by using this command
+Install **git** if you don't already have it by using this command
 ```
 sudo apt-get install git
 ```
 
-Install maven by using this command
+Install **maven** by using this command
 ```
 sudo apt-get install maven
 ```
 
 ## Get and test the project
-Get the project
+1. Get the project
 ```
 git clone https://github.com/Makk-Attack/CS445
 ```
-
-Open the project directory
+2. Open the project directory
 ```
 cd CS445/ParkPaySystem
 ```
-
-Build maven project and run test using 
+3. Build **maven** project and run test using 
 ```
 mvn clean test
 ```
-
-Generate coverage using jacoco
+4. Generate coverage using **jacoco**
 ```
 mvn jacoco:report
 ```
 
-Open test report with a browser, this report is found in `target/site/jacoco/index.html`
-In Ubuntu 16.04 you can use this command to open the report made by jacoco
+5. Open test report with a browser, this report is found in `target/site/jacoco/index.html`
+   In Ubuntu 16.04 you can use this command to open the report made by **jacoco**
 ```
 xdg-open target/site/jacoco/index.html
 ```
 
 ## Run the project
-Finally run the application using Spring Boot
+6. Finally run the application using **Spring Boot** with the comand
 ```
 mvn spring-boot:run
 ```
