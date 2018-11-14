@@ -193,11 +193,7 @@ public class AppController {
     public JsonNode getVisitors(@RequestParam(value="key", defaultValue="") String key){
         JsonNode visitors;
         try {
-            if(key.equals("")) {
-                visitors = parksMapper.readTree(myOrder.viewVisitors().toString());
-            }else{
-                visitors = parksMapper.readTree(myOrder.searchWithKeyVisitor(key).toString());
-            }
+            visitors = parksMapper.readTree(myOrder.viewVisitors(key).toString());
             return visitors;
         } catch (JsonMappingException e) {
             e.printStackTrace();
@@ -417,7 +413,7 @@ public class AppController {
             }
 
             searchAll = parksMapper.readTree(Reports.searchApplication(myParks.getAllParksInfo(key), myOrder.searchWithKey(key),
-                    myOrder.searchWithKeyVisitor(key), myComment.searchWithKey(key), startDate, endDate).toString());
+                    myOrder.viewVisitors(key), myComment.searchWithKey(key), startDate, endDate).toString());
         }catch (IOException e){
             e.printStackTrace();
         }catch (ParseException e){

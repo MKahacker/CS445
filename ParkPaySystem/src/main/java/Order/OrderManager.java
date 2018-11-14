@@ -102,23 +102,30 @@ public class OrderManager {
         return this.listOfVistor.get(idx);
     }
 
-    public JSONArray viewVisitors() {
-        JSONArray visitorsInfo = new JSONArray();
-        for(int i = 0; i < this.listOfVistor.size(); i++){
-            JSONObject visitor = getVisitor(i).viewVisitorInfo();
-            visitor.put("vid", Integer.toString(getVisitor(i).getVid()));
-            visitorsInfo.put(visitor);
+    public JSONArray viewVisitors(String key) {
+        JSONArray visitors = new JSONArray();
+        for(AbstractVistor visitor: listOfVistor){
+            String v = visitor.viewVisitorInfo().toString();
+            if(v.toLowerCase().contains(key.toLowerCase())){
+                JSONObject visitorInfo = visitor.viewVisitorInfo();
+                visitorInfo.put("vid", Integer.toString(visitor.getVid()));
+                visitors.put(visitorInfo);
+            }
         }
-        return visitorsInfo;
+        return visitors;
     }
 
     public boolean checkIfVisitorVisitedPark(int pid, int vid) {
         boolean visited = false;
-        for(int i = 0; i < this.listOfOrders.size(); i++){
-            if(listOfOrders.get(i).getVid() == vid && listOfOrders.get(i).getPid() == pid){
+        Order order = getOrderForVid(vid);
+        try {
+            if (order.getVid() == vid && order.getPid() == pid) {
                 visited = true;
             }
+        }catch(NullPointerException e){
+
         }
+
         return visited;
     }
 
@@ -137,15 +144,16 @@ public class OrderManager {
         return visitorInfo;
     }
 
-    public JSONArray viewOrdersForVisitor(int vid) {
+    public JSONArray viewOrdersForVisitor(int vid) throws NullPointerException {
         JSONArray visitorsOrders = new JSONArray();
-        for(int i = 0; i < this.listOfOrders.size(); i++){
-            if(getOrder(i).getVid() == vid){
-             JSONObject orderDetails = getOrder(i).viewOrder();
-             orderDetails.remove("amount");
-             orderDetails.remove("type");
-             visitorsOrders.put(orderDetails);
-            }
+        Order order = getOrderForVid(vid);
+        try {
+            JSONObject orderDetails = order.viewOrder();
+            orderDetails.remove("amount");
+            orderDetails.remove("type");
+            visitorsOrders.put(orderDetails);
+        } catch (NullPointerException e){
+
         }
         return visitorsOrders;
     }
@@ -160,14 +168,13 @@ public class OrderManager {
         return ordersWithKeys;
     }
 
-    public JSONArray searchWithKeyVisitor(String key) {
-        JSONArray visitorsWithKey = new JSONArray();
-        JSONArray allVisitors = viewVisitors();
-        for(int i =0; i < allVisitors.length(); i++){
-            if(allVisitors.get(i).toString().contains(key)){
-                visitorsWithKey.put(allVisitors.get(i));
+
+    private Order getOrderForVid(int vid){
+        for(Order o:listOfOrders){
+            if(o.getVid() == vid){
+                return o;
             }
         }
-        return visitorsWithKey;
+        return null;
     }
 }

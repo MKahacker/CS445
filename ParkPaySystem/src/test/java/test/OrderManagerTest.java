@@ -142,7 +142,7 @@ public class OrderManagerTest {
 
     @Test
     public void viewAllVisitorsWithNoOrders(){
-        assertEquals("[]", myOrders.viewVisitors().toString());
+        assertEquals("[]", myOrders.viewVisitors("").toString());
     }
 
     @Test
@@ -152,7 +152,7 @@ public class OrderManagerTest {
         email = "john.doe@gmail.com";
 
         myOrders.createNewOrder(pid,amount,new Vehicle("IL", "Z7868", type), payment_info,timeStamp,name,email);
-        assertEquals("[{\"vid\":\"100\",\"name\":\"John Doe\",\"email\":\"john.doe@gmail.com\"}]", myOrders.viewVisitors().toString());
+        assertEquals("[{\"vid\":\"100\",\"name\":\"John Doe\",\"email\":\"john.doe@gmail.com\"}]", myOrders.viewVisitors("").toString());
     }
 
     @Test
@@ -238,15 +238,6 @@ public class OrderManagerTest {
 
     @Test
     public void searchVisitorsByKeys(){
-        assertEquals(myOrders.viewVisitors().toString(), myOrders.searchWithKeyVisitor("").toString());
-
-        pid = 102;
-        name = "John Doe";
-        email = "john.doe@gmail.com";
-
-        myOrders.createNewOrder(pid,amount,new Vehicle("IL", "Z7868", type), payment_info,timeStamp,name,email);
-
-        assertEquals(myOrders.viewVisitors().toString(), myOrders.searchWithKeyVisitor("").toString());
 
         pid = 102;
         name = "John Doe";
@@ -254,7 +245,7 @@ public class OrderManagerTest {
 
          myOrders.createNewOrder(pid,amount,new Vehicle("IL", "Z7890", type), payment_info,timeStamp,"George Washington","George.Washington@gmail.com");
 
-        assertEquals("[{\"vid\":\"101\",\"name\":\"George Washington\",\"email\":\"George.Washington@gmail.com\"}]",  myOrders.searchWithKeyVisitor("George").toString());
+        assertEquals("[{\"vid\":\"100\",\"name\":\"George Washington\",\"email\":\"George.Washington@gmail.com\"}]",  myOrders.viewVisitors("George").toString());
     }
 
 
