@@ -121,7 +121,7 @@ class CommentManagerTest {
     @Test
     public void testViewAllCommentsWithManyCommentsFromManyParks() {
         Comment testComment2 = new Comment(108, 160, 100, new Date(), "Lovely Day", "");
-        String stringComment = "[{\"notes\":[" + testComment.limitedCommentInfo() + "],\"pid\":\"250\"},{\"notes\":[" + testComment2.limitedCommentInfo() + "],\"pid\":\"160\"}]";
+        String stringComment = "[{\"notes\":[" + testComment2.limitedCommentInfo() + "],\"pid\":\"160\"},{\"notes\":[" + testComment.limitedCommentInfo() + "],\"pid\":\"250\"}]";
 
         comments.clear();
         comments.add(testComment);

@@ -7,6 +7,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
+import java.util.HashSet;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class CommentManager {
@@ -65,23 +67,21 @@ public class CommentManager {
 
     public JSONArray viewAllComments(){
         JSONArray comments = new JSONArray();
-        List<Integer> parkIdSet = returnAllParkIds();
+        Set<Integer> parkIdSet = returnAllParkIds();
 
-        for(int j=0; j < parkIdSet.size(); j++) {
-            comments.put(viewCommentsForPark(parkIdSet.get(j)).get(0));
+        for(int j: parkIdSet) {
+            comments.put(viewCommentsForPark(j).get(0));
         }
         return comments;
     }
 
-    public List<Integer> returnAllParkIds(){
-        List<Integer> parkIdSet = new ArrayList<Integer>();
-        for(int i = 0; i < this.commentList.size(); i++) {
-            if (!(parkIdSet.contains(this.commentList.get(i).getParkId()))) {
-                parkIdSet.add(this.commentList.get(i).getParkId());
-            }
+    public Set<Integer> returnAllParkIds(){
+        Set<Integer> parkId = new HashSet<Integer>();
+        for(Comment comment:commentList) {
+             parkId.add(comment.getParkId());
         }
 
-        return parkIdSet;
+        return parkId;
     }
 
     public JSONArray viewCommentsForPark(int parkId){
@@ -93,11 +93,16 @@ public class CommentManager {
                 parkComments.put(commentList.get(i).limitedCommentInfo());
             }
         }
-        parkObject.put("pid", Integer.toString(parkId));
-        parkObject.put("notes", parkComments);
-        returnArray.put(parkObject);
+        returnArray.put(putComment(Integer.toString(parkId),parkComments));
         return returnArray;
     }
+
+	private JSONObject putComment(String pid, JSONArray parkComments){
+		JSONObject commentJSON = new JSONObject();
+		commentJSON.put("pid", pid);
+		commentJSON.put("notes", parkComments);
+		return commentJSON;
+	}
 
     public JSONArray viewCommentsForVisitor(int vid) {
         JSONArray comments = new JSONArray();
