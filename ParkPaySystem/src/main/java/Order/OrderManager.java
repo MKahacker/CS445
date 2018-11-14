@@ -56,7 +56,7 @@ public class OrderManager {
 
     public JSONObject viewSpecificOrder(int oid) {
         JSONObject specificOrder = new JSONObject();
-        JSONObject visitorInfo = new JSONObject();
+        JSONObject visitorInfo;
         int idx = returnIndex(oid), vidx;
         if(idx !=  -1){
             vidx = returnVistorIndex(getOrder(idx).getVid());
@@ -131,8 +131,7 @@ public class OrderManager {
             visitorInfo.put("visitor", name_email);
             JSONArray orderInfo = viewOrdersForVisitor(vid);
             visitorInfo.put("orders", orderInfo);
-            JSONArray noteInfo = commentInfo;
-            visitorInfo.put("notes", noteInfo);
+            visitorInfo.put("notes", commentInfo);
             return visitorInfo;
         }
         return visitorInfo;

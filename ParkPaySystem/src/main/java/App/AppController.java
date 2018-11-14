@@ -17,7 +17,7 @@ import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.annotation.JacksonStdImpl;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -41,8 +41,8 @@ public class AppController {
     private CommentManager myComment = new CommentManager(new ArrayList<Comment>());
     private OrderManager myOrder = new OrderManager(new ArrayList<Order>());
     private ObjectMapper parksMapper = new ObjectMapper();
-    SimpleDateFormat requestDate = new SimpleDateFormat("yyyyMMdd");
-    DateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd");
+    private SimpleDateFormat requestDate = new SimpleDateFormat("yyyyMMdd");
+    private DateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd");
 
     @GetMapping("/parks")
     public JsonNode getAllParks(@RequestParam(value="key", defaultValue="") String key){
@@ -460,7 +460,7 @@ public class AppController {
             int pid = myParks.createAPark(locationInfo[0],locationInfo[1],locationInfo[2],locationInfo[3],locationInfo[4],geoInfo[0],geoInfo[1],parkPayment);
             String json = "{\"pid\":\""+pid+"\"}";
             parkId = parksMapper.readTree(json);
-            String uri =  "/parks/"+Integer.toString(pid);;
+            String uri =  "/parks/"+Integer.toString(pid);
             return ResponseEntity.created(new URI(uri)).body(parkId);
 
         } catch(NullPointerException e){
@@ -488,7 +488,7 @@ public class AppController {
                         "\"detail\": \"The vid fieldname is missing\"," +
                         "\"status\": 400," +
                         "\"instance\": \"/parks/" + pid + "\"" +
-                        "}";;
+                        "}";
                 JsonNode errorJson = parksMapper.readTree(errorMsg);
                 return new ResponseEntity<JsonNode>(errorJson, HttpStatus.BAD_REQUEST);
             }
@@ -499,7 +499,7 @@ public class AppController {
                         "\"detail\": \"The title fieldname is missing\"," +
                         "\"status\": 400," +
                         "\"instance\": \"/parks/" + pid + "\"" +
-                        "}";;
+                        "}";
                 JsonNode errorJson = parksMapper.readTree(errorMsg);
                 return new ResponseEntity<JsonNode>(errorJson, HttpStatus.BAD_REQUEST);
             }
@@ -510,7 +510,7 @@ public class AppController {
                         "\"detail\": \"The text fieldname is missing\"," +
                         "\"status\": 400," +
                         "\"instance\": \"/parks/" + pid + "\"" +
-                        "}";;
+                        "}";
                 JsonNode errorJson = parksMapper.readTree(errorMsg);
                 return new ResponseEntity<JsonNode>(errorJson, HttpStatus.BAD_REQUEST);
             }
@@ -709,7 +709,7 @@ public class AppController {
                 locationInfo[3] = parkinfo.path("location_info").path("web").asText();
                 locationInfo[4] = parkinfo.path("location_info").path("address").asText();
 
-                if(locationInfo[0] == ""||locationInfo[3] == ""||locationInfo[4] == "")
+                if(locationInfo[0].equals("")||locationInfo[3].equals("")||locationInfo[4].equals(""))
                     return null;
 
                 return locationInfo;

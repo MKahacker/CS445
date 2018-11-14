@@ -20,8 +20,7 @@ public class ParkInteractor {
     public int createAPark(String name, String region, String phone, String web, String address,
                            double lat, double lng, Payment[] parkPayment){
         Park newPark = new Park(-1, name, region, address, phone,web, new Geolocation(lat, lng), parkPayment);
-        int pid = createPark(newPark);
-        return pid;
+        return createPark(newPark);
     }
 
     public int createPark(Park newPark){
