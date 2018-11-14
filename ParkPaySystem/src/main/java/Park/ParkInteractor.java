@@ -58,15 +58,17 @@ public class ParkInteractor {
         return idx;
     }
 
-    public JSONArray getAllParksInfo(){
+    public JSONArray getAllParksInfo(String key){
         Park parkAtIndex;
         JSONArray parksInfo = new JSONArray();
-
         for (int i = 0; i < parks.size(); i++){
             parkAtIndex = parks.get(i);
-            parksInfo.put(parkAtIndex.viewInformation());
-        }
+            String parkString = parkAtIndex.viewInformation().toString().toLowerCase();
+            if(parkString.contains(key.toLowerCase())){
+                parksInfo.put(parkAtIndex.viewInformation());
+            }
 
+        }
         return  parksInfo;
     }
 
@@ -117,25 +119,15 @@ public class ParkInteractor {
     public double getParkFee(int pid, String type, String state) {
         double fee = 0;
         String uppercaseState = state.toUpperCase();
-        if(getSpecificPark(pid) != null){
-            if(uppercaseState.equals("IL")) {
-                fee = getSpecificPark(pid).inStateFee(Payment.paymentType(type));
-            }else{
-                fee = getSpecificPark(pid).outStateFee(Payment.paymentType(type));
-            }
+        InterfacePark park = getSpecificPark(pid);
+        if(uppercaseState.equals("IL")) {
+                fee = park.inStateFee(Payment.paymentType(type));
+        }else{
+                fee = park.outStateFee(Payment.paymentType(type));
         }
+
         return fee;
     }
 
-    public JSONArray getParksKey(String key) {
-        JSONArray allParks = getAllParksInfo();
-        JSONArray parksWithKey = new JSONArray();
-        for(int i = 0; i < allParks.length(); i++){
-            String parkString = allParks.get(i).toString().toLowerCase();
-            if(parkString.contains(key.toLowerCase())){
-                parksWithKey.put(allParks.get(i));
-            }
-        }
-        return parksWithKey;
-    }
+
 }

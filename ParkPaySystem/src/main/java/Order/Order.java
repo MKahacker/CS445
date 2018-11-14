@@ -29,6 +29,10 @@ public class Order {
         return this.id;
     }
 
+    public int getVid() {
+        return this.vistorId;
+    }
+
     public JSONObject viewOrder() {
         JSONObject orderInfo = new JSONObject();
         DateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -42,9 +46,7 @@ public class Order {
         return orderInfo;
     }
 
-    public int getVid() {
-        return this.vistorId;
-    }
+
 
     public JSONObject viewVehicleInfo() {
         JSONObject vehicleInfoJSON = new JSONObject();
@@ -79,16 +81,9 @@ public class Order {
 
     public boolean searchKey(String key) {
         boolean found = false;
-        if(this.viewOrder().toString().contains(key)){
-            found = true;
-        }
-        if(this.viewPaymentInfo().toString().contains(key)){
-            found = true;
-        }
-        if(this.viewVehicleInfo().toString().contains(key)){
-            found = true;
-        }
-        if(this.viewProcessingInfo().toString().contains(key)){
+        String order = this.viewOrder().toString() + this.viewPaymentInfo().toString()+
+                this.viewVehicleInfo().toString()+this.viewProcessingInfo().toString();
+        if(order.contains(key)){
             found = true;
         }
         return found;

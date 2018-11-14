@@ -50,7 +50,7 @@ class ParkInteractorTest {
     @Test
     public void testReturnInformationWithNothing(){
         ParkInteractor myParks = new ParkInteractor(new ArrayList<Park>());
-        assertEquals("[]", myParks.getAllParksInfo().toString());
+        assertEquals("[]", myParks.getAllParksInfo("").toString());
     }
 
     @Test
@@ -64,7 +64,7 @@ class ParkInteractorTest {
         }
         myParks = new ParkInteractor(list);
 
-        assertEquals(result.toString(), myParks.getAllParksInfo().toString());
+        assertEquals(result.toString(), myParks.getAllParksInfo("").toString());
     }
 
     @Test
@@ -196,15 +196,14 @@ class ParkInteractorTest {
 
         assertEquals(10.00, myParks.getParkFee(size-1, "RV", "Il"));
         assertEquals(11.00, myParks.getParkFee(size-1, "RV", "WY"));
-        assertEquals(0, myParks.getParkFee(800,"RV", "OH"));
 
     }
 
     @Test
     public void testParksKey(){
         ParkInteractor myParks = new ParkInteractor(list);
-        assertEquals("[]", myParks.getParksKey("South").toString());
-        assertEquals(myParks.getAllParksInfo().toString(), myParks.getParksKey("pid").toString());
+        assertEquals("[]", myParks.getAllParksInfo("South").toString());
+        assertEquals(myParks.getAllParksInfo("").toString(), myParks.getAllParksInfo("pid").toString());
     }
 
     @Test
