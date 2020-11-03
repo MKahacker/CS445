@@ -1,4 +1,4 @@
-# CS 445 Final Project Pay to Park application
+# Pay to Park application
 
 This application is written in **Java** and I am using **Maven** as the project manager. 
 
